@@ -1,25 +1,27 @@
-import { useState } from "react";
-import axios from "axios";
+import { submitLogin } from "../api/auth";
+import { useAuthStore } from "../store/auth";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const [correo, setCorreo] = useState("");
-  const [contrasena, setContrasena] = useState("");
+  const setToken = useAuthStore((state) => state.setToken);
+  const setPrivilegio = useAuthStore((state) => state.setPrivilegio);
 
-  function submitData() {
-    axios
-      .post("http://localhost:3000/api/v1/login", {
-        correo: correo,
-        contrasena: contrasena,
-      })
-      .then((response) => {
-        console.log(response.data);
-      });
-  }
+  const navigate = useNavigate();
 
-  const handleLogin = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const correo = (e.currentTarget.elements[0] as HTMLInputElement).value;
+    const contrasena = (e.currentTarget.elements[1] as HTMLInputElement).value;
+    try {
+      const resLogin = await submitLogin(correo, contrasena);
 
-    const user = await submitData();
+      setToken(resLogin.data.token);
+      setPrivilegio(resLogin.data.privilegio);
+
+      navigate("/home");
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
   };
   return (
     <>
@@ -29,15 +31,13 @@ function LoginPage() {
           type="email"
           id="correo"
           name="correo"
-          placeholder="Correo"
-          onChange={({ target }) => setCorreo(target.value)}
+          placeholder="email@email.com"
         />
         <input
           type="password"
           id="contrasena"
           name="contrasena"
-          placeholder="Contraseña"
-          onChange={({ target }) => setContrasena(target.value)}
+          placeholder="*******"
         />
         <button>Iniciar Sesión</button>
       </form>
