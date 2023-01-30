@@ -1,30 +1,29 @@
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
 
-
-function Login() {
+function LoginPage() {
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
 
-    function submitData() {
-      axios
-        .post("http://localhost:3000/api/v1/login", {
-          correo: correo,
-          contrasena: contrasena,
-        })
-        .then((response) => {
-          console.log(response.data);
-        });
-      }
+  function submitData() {
+    axios
+      .post("http://localhost:3000/api/v1/login", {
+        correo: correo,
+        contrasena: contrasena,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  }
 
-  const handleLogin = async (event: { preventDefault: () => void; }) => {
+  const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-      const user = await submitData()
-
+    const user = await submitData();
   };
   return (
-    <><h1>Login</h1>
+    <>
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -42,9 +41,8 @@ function Login() {
         />
         <button>Iniciar Sesión</button>
       </form>
-    
     </>
-  )
+  );
 }
 
-export default Login
+export default LoginPage;

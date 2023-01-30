@@ -1,32 +1,31 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
-import Sucursales from "../pages/Sucursales";
-import Usuarios from "../pages/Usuarios";
-import Vehiculos from "../pages/Vehiculos";
-
+import DashboardPage from "../pages/DashboardPage";
+import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import NotFoundPage from "../pages/NotFoundPage";
+import SucursalesPage from "../pages/SucursalesPage";
+import UsuariosPage from "../pages/UsuariosPage";
+import VehiculosPage from "../pages/VehiculosPage";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
-        <Routes>
-          {/* <Route element={<PublicRoute />}> */}
-            <Route path="/" index element={<Login />} />
-            <Route path="/login" element={<Login />} />
-          {/* </Route> */}
-          {/* <Route element={<PrivateRoute />}> */}
-            <Route path="/home" index element={<Home />} />
-            <Route path="/usuarios" element={<Usuarios />} />
-            <Route path="/vehiculos" element={<Vehiculos />} />
-            <Route path="/sucursales" element={<Sucursales />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          {/* </Route> */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-  )
+      <Routes>
+        {/* <Route element={<PublicRoute />}> */}
+        <Route path="/" index element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        {/* </Route> */}
+        {/* <Route element={<PrivateRoute />}> */}
+        <Route path="/home" index element={<HomePage />} />
+        <Route path="/usuarios" element={<UsuariosPage />} />
+        <Route path="/vehiculos" element={<VehiculosPage />} />
+        <Route path="/sucursales" element={<SucursalesPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        {/* </Route> */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default AppRoutes
+export default AppRoutes;
