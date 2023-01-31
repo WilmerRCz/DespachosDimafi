@@ -1,3 +1,4 @@
+import DespachosTable from "../components/DespachosTable"
 import Logout from "../components/Logout"
 import Nav from "../components/Nav"
 function HomePage() {
@@ -5,6 +6,7 @@ function HomePage() {
     <div><h1>Home</h1>
     <Nav/>
     <Logout />
+    <DespachosTable/>
     </div>
   )
 }

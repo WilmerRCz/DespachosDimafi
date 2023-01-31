@@ -15,12 +15,12 @@ function LoginPage() {
     try {
       const resLogin = await submitLogin(correo, contrasena);
 
-      setToken(resLogin.data.token);
-      setPrivilegio(resLogin.data.privilegio);
+      setToken(resLogin.token);
+      setPrivilegio(resLogin.privilegio);
 
       navigate("/home");
     } catch (error: any) {
-      console.log(error.response.data);
+      console.log(error);
     }
   };
   return (
