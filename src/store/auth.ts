@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type State = {
-  token: string;
+  token: string | null;
   privilegio: number | null;
   isAuth: Boolean;
 };
@@ -15,7 +15,7 @@ type Actions = {
 export const useAuthStore = create(
   persist<State & Actions>(
     (set) => ({
-      token: "",
+      token: null,
       isAuth: false,
       setToken: (token: string) =>
         set((state) => ({
@@ -29,7 +29,7 @@ export const useAuthStore = create(
         })),
       logout: () =>
         set((state) => ({
-          token: "",
+          token: null,
           privilegio: null,
           isAuth: false,
         })),
