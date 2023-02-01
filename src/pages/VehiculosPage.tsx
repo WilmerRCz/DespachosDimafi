@@ -1,5 +1,6 @@
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
+import VehiculosTable from "../components/VehiculosTable";
 
 function VehiculosPage() {
   return (
@@ -7,6 +8,7 @@ function VehiculosPage() {
       <h1>Vehiculos</h1>
       <Nav />
       <Logout />
+      <VehiculosTable />
     </div>
   );
 }
