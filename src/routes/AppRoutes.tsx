@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import { ProtectedRouteForRole } from "../components/ProtectedRouteForRole";
