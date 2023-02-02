@@ -6,6 +6,7 @@ function VehiculosTable() {
   const { data, isLoading, isError} = useQuery({
     queryKey: ["vehiculos"],
     queryFn: getVehiculos,
+    
   });
 
   if (isLoading) return <div>Cargando...</div>;
