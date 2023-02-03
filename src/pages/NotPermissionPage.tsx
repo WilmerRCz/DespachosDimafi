@@ -1,9 +1,13 @@
-import React from 'react'
+import Logout from "../components/Logout";
+import TitlePage from "../components/TitlePage";
 
 function NotPermissionPage() {
   return (
-    <div>NotPermissionPage</div>
-  )
+    <>
+      <TitlePage title="No tienes Permisos" />
+      <Logout />
+    </>
+  );
 }
 
-export default NotPermissionPage
+export default NotPermissionPage;

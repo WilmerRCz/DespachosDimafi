@@ -1,8 +1,7 @@
+import TitlePage from "../components/TitlePage";
 
 function NotFoundPage() {
-  return (
-    <div><h1>NotFound</h1></div>
-  )
+  return <TitlePage title="Página no encontrada" />;
 }
 
-export default NotFoundPage
+export default NotFoundPage;

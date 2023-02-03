@@ -1,7 +1,6 @@
 import { getDespachos } from "../api/resDespachos";
 import { useQuery } from "@tanstack/react-query";
 import { Despachos } from '../interface/Despachos';
-import { QueryClient, QueryObserver } from '@tanstack/query-core';
 import TitlePage from "./TitlePage";
 
 function DespachosTable() {

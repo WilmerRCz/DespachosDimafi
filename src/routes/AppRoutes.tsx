@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 import { ProtectedRouteForRole } from "../components/ProtectedRouteForRole";
@@ -47,33 +46,69 @@ function AppRoutes() {
           </Route>
         </Route>
 
-
         <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-          <Route element={<ProtectedRouteForRole allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}/>}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}
+              />
+            }
+          >
             <Route path="/usuarios" element={<UsuariosPage />} />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-          <Route element={<ProtectedRouteForRole allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}/>}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}
+              />
+            }
+          >
             <Route path="/vehiculos" element={<VehiculosPage />} />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-          <Route element={<ProtectedRouteForRole allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}/>}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}
+              />
+            }
+          >
             <Route path="/sucursales" element={<SucursalesPage />} />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoute isAllowed={isAuth} />}>
-          <Route element={<ProtectedRouteForRole allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}/>}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[ROL.admin, ROL.coordinador, ROL.lector]}
+              />
+            }
+          >
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
         </Route>
 
-        <Route element={<ProtectedRoute isAllowed={isAuth}/>}>
-          <Route path="*" element={<NotFoundPage />} />
+        <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[
+                  ROL.admin,
+                  ROL.coordinador,
+                  ROL.despachador,
+                  ROL.lector,
+                ]}
+              />
+            }
+          >
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

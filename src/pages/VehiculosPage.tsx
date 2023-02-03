@@ -1,11 +1,12 @@
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
+import TitlePage from "../components/TitlePage";
 import VehiculosTable from "../components/VehiculosTable";
 
 function VehiculosPage() {
   return (
     <div>
-      <h1>Vehiculos</h1>
+      <TitlePage title="Vehiculos"/>
       <Nav />
       <Logout />
       <VehiculosTable />

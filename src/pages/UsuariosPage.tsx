@@ -1,11 +1,12 @@
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
+import TitlePage from "../components/TitlePage";
 import UsuariosTable from "../components/UsuariosTable";
 
 function UsuariosPage() {
   return (
     <div>
-      <h1>Usuarios</h1>
+      <TitlePage title="Usuarios"/>
       <Nav />
       <Logout />
       <UsuariosTable />

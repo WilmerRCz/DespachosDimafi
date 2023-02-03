@@ -1,11 +1,12 @@
 
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
+import TitlePage from "../components/TitlePage";
 
 function DashboardPage() {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <TitlePage title="Dashboard"/>
       <Nav />
       <Logout />
     </div>

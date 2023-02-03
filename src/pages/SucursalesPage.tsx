@@ -1,14 +1,15 @@
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
 import SucursalesTable from "../components/SucursalesTable";
+import TitlePage from "../components/TitlePage";
 
 function SucursalesPage() {
   return (
     <div>
-      <h1>Sucursales</h1>
+      <TitlePage title="Sucursales" />
       <Nav />
       <Logout />
-      <SucursalesTable/>
+      <SucursalesTable />
     </div>
   );
 }

@@ -1,16 +1,21 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "../store/auth";
+import { DecodedToken } from "../interface/DecodedToken";
+import jwt_decode from "jwt-decode";
 
 interface Props {
   isAllowed: Boolean;
 }
 
-
 export const ProtectedRoutePublic = ({ isAllowed }: Props) => {
-  const token = useAuthStore((state) => state.token);
-  if (isAllowed && token.length > 160) {
-    return <Navigate to={"/home"} />;
+  try {
+    const token = useAuthStore((state) => state.token);
+    const decodedtoken: DecodedToken = jwt_decode(token);
+    if (decodedtoken.auth && isAllowed) {
+      return <Navigate to={"/home"} />;
+    }
+    return <Outlet />;
+  } catch (error) {
+    return <Outlet />;
   }
-
-  return <Outlet />;
 };
