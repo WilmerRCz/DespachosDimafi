@@ -2,6 +2,7 @@ import { getDespachos } from "../api/resDespachos";
 import { useQuery } from "@tanstack/react-query";
 import { Despachos } from '../interface/Despachos';
 import { QueryClient, QueryObserver } from '@tanstack/query-core';
+import TitlePage from "./TitlePage";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -15,7 +16,7 @@ function DespachosTable() {
   
   return (
     <div>
-      <h1>UsuariosTable</h1>
+      <TitlePage title="Despachos:"/>
       {data.map((despacho: Despachos) => (
         <div key={despacho.id_despacho}>
           <h3>{despacho.nombre_cliente}</h3>

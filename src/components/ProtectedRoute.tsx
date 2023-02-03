@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuthStore } from "../store/auth";
 
 interface Props {
   isAllowed: Boolean;
@@ -6,7 +7,12 @@ interface Props {
 
 
 export const ProtectedRoute = ({ isAllowed }: Props) => {
-  if (!isAllowed) {
+  const token = useAuthStore((state) => state.token);
+  if(token.length < 160){
+    return <Navigate to={"/login"} />;
+  }
+  else if (!isAllowed) {
+    
     return <Navigate to={"/login"} />;
     
   }

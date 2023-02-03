@@ -1,6 +1,7 @@
 import { getVehiculos } from "../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
 import { Vehiculos } from "../interface/Vehiculos";
+import TitlePage from './TitlePage';
 
 function VehiculosTable() {
   const { data, isLoading, isError} = useQuery({
@@ -14,7 +15,7 @@ function VehiculosTable() {
 
   return (
     <div>
-      <h1>VehiculosTable</h1>
+      <TitlePage title="Vehiculos:"/>
       {data.map((vehiculo: Vehiculos) => (
         <div key={vehiculo.patente}>
           <h3>{vehiculo.patente}</h3>

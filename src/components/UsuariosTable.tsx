@@ -1,6 +1,7 @@
 import { getUsuarios } from "../api/resUsuarios";
 import { useQuery } from "@tanstack/react-query";
 import { Usuarios } from "../interface/Usuario";
+import TitlePage from "./TitlePage";
 
 function UsuariosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -13,7 +14,7 @@ function UsuariosTable() {
 
   return (
     <div>
-      <h1>UsuariosTable</h1>
+      <TitlePage title="Usuarios:"/>
       {data.map((usuario: Usuarios) => (
         <div key={usuario.id_usuario}>
           <h3>{`${usuario.nombre_usuario}  ${usuario.apellido_usuario}`}</h3>

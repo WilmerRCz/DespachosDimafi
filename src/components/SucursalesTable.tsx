@@ -1,6 +1,7 @@
 import { getSucursales } from "../api/resSucursales";
 import { useQuery } from "@tanstack/react-query";
 import { Sucursales } from '../interface/Sucursales';
+import TitlePage from "./TitlePage";
 
 function SucursalesTable() {
   const { data, isLoading, isError } = useQuery({
@@ -13,7 +14,7 @@ function SucursalesTable() {
 
   return (
     <div>
-      <h1>UsuariosTable</h1>
+      <TitlePage title="Sucursales:"/>
       {data.map((sucursal: Sucursales) => (
         <div key={sucursal.id_sucursal}>
           <h3>{sucursal.nombre_sucursal}</h3>
