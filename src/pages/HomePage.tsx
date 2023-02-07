@@ -2,8 +2,8 @@
 import Logout from "../components/Logout";
 import Nav from "../components/Nav";
 import DespachosTable from "../components/DespachosTable";
-import Table from "../components/Table";
 import TitlePage from "../components/TitlePage";
+import TablePrueba from "../components/TablePrueba";
 
 function HomePage() {
   return (
@@ -12,6 +12,7 @@ function HomePage() {
         <Nav />
         <Logout />
         <DespachosTable />
+        <TablePrueba />
       </div>
 
   );

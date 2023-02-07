@@ -1,16 +1,16 @@
 import { getDespachos } from "../api/resDespachos";
 import { useQuery } from "@tanstack/react-query";
 import { Despachos } from "../interface/Despachos";
-import {RiArrowDropDownLine, RiArrowDropUpLine} from "react-icons/ri";
 import TitlePage from "./TitlePage";
-import { useState } from "react";
+
+
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["despachos"],
     queryFn: getDespachos,
   });
-  const [open, setOpen] = useState(false);
+
 
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
@@ -18,6 +18,7 @@ function DespachosTable() {
   return (
     <div>
       <TitlePage title="Despachos:" />
+       
       <table className="w-full ">
         <thead className="bg-gray-50 border-b-2 border-gray-200">
           <tr>
@@ -43,7 +44,7 @@ function DespachosTable() {
         <tbody className="divide-y">
           {data.map((despacho: Despachos) => (
             <tr key={despacho.id_despacho}>
-              <td className="p-3 text-sm text-gray-700"><RiArrowDropDownLine color="black" size={42} onClick={() => setOpen(!open)}>{open ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}</RiArrowDropDownLine></td>
+              <td className="p-3 text-sm text-gray-700"></td>
               <td className="p-3 text-sm font-bold text-red-500">{despacho.id_despacho}</td>
               <td className="p-3 text-sm text-gray-700">{despacho.nombre_cliente}</td>
               <td className="p-3 text-sm text-gray-700">{despacho.rut_cliente_despacho}</td>
