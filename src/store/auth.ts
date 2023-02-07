@@ -6,12 +6,14 @@ type State = {
   privilegio: number | null;
   isAuth: Boolean;
   user: string | null
+  openToggleSidebar: Boolean
 };
 type Actions = {
   setToken: (token: string) => void;
   setUser: (user: string) => void,
   setPrivilegio: (privilegio: number) => void;
   logout: () => void;
+  setOpenToggleSidebar: (openToggleSidebar: Boolean) => void
 };
 
 export const useAuthStore = create(
@@ -40,7 +42,12 @@ export const useAuthStore = create(
           user: null,
           privilegio: null,
           isAuth: false,
+          openToggleSidebar: true,
         })),
+        openToggleSidebar: true,
+        setOpenToggleSidebar: (openToggleSidebar: Boolean) => set ((state) => ({
+          openToggleSidebar
+        }))
     }),
 
     {

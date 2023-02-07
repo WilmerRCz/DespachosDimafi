@@ -4,7 +4,7 @@ interface Props {
 
 function TitlePage({title}: Props) {
   return (
-    <h1 className="text-3xl font-bold">{title}</h1>
+    <h1 className="p-7 text-3xl font-bold">{title}</h1>
   )
 }
 
