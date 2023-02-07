@@ -22,7 +22,6 @@ function DespachosTable() {
       <table className="w-full ">
         <thead className="bg-gray-50 border-b-2 border-gray-200">
           <tr>
-            <th className="p-3 text-sm font-semibold tracking-wide text-left">Toggle</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Nro</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Cliente</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Rut</th>
@@ -35,6 +34,7 @@ function DespachosTable() {
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Sucursal</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Estado</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Total</th>
+            <th className="p-3 text-sm font-semibold tracking-wide text-left">Comentario</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Creación</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Modificación</th>
             <th className="p-3 text-sm font-semibold tracking-wide text-left">Inicio</th>
@@ -44,7 +44,6 @@ function DespachosTable() {
         <tbody className="divide-y">
           {data.map((despacho: Despachos) => (
             <tr key={despacho.id_despacho}>
-              <td className="p-3 text-sm text-gray-700"></td>
               <td className="p-3 text-sm font-bold text-red-500">{despacho.id_despacho}</td>
               <td className="p-3 text-sm text-gray-700">{despacho.nombre_cliente}</td>
               <td className="p-3 text-sm text-gray-700">{despacho.rut_cliente_despacho}</td>
