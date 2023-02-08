@@ -15,13 +15,13 @@ function Sidebar() {
     <div className="flex">
       <div
         className={`${
-          open ? "w-72" : "w-20"
-        } duration-300 h-screen p-5 pt-8 bg-red-400 relative`}
+          open ? "w-64" : "w-20"
+        } duration-300 h-screen p-5 pt-8 bg-gray-500 relative`}
       >
         <RiArrowDropLeftLine
           size={28}
           className={`absolute cursor-pointer -right-3 rounded-full
-         top-9 w-7 border-2 bg-red-400 ${!open && "rotate-180"}`}
+         top-9 w-7 border-2 bg-gray-500 ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
         />
         <div className="flex gap-x-4 items-center">
@@ -32,7 +32,7 @@ function Sidebar() {
             }`}
           />
           <h1
-            className={`text-white origin-left font-medium text-xl duration-300 cursor-pointer ${
+            className={`text-white origin-left  text-xl font-bold duration-300 cursor-pointer ${
               !open && "scale-0"
             }`}
           >
@@ -42,10 +42,10 @@ function Sidebar() {
         <ul className="pt-6">
           <Link to="/home">
             <li
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-900 rounded-md`}
+              className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <FaTruck size={28} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
+              <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
                 Despachos
               </span>
             </li>
@@ -53,10 +53,10 @@ function Sidebar() {
 
           <Link to="/vehiculos">
             <li
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-900 rounded-md`}
+              className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <FaCar size={28} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
+              <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
                 Vehiculos
               </span>
             </li>
@@ -64,10 +64,10 @@ function Sidebar() {
 
           <Link to="/sucursales">
             <li
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-900 rounded-md`}
+              className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <HiOutlineOfficeBuilding size={28} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
+              <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
                 Sucursales
               </span>
             </li>
@@ -75,10 +75,10 @@ function Sidebar() {
 
           <Link to="/usuarios">
             <li
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-900 rounded-md`}
+              className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <FaUser size={28} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
+              <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
                 Usuarios
               </span>
             </li>
@@ -86,10 +86,10 @@ function Sidebar() {
 
           <Link to="/dashboard">
             <li
-              className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-900 rounded-md`}
+              className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <MdDashboard size={28} />
-              <span className={`${!open && "hidden"} origin-left duration-200`}>
+              <span className={`${!open && "hidden"} text-white origin-left duration-200`}>
                 Dashboard
               </span>
             </li>
@@ -97,7 +97,7 @@ function Sidebar() {
         </ul>
       </div>
       <div>
-        <TitlePage title="Home" />
+        <TitlePage title="Despachos" />
         <Logout />
       </div>
     </div>
