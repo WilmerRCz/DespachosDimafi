@@ -6,16 +6,18 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/auth";
 import TitlePage from "../components/TitlePage";
 import Logout from "../components/Logout";
+import Navbar from "../components/Navbar";
 
 
 
 function HomePage(){
 
-  const open = useAuthStore((state) => state.openToggleSidebar);
-  const setOpen = useAuthStore((state) => state.setOpenToggleSidebar);
+/*   const open = useAuthStore((state) => state.openToggleSidebar);
+  const setOpen = useAuthStore((state) => state.setOpenToggleSidebar); */
 
   return (
-    <div className="flex">
+    <Navbar/>
+/*     <div className="flex">
       <div
         className={`${
           open ? "w-64" : "w-20"
@@ -103,7 +105,7 @@ function HomePage(){
         <TitlePage title="Despachos" />
         <Logout />
       </div>
-    </div>
+    </div> */
   );
 }
 
