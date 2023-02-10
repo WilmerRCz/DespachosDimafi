@@ -6,7 +6,7 @@ type State = {
   privilegio: number | null;
   isAuth: Boolean;
   user: string | null
-  openToggleSidebar: Boolean
+  openToggleSidebar: Boolean | any
 };
 type Actions = {
   setToken: (token: string) => void;

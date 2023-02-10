@@ -7,18 +7,28 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
+import { useAuthStore } from '../store/auth';
+import TitlePage from './TitlePage';
 
 const { Header, Sider, Content } = Layout;
 
 const Navbar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const collapsed = useAuthStore((state) => state.openToggleSidebar);
+  const setCollapsed = useAuthStore((state) => state.setOpenToggleSidebar);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed} >
+    <Layout style={{ minHeight: '100vh' }}>
+      <Sider breakpoint="sm"
+         
+        onBreakpoint={(broken) => {
+          console.log(broken);
+          
+        }} onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }} trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <Menu
           theme="dark"
@@ -58,7 +68,7 @@ const Navbar: React.FC = () => {
             background: colorBgContainer,
           }}
         >
-          Content
+          <TitlePage title="Despachos" />
         </Content>
       </Layout>
     </Layout>
