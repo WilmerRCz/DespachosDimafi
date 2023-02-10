@@ -1,78 +1,16 @@
-import React, { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu, theme } from 'antd';
-import { useAuthStore } from '../store/auth';
-import TitlePage from './TitlePage';
+import Logout from '../components/Logout';
 
-const { Header, Sider, Content } = Layout;
-
-const Navbar: React.FC = () => {
-  const collapsed = useAuthStore((state) => state.openToggleSidebar);
-  const setCollapsed = useAuthStore((state) => state.setOpenToggleSidebar);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
+function Navbar() {
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider breakpoint="sm"
-         
-        onBreakpoint={(broken) => {
-          console.log(broken);
-          
-        }} onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }} trigger={null} collapsible collapsed={collapsed}>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
-      </Sider>
-      <Layout className="site-layout">
-        <Header style={{ paddingLeft: 24, background: colorBgContainer }}>
-          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-            className: 'trigger',
-            onClick: () => setCollapsed(!collapsed),
-          })}
-        </Header>
-        <Content
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}
-        >
-          <TitlePage title="Despachos" />
-        </Content>
-      </Layout>
-    </Layout>
-  );
-};
+    <nav className='flex bg-gray-100 rounded items-center justify-between p-1'>
+      <div className="sm:ml-4 pl-1 ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+      </div>
+      <div>
+      <Logout/>
+      </div>
+    </nav>
+  )
+}
 
-export default Navbar;
+export default Navbar
