@@ -30,7 +30,7 @@ export const columns = [
     title: "Acciones",
     dataIndex: "acciones",
     key: "acciones",
-    render: () => (
+    render: (record: any) => (
       <div className="flex gap-4">
         <button>
           <FiEye size={19} />
@@ -40,7 +40,7 @@ export const columns = [
             size={19}
             color={"#FFC300"}
             onClick={() => {
-              alert("hi");
+              alert(`hi ${record}`);
             }}
           />
         </button>
