@@ -8,7 +8,7 @@ function HomePage() {
   return (
     <div>
       <Navbar />
-      <div className="sm:container mx-auto">
+      <div className="sm:container xl:px-16 mx-auto">
         <TitlePage title="Despachos" />
         <div className="flex justify-end gap-2">
           <ButtonNew />
