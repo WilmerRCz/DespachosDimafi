@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
 
 function ButtonNew() {
   return (
-    <div className='flex justify-end'>
-      <button className='bg-green-500 rounded text-slate-700 font-semibold p-0.5 border-2 border-green-600 hover:text-white shadow-md'>
-      Nuevo
+    <div className="">
+      <button className="bg-green-500 rounded text-slate-700 font-semibold p-0.5 border-2 border-green-600 hover:text-white shadow-md">
+        Nuevo
       </button>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default ButtonNew
+export default ButtonNew;

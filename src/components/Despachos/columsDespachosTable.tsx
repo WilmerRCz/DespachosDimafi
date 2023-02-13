@@ -1,5 +1,4 @@
-import {FiEye, FiEdit3, FiTrash2} from "react-icons/fi"
-
+import { FiEye, FiEdit3, FiTrash2 } from "react-icons/fi";
 
 export const columns = [
   {
@@ -31,12 +30,25 @@ export const columns = [
     title: "Acciones",
     dataIndex: "acciones",
     key: "acciones",
-    render: () => <div className="flex space-x-4">
-      <button><FiEye size={19}/></button>
-      <button><FiEdit3 size={19} color={'#FFC300'} onClick={() => {alert('hi')}}/></button>
-      
-      <button><FiTrash2 size={19} color={'red'}/></button>
-      
-    </div>
+    render: () => (
+      <div className="flex gap-4">
+        <button>
+          <FiEye size={19} />
+        </button>
+        <button>
+          <FiEdit3
+            size={19}
+            color={"#FFC300"}
+            onClick={() => {
+              alert("hi");
+            }}
+          />
+        </button>
+
+        <button>
+          <FiTrash2 size={19} color={"red"} />
+        </button>
+      </div>
+    ),
   },
 ];
