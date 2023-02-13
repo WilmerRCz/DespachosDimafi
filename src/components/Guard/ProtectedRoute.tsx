@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../../store/auth";
 import jwt_decode from "jwt-decode";
-import { DecodedToken } from "../interface/DecodedToken";
+import { DecodedToken } from "../../interface/DecodedToken";
 
 interface Props {
   isAllowed: Boolean;

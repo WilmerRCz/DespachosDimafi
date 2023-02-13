@@ -1,11 +1,13 @@
-import Logout from "../components/Logout";
+import Navbar from "../components/Navbar";
 import TitlePage from "../components/TitlePage";
 
 function NotPermissionPage() {
   return (
     <>
-      <TitlePage title="No tienes Permisos" />
-      <Logout />
+      <Navbar />
+      <div className="sm:container mx-auto">
+        <TitlePage title="No tienes Permisos" />
+      </div>
     </>
   );
 }

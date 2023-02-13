@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProtectedRoute } from "../components/ProtectedRoute";
-import { ProtectedRouteForRole } from "../components/ProtectedRouteForRole";
-import { ProtectedRoutePublic } from "../components/ProtectedRoutePublic";
+import { ProtectedRoute } from "../components/Guard/ProtectedRoute";
+import { ProtectedRouteForRole } from "../components/Guard/ProtectedRouteForRole";
+import { ProtectedRoutePublic } from "../components/Guard/ProtectedRoutePublic";
 import DashboardPage from "../pages/DashboardPage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";

@@ -1,15 +1,15 @@
-import Logout from "../components/Logout";
-import Nav from "../components/Nav";
+import Navbar from "../components/Navbar";
 import TitlePage from "../components/TitlePage";
 import VehiculosTable from "../components/VehiculosTable";
 
 function VehiculosPage() {
   return (
     <div>
-      <TitlePage title="Vehiculos"/>
-      <Nav />
-      <Logout />
-      <VehiculosTable />
+      <Navbar />
+      <div className="sm:container mx-auto">
+        <TitlePage title="Vehiculos" />
+        <VehiculosTable />
+      </div>
     </div>
   );
 }

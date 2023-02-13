@@ -1,14 +1,13 @@
-
-import Logout from "../components/Logout";
-import Nav from "../components/Nav";
+import Navbar from "../components/Navbar";
 import TitlePage from "../components/TitlePage";
 
 function DashboardPage() {
   return (
     <div>
-      <TitlePage title="Dashboard"/>
-      <Nav />
-      <Logout />
+      <Navbar />
+      <div className="sm:container mx-auto">
+        <TitlePage title="Dashboard" />
+      </div>
     </div>
   );
 }

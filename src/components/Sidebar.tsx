@@ -5,7 +5,7 @@ import { MdDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/auth";
 import TitlePage from "./TitlePage";
-import Logout from "./Logout";
+import Logout from "./ButtonLogout";
 
 function Sidebar() {
   const open = useAuthStore((state) => state.openToggleSidebar);

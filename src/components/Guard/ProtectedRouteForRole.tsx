@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { DecodedToken } from "../interface/DecodedToken";
-import { useAuthStore } from "../store/auth";
+import { DecodedToken } from "../../interface/DecodedToken";
+import { useAuthStore } from "../../store/auth";
 import jwt_decode from "jwt-decode";
 
 interface Props {

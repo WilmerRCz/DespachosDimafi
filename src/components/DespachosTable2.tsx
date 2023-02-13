@@ -1,7 +1,6 @@
 import { getDespachos } from "../api/resDespachos";
 import { useQuery } from "@tanstack/react-query";
 import { Despachos } from "../interface/Despachos";
-import TitlePage from "./TitlePage";
 
 
 
@@ -17,8 +16,7 @@ function DespachosTable() {
 
   return (
     <div>
-      <TitlePage title="Despachos:" />
-       
+             
       <table className="w-full ">
         <thead className="bg-gray-50 border-b-2 border-gray-200">
           <tr>
