@@ -5,6 +5,7 @@ import { Despachos } from "../../interface/Despachos";
 import { FiEye, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { AlignType } from "rc-table/lib/interface";
 import { useState } from "react";
+import ButtonEditInTable from "../ButtonEditInTable";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -12,19 +13,8 @@ function DespachosTable() {
     queryFn: getDespachos,
   });
 
-  const [open, setOpen] = useState(false);
-
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
-
 
   const columns = [
     {
@@ -62,23 +52,11 @@ function DespachosTable() {
       dataIndex: "acciones",
       key: "acciones",
       align: "center" as AlignType,
-      render: (text:any, record: any, index:any) => {
+      render: (text: any, record: any, index: any) => {
+
         return (
           <div className="flex gap-4 justify-center">
-            <button>
-              <FiEye size={19} onClick={showDrawer} />
-            </button>
-            <Drawer
-              title="Despacho"
-              placement={"right"}
-              width={400}
-              onClose={onClose}
-              open={open}
-            >
-              <div>
-                <p>{JSON.stringify(data[record.key])}</p>
-              </div>
-            </Drawer>
+            <ButtonEditInTable record={record}/>
             <button>
               <FiEdit3 size={19} color={"#FFC300"} />
             </button>
@@ -103,8 +81,6 @@ function DespachosTable() {
       despachador: despacho.usuario_despachador,
       estado: despacho.nombre_estado,
     }));
-
-
 
   return (
     <div className="mt-2">
