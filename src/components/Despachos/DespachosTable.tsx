@@ -5,7 +5,7 @@ import { Despachos } from "../../interface/Despachos";
 import { FiEye, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { AlignType } from "rc-table/lib/interface";
 import { useState } from "react";
-import ButtonEditInTable from "../ButtonEditInTable";
+import ButtonViewDespachoInTable from "../ButtonViewDespachoInTable";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -56,7 +56,7 @@ function DespachosTable() {
 
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonEditInTable record={record}/>
+            <ButtonViewDespachoInTable record={record} data={data}/>
             <button>
               <FiEdit3 size={19} color={"#FFC300"} />
             </button>
