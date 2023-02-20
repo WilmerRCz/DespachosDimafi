@@ -2,14 +2,14 @@ import { submitLogin } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/auth";
 import { DecodedToken } from "../interface/DecodedToken";
-import jwt_decode from 'jwt-decode';
-
-
+import jwt_decode from "jwt-decode";
+import { useUserStore } from "../store/user";
 
 function LoginPage() {
   const setToken = useAuthStore((state) => state.setToken);
-  const setPrivilegio = useAuthStore((state) => state.setPrivilegio);
-  const setUser = useAuthStore((state) => state.setUser);
+  const setPrivilegio = useUserStore((state) => state.setPrivilegio);
+  const setName = useUserStore((state) => state.setName);
+  const setSucursal = useUserStore((state) => state.setSucursal);
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,7 +20,8 @@ function LoginPage() {
       const responseLogin = await submitLogin(correo, contrasena);
       const decodedtoken: DecodedToken = jwt_decode(responseLogin.token);
       setToken(responseLogin.token);
-      setUser(`${decodedtoken.nombre} ${decodedtoken.apellido}`);
+      setName(`${decodedtoken.nombre} ${decodedtoken.apellido}`);
+      setSucursal(decodedtoken.sucursal);
       setPrivilegio(decodedtoken.privilegio);
 
       navigate("/home");

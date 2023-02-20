@@ -4,13 +4,13 @@ import { persist } from "zustand/middleware";
 type State = {
   name: string | null
   privilegio: number | null
-  sucursal: string | null
+  sucursal: number | null
   openToggleSidebar: Boolean | any
 };
 type Actions = {
-  setUser: (user: string) => void,
+  setName: (user: string) => void,
   setPrivilegio: (privilegio: number) => void,
-  setSucursal: (sucursal: string) => void,
+  setSucursal: (sucursal: number) => void,
   logout: () => void;
   setOpenToggleSidebar: (openToggleSidebar: Boolean) => void
 };
@@ -20,8 +20,8 @@ export const useUserStore = create(
     (set) => ({
       name: '',
       privilegio: null,
-      sucursal: '',
-      setUser: (name: string) =>
+      sucursal: null,
+      setName: (name: string) =>
         set((state) => ({
           name
         })),
@@ -29,7 +29,7 @@ export const useUserStore = create(
         set((state) => ({
           privilegio
         })),
-        setSucursal: (sucursal: string) =>
+        setSucursal: (sucursal: number) =>
         set((state) => ({
           sucursal
         })),
@@ -40,7 +40,7 @@ export const useUserStore = create(
           sucursal: null,
           openToggleSidebar: false,
         })),
-        openToggleSidebar: true,
+        openToggleSidebar: false,
         setOpenToggleSidebar: (openToggleSidebar: Boolean) => set ((state) => ({
           openToggleSidebar
         }))

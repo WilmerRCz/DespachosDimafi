@@ -1,10 +1,10 @@
 import Logout from "./ButtonLogout";
-import { useAuthStore } from "../../store/auth";
 import DrawerNavbar from "./DrawerNavbar";
+import { useUserStore } from "../../store/user";
 
 
 function Navbar() {
-  const setOpen = useAuthStore((state) => state.setOpenToggleSidebar);
+  const setOpen = useUserStore((state) => state.setOpenToggleSidebar);
 
   const showDrawer = () => {
     setOpen(true);

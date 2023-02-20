@@ -2,13 +2,12 @@ import { Drawer } from "antd";
 import { FaTruck, FaCar, FaUser } from "react-icons/fa";
 import { HiOfficeBuilding } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
-
 import { Link } from "react-router-dom";
-import { useAuthStore } from "../../store/auth";
+import { useUserStore } from "../../store/user";
 
 function DrawerNavbar() {
-  const open = useAuthStore((state) => state.openToggleSidebar);
-  const setOpen = useAuthStore((state) => state.setOpenToggleSidebar);
+  const open = useUserStore((state) => state.openToggleSidebar);
+  const setOpen = useUserStore((state) => state.setOpenToggleSidebar);
 
   const onClose = () => {
     setOpen(false);
