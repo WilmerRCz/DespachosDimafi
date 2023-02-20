@@ -14,17 +14,18 @@ function SelectCelular() {
   return (
     <div className="col-span-1">
       <label
-        htmlFor="patente"
+        htmlFor="celular"
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         Celular
       </label>
-      <div className="block">
+      <div className="block w-full">
         <select
-          name="patente"
-          id="patente"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
+          name="codigo_celular"
+          id="codigo_celular"
+          className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
+          <option selected>+56</option>
           {data.map((celular: Celulares) => (
             <option key={celular.id} value={celular.id}>
               {celular.codigo_celular}
@@ -32,10 +33,12 @@ function SelectCelular() {
           ))}
         </select>
         <input
+        id="celular"
+        name="celular"
           type="number"
           placeholder="9 0123 4567"
           className={
-            "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
+            "bg-gray-50 border border-gray-300 w-full sm:w-2/3 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
           }
         />
       </div>

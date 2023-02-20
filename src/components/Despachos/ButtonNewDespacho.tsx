@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Drawer, Select, Space } from "antd";
-import { Input } from "antd";
-import { Option } from "antd/es/mentions";
 import SelectSucursales from "../SelectSucursales";
 import InputForDrawer from "../InputForDrawer";
 import TextAreaForDrawer from "../TextAreaForDrawer";
@@ -9,6 +7,7 @@ import SelectDespachador from "../SelectDespachador";
 import SelectPatente from "../SelectPatente";
 import SelectComuna from "../SelectComuna";
 import SelectCelular from "../SelectCelular";
+import SelectTipoDocumento from "../SelectTipoDocumento";
 
 function ButtonNewDespacho() {
   const [open, setOpen] = useState(false);
@@ -61,13 +60,7 @@ function ButtonNewDespacho() {
             <InputForDrawer label="Apto/Piso/Block" placeholder="205" type="text"/>
             <SelectComuna/>
             <SelectCelular/>
-            <Input.Group compact>
-              <Select defaultValue="1">
-                <Option value="1">Factura</Option>
-                <Option value="2">Boleta</Option>
-              </Select>
-              <Input style={{ width: '60%' }} placeholder="Nro de documento" />
-            </Input.Group>
+            <SelectTipoDocumento/>
             <InputForDrawer label="Orden de Compra" placeholder="" type="text"/>
             <SelectDespachador/>
             <SelectPatente/>
