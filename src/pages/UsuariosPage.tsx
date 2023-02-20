@@ -1,5 +1,5 @@
 import ButtonExport from "../components/ButtonExport";
-import ButtonNew from "../components/ButtonNew";
+import ButtonNew from "../components/Despachos/ButtonNewDespacho";
 import Navbar from "../components/Navbar/Navbar";
 import TitlePage from "../components/TitlePage";
 import UsuariosTable from "../components/UsuariosTable";

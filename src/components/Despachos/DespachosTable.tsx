@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { Drawer, Table } from "antd";
+import { Table } from "antd";
 import { getDespachos } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
 import { FiEye, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { AlignType } from "rc-table/lib/interface";
-import { useState } from "react";
-import ButtonViewDespachoInTable from "../ButtonViewDespachoInTable";
+import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
+import ButtonEditDespacho from "./ButtonEditDespacho";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -53,12 +53,11 @@ function DespachosTable() {
       key: "acciones",
       align: "center" as AlignType,
       render: (text: any, record: any, index: any) => {
-
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonViewDespachoInTable record={record} data={data}/>
+            <ButtonViewDespachoInTable record={record} data={data} />
             <button>
-              <FiEdit3 size={19} color={"#FFC300"} />
+              <ButtonEditDespacho />
             </button>
 
             <button>

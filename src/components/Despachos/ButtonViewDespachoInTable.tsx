@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Drawer } from "antd";
 import { FiEye } from "react-icons/fi";
-import { Despachos } from "../interface/Despachos";
-import { convertDate } from '../utilities/convertDate';
+import { Despachos } from "../../interface/Despachos";
+import { convertDate } from '../../utilities/convertDate';
 
-function ButtonViewDespachoInTable(record: any, data: []) {
+function ButtonViewDespachoInTable(record: any) {
   const [open, setOpen] = useState(false);
 
   const inOpen = () => {
@@ -28,7 +28,7 @@ function ButtonViewDespachoInTable(record: any, data: []) {
         />
       </button>
       <Drawer
-        title={"Despacho"}
+        title={"Ver Despacho"}
         placement={"right"}
         width={425}
         onClose={onClose}

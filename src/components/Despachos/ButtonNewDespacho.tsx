@@ -3,7 +3,7 @@ import { Button, Drawer, Select, Space } from "antd";
 import { Input } from "antd";
 import { Option } from "antd/es/mentions";
 
-function ButtonNew() {
+function ButtonNewDespacho() {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -65,6 +65,7 @@ function ButtonNew() {
             <Input placeholder="OC" />
             <Input placeholder="Despachador" />
             <Input placeholder="Patente de vehiculo" />
+            <Input placeholder="Sucursal" />
             <Input placeholder="Total" />
             <Input placeholder="Comentario" />
           </form>
@@ -74,4 +75,4 @@ function ButtonNew() {
   );
 }
 
-export default ButtonNew;
+export default ButtonNewDespacho;
