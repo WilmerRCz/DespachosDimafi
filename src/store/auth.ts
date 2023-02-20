@@ -42,7 +42,7 @@ export const useAuthStore = create(
           user: null,
           privilegio: null,
           isAuth: false,
-          openToggleSidebar: true,
+          openToggleSidebar: false,
         })),
         openToggleSidebar: true,
         setOpenToggleSidebar: (openToggleSidebar: Boolean) => set ((state) => ({

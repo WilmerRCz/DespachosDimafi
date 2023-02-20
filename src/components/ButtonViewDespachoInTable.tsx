@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Drawer } from "antd";
 import { FiEye } from "react-icons/fi";
 import { Despachos } from "../interface/Despachos";
+import { convertDate } from '../utilities/convertDate';
 
 function ButtonViewDespachoInTable(record: any, data: []) {
   const [open, setOpen] = useState(false);
@@ -33,11 +34,10 @@ function ButtonViewDespachoInTable(record: any, data: []) {
         onClose={onClose}
         open={open}
       >
-        <div className="border-2 border-slate-100 rounded shadow-xl">
-          <div className="p-2 grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4  gap-4 p-2 border-2  rounded shadow-md capitalize"> 
             <div className="col-span-2">
               <p className="text-slate-500">Nro</p>
-              <p className="text-slate-800">{dataDespacho.id_despacho}</p>
+              <p className="text-slate-800 font-semibold">{dataDespacho.id_despacho}</p>
             </div>
             <div className="col-span-2">
               <p className="text-slate-500">Rut Cliente</p>
@@ -57,15 +57,15 @@ function ButtonViewDespachoInTable(record: any, data: []) {
               <p className="text-slate-500">Celular</p>
               <p className="text-slate-800">{`${dataDespacho.codigo_celular} ${dataDespacho.celular_cliente}`}</p>
             </div>
-            <div className="">
+            <div className="col-span-1">
               <p className="text-slate-500">Tipo de Documento</p>
               <p className="text-slate-800">{`${dataDespacho.nombre_documento} - ${dataDespacho.nro_documento}`}</p>
             </div>
-            <div className="">
+            <div className="col-span-1">
               <p className="text-slate-500">OC</p>
               <p className="text-slate-800">{dataDespacho.nro_oc}</p>
             </div>
-            <div className="">
+            <div className="col-span-2">
               <p className="text-slate-500">Despachador</p>
               <p className="text-slate-800">
                 {dataDespacho.usuario_despachador}
@@ -76,12 +76,12 @@ function ButtonViewDespachoInTable(record: any, data: []) {
               <p className="text-slate-800">{dataDespacho.patente}</p>
             </div>
             <div className="">
-              <p className="text-slate-500">Sucursal de despacho</p>
-              <p className="text-slate-800">{dataDespacho.nombre_sucursal}</p>
+              <p className="text-slate-500">Estado</p>
+              <p className="text-slate-800">{dataDespacho.nombre_estado}</p>
             </div>
             <div className="">
-              <p className="text-slate-500">Estado del despacho</p>
-              <p className="text-slate-800">{dataDespacho.nombre_estado}</p>
+              <p className="text-slate-500">Sucursal</p>
+              <p className="text-slate-800">{dataDespacho.nombre_sucursal}</p>
             </div>
             <div className="">
               <p className="text-slate-500">Total</p>
@@ -95,29 +95,28 @@ function ButtonViewDespachoInTable(record: any, data: []) {
             </div>
             <div className="col-span-2">
               <p className="text-slate-500">Creación</p>
-              <p className="text-slate-800">
-                {dataDespacho.fecha_creacion_despacho}
+              <p className="text-slate-800">{convertDate(dataDespacho.fecha_creacion_despacho)}
+                {}
               </p>
             </div>
             <div className="col-span-2">
               <p className="text-slate-500">Ultima modificación</p>
               <p className="text-slate-800">
-                {dataDespacho.fecha_modificacion_despacho}
+                {convertDate(dataDespacho.fecha_modificacion_despacho)}
               </p>
             </div>
             <div className="col-span-2">
-              <p className="text-slate-500">Fecha de inicio del despacho</p>
+              <p className="text-slate-500">Inicio del despacho</p>
               <p className="text-slate-800">
-                {dataDespacho.fechayhora_comienzo_despacho}
+                {convertDate(dataDespacho.fechayhora_comienzo_despacho)}
               </p>
             </div>
             <div className="col-span-2">
-              <p className="text-slate-500">Fecha de cierre del despacho</p>
+              <p className="text-slate-500">Cierre del despacho</p>
               <p className="text-slate-800">
-                {dataDespacho.fechayhora_termino_despacho}
+                {convertDate(dataDespacho.fechayhora_termino_despacho) }
               </p>
             </div>
-          </div>
         </div>
       </Drawer>
     </div>

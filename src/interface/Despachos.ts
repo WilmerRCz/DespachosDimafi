@@ -15,10 +15,10 @@ export interface Despachos {
   nro_oc: string,
   patente: string,
   monto_venta: string,
-  comentario_despacho: string | null,
+  comentario_despacho: string
   nombre_estado: string,
-  fecha_creacion_despacho?: string,
-  fecha_modificacion_despacho?: string,
-  fechayhora_comienzo_despacho?: string | null
-  fechayhora_termino_despacho?: string | null
+  fecha_creacion_despacho: string,
+  fecha_modificacion_despacho: string,
+  fechayhora_comienzo_despacho: string 
+  fechayhora_termino_despacho: string 
 }
