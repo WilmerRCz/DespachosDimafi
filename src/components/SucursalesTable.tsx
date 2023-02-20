@@ -17,6 +17,7 @@ function SucursalesTable() {
       <TitlePage title="Sucursales:"/>
       {data.map((sucursal: Sucursales) => (
         <div key={sucursal.id_sucursal}>
+          <h2>{sucursal.id_sucursal}</h2>
           <h3>{sucursal.nombre_sucursal}</h3>
           <p>{sucursal.nombre_estado}</p>
           <p>{sucursal.fecha_creacion_sucursal}</p>

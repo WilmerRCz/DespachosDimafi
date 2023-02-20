@@ -1,6 +1,5 @@
 import { Drawer } from "antd";
 import { useState } from "react";
-import { Despachos } from "../../interface/Despachos";
 import { FiEdit3 } from "react-icons/fi";
 
 function ButtonEditDespacho() {

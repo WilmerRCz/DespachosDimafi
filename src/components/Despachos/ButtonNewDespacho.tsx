@@ -1,7 +1,14 @@
 import { useState } from "react";
-import { Button, Drawer, Select, Space } from "antd";
+import { Drawer, Select, Space } from "antd";
 import { Input } from "antd";
 import { Option } from "antd/es/mentions";
+import SelectSucursales from "../SelectSucursales";
+import InputForDrawer from "../InputForDrawer";
+import TextAreaForDrawer from "../TextAreaForDrawer";
+import SelectDespachador from "../SelectDespachador";
+import SelectPatente from "../SelectPatente";
+import SelectComuna from "../SelectComuna";
+import SelectCelular from "../SelectCelular";
 
 function ButtonNewDespacho() {
   const [open, setOpen] = useState(false);
@@ -47,14 +54,13 @@ function ButtonNewDespacho() {
       >
         <div>
           <form className="grid md:grid-cols-4 gap-4" action="">
-            <Input placeholder="Rut" />
-            <Input placeholder="Nombre Cliente" />
-            <Input placeholder="Calle" />
-            <Input placeholder="Número de calle" />
-            <Input placeholder="Apto" />
-            <Input placeholder="Comuna" />
-            <Input placeholder="Codigo de celular" />
-            <Input placeholder="Celular" />
+            <InputForDrawer label="Rut" placeholder="01.123.456-7" type="text"/>
+            <InputForDrawer label="Nombre Cliente" placeholder="" type="text"/>
+            <InputForDrawer label="Calle" placeholder="" type="text"/>
+            <InputForDrawer label="Número de calle" placeholder="4574" type="text"/>
+            <InputForDrawer label="Apto/Piso/Block" placeholder="205" type="text"/>
+            <SelectComuna/>
+            <SelectCelular/>
             <Input.Group compact>
               <Select defaultValue="1">
                 <Option value="1">Factura</Option>
@@ -62,12 +68,12 @@ function ButtonNewDespacho() {
               </Select>
               <Input style={{ width: '60%' }} placeholder="Nro de documento" />
             </Input.Group>
-            <Input placeholder="OC" />
-            <Input placeholder="Despachador" />
-            <Input placeholder="Patente de vehiculo" />
-            <Input placeholder="Sucursal" />
-            <Input placeholder="Total" />
-            <Input placeholder="Comentario" />
+            <InputForDrawer label="Orden de Compra" placeholder="" type="text"/>
+            <SelectDespachador/>
+            <SelectPatente/>
+            <SelectSucursales/>
+            <InputForDrawer label="Total" placeholder="$" type="number"/>
+            <TextAreaForDrawer label="Comentario" placeholder=""/>
           </form>
         </div>
       </Drawer>
