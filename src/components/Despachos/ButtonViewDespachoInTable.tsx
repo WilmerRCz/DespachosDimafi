@@ -58,7 +58,7 @@ function ButtonViewDespachoInTable(record: any) {
               <p className="text-slate-800">{`${dataDespacho.codigo_celular} ${dataDespacho.celular_cliente}`}</p>
             </div>
             <div className="col-span-1">
-              <p className="text-slate-500">Tipo de Documento</p>
+              <p className="text-slate-500">Documento</p>
               <p className="text-slate-800">{`${dataDespacho.nombre_documento} - ${dataDespacho.nro_documento}`}</p>
             </div>
             <div className="col-span-1">

@@ -15,7 +15,7 @@ function SelectTipoDocumento() {
           id="tipo_documento"
           className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
-          <option value="1" selected>
+          <option value="1">
             Factura
           </option>
           <option value="2">Guia de despacho</option>

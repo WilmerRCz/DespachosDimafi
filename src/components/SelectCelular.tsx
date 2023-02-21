@@ -25,7 +25,6 @@ function SelectCelular() {
           id="codigo_celular"
           className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
-          <option selected>+56</option>
           {data.map((celular: Celulares) => (
             <option key={celular.id} value={celular.id}>
               {celular.codigo_celular}

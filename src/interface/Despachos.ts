@@ -11,6 +11,7 @@ export interface Despachos {
   codigo_celular: string,
   celular_cliente?: string,
   nombre_documento: string,
+  tipo_documento: number;
   nro_documento: string,
   nro_oc: string,
   patente: string,
