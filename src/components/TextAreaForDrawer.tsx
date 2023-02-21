@@ -1,7 +1,7 @@
 import React from "react";
 interface Props {
   label: string;
-  placeholder: string;
+  placeholder?: string;
 }
 
 function TextAreaForDrawer({ label, placeholder}: Props) {

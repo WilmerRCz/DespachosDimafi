@@ -13,18 +13,6 @@ import { createDespacho } from "../../api/resDespachos";
 import { resetForm } from "../../utilities/resetForm";
 
 function ButtonNewDespacho() {
-  const queryClient = useQueryClient();
-
-  const createNewDespacho = useMutation({
-    mutationFn: createDespacho,
-    onSuccess: () => {
-      console.log("Despacho creado!");
-      queryClient.invalidateQueries({ queryKey: ["despachos"] });
-      resetForm('formNewDespacho')
-      onClose();
-    },
-  });
-
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -34,6 +22,17 @@ function ButtonNewDespacho() {
   const onClose = () => {
     setOpen(false);
   };
+
+  const queryClient = useQueryClient();
+  const createNewDespacho = useMutation({
+    mutationFn: createDespacho,
+    onSuccess: () => {
+      console.log("Despacho creado!");
+      queryClient.invalidateQueries({ queryKey: ["despachos"] });
+      resetForm("formNewDespacho");
+      onClose();
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,7 +48,7 @@ function ButtonNewDespacho() {
       (e.currentTarget.elements[4] as HTMLInputElement).value
     );
     const apto_cliente = parseInt(
-      (e.currentTarget.elements[5] as HTMLInputElement).value
+      (e.currentTarget.elements[5] as HTMLInputElement)?.value
     );
     const comuna_cliente = parseInt(
       (e.currentTarget.elements[6] as HTMLInputElement).value
@@ -58,7 +57,7 @@ function ButtonNewDespacho() {
       (e.currentTarget.elements[7] as HTMLInputElement).value
     );
     const celular_cliente = (e.currentTarget.elements[8] as HTMLInputElement)
-      .value;
+      ?.value;
     const tipo_documento = parseInt(
       (e.currentTarget.elements[9] as HTMLInputElement).value
     );
@@ -77,7 +76,8 @@ function ButtonNewDespacho() {
       .value;
     const comentario_despacho = (
       e.currentTarget.elements[16] as HTMLInputElement
-    ).value;
+    )?.value;
+
     console.log(comentario_despacho);
     createNewDespacho.mutate({
       usuario_despachador,
@@ -142,8 +142,8 @@ function ButtonNewDespacho() {
               placeholder="01.123.456-7"
               type="text"
             />
-            <InputForDrawer label="Nombre Cliente" placeholder="" type="text" />
-            <InputForDrawer label="Calle" placeholder="" type="text" />
+            <InputForDrawer label="Nombre Cliente" type="text" />
+            <InputForDrawer label="Calle" type="text" />
             <InputForDrawer
               label="Número de calle"
               placeholder="4574"
@@ -157,16 +157,12 @@ function ButtonNewDespacho() {
             <SelectComuna />
             <SelectCelular />
             <SelectTipoDocumento />
-            <InputForDrawer
-              label="Orden de Compra"
-              placeholder=""
-              type="text"
-            />
+            <InputForDrawer label="Orden de Compra" type="text" />
             <SelectDespachador />
             <SelectPatente />
             <SelectSucursales />
             <InputForDrawer label="Total" placeholder="$" type="number" />
-            <TextAreaForDrawer label="Comentario" placeholder="" />
+            <TextAreaForDrawer label="Comentario" />
           </form>
         </div>
       </Drawer>
