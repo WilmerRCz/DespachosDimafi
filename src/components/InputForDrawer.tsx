@@ -2,17 +2,19 @@ import React from "react";
 interface Props {
   label: string;
   placeholder?: string;
-  type: string
+  type: string;
+  optional?: string;
+  required?: boolean;
 }
 
-function InputForDrawer({ label, placeholder, type }: Props) {
+function InputForDrawer({ label, placeholder, type, optional, required }: Props) {
   return (
     <div className="col-span-1">
       <label
         htmlFor=""
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        {label}
+        {required ? <span className="text-red-500">*</span> : null}{label}<span className="text-xs text-slate-400"> {optional}</span>
       </label>
       <input
         type={type}

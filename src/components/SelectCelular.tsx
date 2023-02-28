@@ -17,7 +17,7 @@ function SelectCelular() {
         htmlFor="celular"
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        Celular
+        Celular <span className="text-xs text-slate-400">(optional)</span>
       </label>
       <div className="block w-full">
         <select

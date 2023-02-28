@@ -3,6 +3,7 @@ import { Drawer } from "antd";
 import { FiEye } from "react-icons/fi";
 import { Despachos } from "../../interface/Despachos";
 import { convertDate } from '../../utilities/convertDate';
+import { ifNullElseString } from "../../utilities/ifNullElseString";
 
 function ButtonViewDespachoInTable(record: any) {
   const [open, setOpen] = useState(false);
@@ -51,7 +52,7 @@ function ButtonViewDespachoInTable(record: any) {
             </div>
             <div className="col-span-4">
               <p className="text-slate-500">Dirección de Despacho</p>
-              <p className="text-slate-800">{`${dataDespacho.direccion_calle_cliente}, ${dataDespacho.nro_calle_cliente} - ${dataDespacho.nombre_comuna}`}</p>
+              <p className="text-slate-800">{`${dataDespacho.direccion_calle_cliente}, ${dataDespacho.nro_calle_cliente}, apto ${dataDespacho.apto_cliente} - ${dataDespacho.nombre_comuna}`}</p>
             </div>
             <div className="col-span-2">
               <p className="text-slate-500">Celular</p>

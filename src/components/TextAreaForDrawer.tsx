@@ -2,16 +2,17 @@ import React from "react";
 interface Props {
   label: string;
   placeholder?: string;
+  optional?: string;
 }
 
-function TextAreaForDrawer({ label, placeholder}: Props) {
+function TextAreaForDrawer({ label, placeholder, optional}: Props) {
   return (
     <div className="col-span-2">
       <label
         htmlFor="comentario"
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        {label}
+        {label}<span className="text-xs text-slate-400"> {optional}</span>
       </label>
       <textarea
         id="comentario"

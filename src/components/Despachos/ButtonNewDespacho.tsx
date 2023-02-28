@@ -11,6 +11,7 @@ import SelectTipoDocumento from "../SelectTipoDocumento";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createDespacho } from "../../api/resDespachos";
 import { resetForm } from "../../utilities/resetForm";
+import { cleanInputForNull } from '../../utilities/cleanInputforNull';
 
 function ButtonNewDespacho() {
   const [open, setOpen] = useState(false);
@@ -78,6 +79,8 @@ function ButtonNewDespacho() {
       e.currentTarget.elements[16] as HTMLInputElement
     )?.value;
 
+    const cleanCelular = cleanInputForNull(celular_cliente)
+    const cleanComentario = cleanInputForNull(comentario_despacho)
     console.log(comentario_despacho);
     createNewDespacho.mutate({
       usuario_despachador,
@@ -89,13 +92,13 @@ function ButtonNewDespacho() {
       apto_cliente,
       comuna_cliente,
       codigo_celular_cliente,
-      celular_cliente,
+      celular_cliente: cleanCelular,
       tipo_documento,
       nro_documento,
       nro_oc,
       vehiculo_despacho,
       monto_venta,
-      comentario_despacho,
+      comentario_despacho: cleanComentario,
     });
   };
   return (
@@ -134,35 +137,38 @@ function ButtonNewDespacho() {
         <div>
           <form
             id="formNewDespacho"
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             onSubmit={handleSubmit}
           >
             <InputForDrawer
               label="Rut"
               placeholder="01.123.456-7"
               type="text"
+              required={true}
             />
-            <InputForDrawer label="Nombre Cliente" type="text" />
-            <InputForDrawer label="Calle" type="text" />
+            <InputForDrawer label="Nombre Cliente" type="text" required={true}/>
+            <InputForDrawer label="Dirección de despacho (Calle)" type="text" required={true}/>
             <InputForDrawer
               label="Número de calle"
               placeholder="4574"
               type="text"
+              required={true}
             />
             <InputForDrawer
               label="Apto/Piso/Block"
               placeholder="205"
               type="text"
+              optional="(optional)"
             />
             <SelectComuna />
             <SelectCelular />
             <SelectTipoDocumento />
-            <InputForDrawer label="Orden de Compra" type="text" />
+            <InputForDrawer label="Orden de Compra" type="text" required={true}/>
             <SelectDespachador />
             <SelectPatente />
             <SelectSucursales />
-            <InputForDrawer label="Total" placeholder="$" type="number" />
-            <TextAreaForDrawer label="Comentario" />
+            <InputForDrawer label="Total" placeholder="$" type="number" required={true}/>
+            <TextAreaForDrawer label="Comentario" optional="(optional)"/>
           </form>
         </div>
       </Drawer>

@@ -22,6 +22,7 @@ function DespachosTable() {
       dataIndex: "nro",
       key: "nro",
       align: "center" as AlignType,
+      className: 'font-bold'
     },
     {
       title: "Rut",

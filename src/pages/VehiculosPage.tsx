@@ -2,7 +2,7 @@ import ButtonExport from "../components/ButtonExport";
 import ButtonNew from "../components/Despachos/ButtonNewDespacho";
 import Navbar from "../components/Navbar/Navbar";
 import TitlePage from "../components/TitlePage";
-import VehiculosTable from "../components/VehiculosTable";
+import VehiculosTable from "../components/Vehiculos/VehiculosTable";
 
 function VehiculosPage() {
   return (

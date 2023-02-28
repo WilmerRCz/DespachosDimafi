@@ -1,7 +1,7 @@
 import ButtonExport from "../components/ButtonExport";
 import ButtonNew from "../components/Despachos/ButtonNewDespacho";
 import Navbar from "../components/Navbar/Navbar";
-import SucursalesTable from "../components/SucursalesTable";
+import SucursalesTable from "../components/Sucursales/SucursalesTable";
 import TitlePage from "../components/TitlePage";
 
 function SucursalesPage() {

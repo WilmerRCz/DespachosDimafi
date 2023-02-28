@@ -1,7 +1,7 @@
-import { getVehiculos } from "../api/resVehiculos";
+import { getVehiculos } from "../../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
-import { Vehiculos } from "../interface/Vehiculos";
-import TitlePage from './TitlePage';
+import { Vehiculos } from "../../interface/Vehiculos";
+import TitlePage from '../TitlePage';
 
 function VehiculosTable() {
   const { data, isLoading, isError} = useQuery({
