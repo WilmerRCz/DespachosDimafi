@@ -11,6 +11,7 @@ function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["despachos"],
     queryFn: getDespachos,
+    select: despachos => despachos.sort((a: any, b: any) => b.id_despacho - a.id_despacho)
   });
 
   if (isLoading) return <div>Cargando...</div>;
@@ -67,10 +68,7 @@ function DespachosTable() {
     },
   ];
 
-  const fileData = data
-    .slice(0)
-    .reverse()
-    .map((despacho: Despachos) => ({
+  const fileData = data.map((despacho: Despachos) => ({
       key: despacho.id_despacho,
       nro: despacho.id_despacho,
       rut: despacho.rut_cliente_despacho,

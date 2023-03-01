@@ -3,7 +3,8 @@ import { Drawer } from "antd";
 import { FiEye } from "react-icons/fi";
 import { Despachos } from "../../interface/Despachos";
 import { convertDate } from '../../utilities/convertDate';
-import { ifNullElseString } from "../../utilities/ifNullElseString";
+import { findIndexInTable } from '../../utilities/findIndexInTable';
+
 
 function ButtonViewDespachoInTable(record: any) {
   const [open, setOpen] = useState(false);
@@ -15,9 +16,11 @@ function ButtonViewDespachoInTable(record: any) {
   const onClose = () => {
     setOpen(false);
   };
-  const nroDespacho: number = record.record.nro;
-  const dataDespacho: Despachos = record.data[nroDespacho - 1];
 
+
+
+  const dataDespacho = findIndexInTable(record)
+  
   return (
     <div>
       <button>
@@ -35,7 +38,7 @@ function ButtonViewDespachoInTable(record: any) {
         onClose={onClose}
         open={open}
       >
-        <div className="grid grid-cols-4  gap-4 p-2 border-2  rounded shadow-md capitalize"> 
+         <div className="grid grid-cols-4  gap-4 p-2 border-2  rounded shadow-md capitalize"> 
             <div className="col-span-2">
               <p className="text-slate-500">Nro</p>
               <p className="text-slate-800 font-semibold">{dataDespacho.id_despacho}</p>
@@ -120,7 +123,7 @@ function ButtonViewDespachoInTable(record: any) {
             </div>
         </div>
       </Drawer>
-    </div>
+    </div> 
   );
 }
 
