@@ -58,7 +58,7 @@ function DespachosTable() {
         return (
           <div className="flex gap-4 justify-center">
             <ButtonViewDespachoInTable record={record} data={data} />
-            <ButtonEditDespacho />
+            <ButtonEditDespacho record={record} data={data}/>
             <button>
               <FiTrash2 size={19} color={"red"} />
             </button>

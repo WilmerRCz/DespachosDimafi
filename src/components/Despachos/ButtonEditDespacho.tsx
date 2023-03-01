@@ -1,8 +1,17 @@
 import { Drawer, Space } from "antd";
 import { useState } from "react";
 import { FiEdit3 } from "react-icons/fi";
+import InputForDrawer from "../InputForDrawer";
+import SelectCelular from "../SelectCelular";
+import SelectComuna from "../SelectComuna";
+import SelectDespachador from "../SelectDespachador";
+import SelectPatente from "../SelectPatente";
+import SelectSucursales from "../SelectSucursales";
+import SelectTipoDocumento from "../SelectTipoDocumento";
+import TextAreaForDrawer from "../TextAreaForDrawer";
+import { findIndexInTable } from '../../utilities/findIndexInTable';
 
-function ButtonEditDespacho() {
+function ButtonEditDespacho(record:any) {
   const [open, setOpen] = useState(false);
 
   const inOpen = () => {
@@ -13,7 +22,9 @@ function ButtonEditDespacho() {
     setOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {}
+  const dataDespacho = findIndexInTable(record)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
 
   return (
     <div>
@@ -46,16 +57,77 @@ function ButtonEditDespacho() {
               form="formEditDespacho"
               className="bg-green-500 rounded text-slate-700 font-semibold p-0.5 border-2 border-green-600 hover:text-white shadow-md"
             >
-            Editar
+              Editar
             </button>
           </Space>
         }
       >
-          <form
-            id="formEditDespacho"
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            onSubmit={handleSubmit}
-          ></form>
+        <form
+          id="formEditDespacho"
+          className="grid grid-col-1 "
+          onSubmit={handleSubmit}
+        >
+          <InputForDrawer
+            label="Rut"
+            id="rut"
+            name="rut"
+            placeholder="01.123.456-7"
+            type="text"
+            required={true}
+          />
+          <InputForDrawer
+            label="Nombre Cliente"
+            id="nombre_cliente"
+            name="nombre_cliente"
+            type="text"
+            required={true}
+          />
+          <InputForDrawer
+            label="Dirección de despacho (Calle)"
+            id="direccion"
+            name="direccion"
+            type="text"
+            required={true}
+          />
+          <InputForDrawer
+            label="Número de calle"
+            id="nro_calle"
+            name="nro_calle"
+            placeholder="4574"
+            type="text"
+            required={true}
+          />
+          <InputForDrawer
+            label="Apto/Piso/Block"
+            id="apto"
+            name="apto"
+            placeholder="205"
+            type="text"
+            optional="(optional)"
+          />
+          <SelectComuna />
+          <SelectCelular />
+          <SelectTipoDocumento />
+          <InputForDrawer
+            label="Orden de Compra"
+            id="oc"
+            name="oc"
+            type="text"
+            required={true}
+          />
+          <SelectDespachador />
+          <SelectPatente />
+          <SelectSucursales />
+          <InputForDrawer
+            label="Total"
+            id="total_venta"
+            name="total_venta"
+            placeholder="$"
+            type="number"
+            required={true}
+          />
+          <TextAreaForDrawer label="Comentario" gridcol="grid-col-1" optional="(optional)" />
+        </form>
       </Drawer>
     </div>
   );

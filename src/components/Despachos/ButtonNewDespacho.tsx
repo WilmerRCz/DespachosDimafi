@@ -11,7 +11,7 @@ import SelectTipoDocumento from "../SelectTipoDocumento";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createDespacho } from "../../api/resDespachos";
 import { resetForm } from "../../utilities/resetForm";
-import { cleanInputForNull } from '../../utilities/cleanInputforNull';
+import { cleanInputForNull } from "../../utilities/cleanInputforNull";
 
 function ButtonNewDespacho() {
   const [open, setOpen] = useState(false);
@@ -79,9 +79,8 @@ function ButtonNewDespacho() {
       e.currentTarget.elements[16] as HTMLInputElement
     )?.value;
 
-    const cleanCelular = cleanInputForNull(celular_cliente)
-    const cleanComentario = cleanInputForNull(comentario_despacho)
-    console.log(comentario_despacho);
+    const cleanCelular = cleanInputForNull(celular_cliente);
+    const cleanComentario = cleanInputForNull(comentario_despacho);
     createNewDespacho.mutate({
       usuario_despachador,
       sucursal_despacho,
@@ -142,20 +141,38 @@ function ButtonNewDespacho() {
           >
             <InputForDrawer
               label="Rut"
+              id="rut"
+              name="rut"
               placeholder="01.123.456-7"
               type="text"
               required={true}
             />
-            <InputForDrawer label="Nombre Cliente" type="text" required={true}/>
-            <InputForDrawer label="Dirección de despacho (Calle)" type="text" required={true}/>
+            <InputForDrawer
+              label="Nombre Cliente"
+              id="nombre_cliente"
+              name="nombre_cliente"
+              type="text"
+              required={true}
+            />
+            <InputForDrawer
+              label="Dirección de despacho (Calle)"
+              id="direccion"
+              name="direccion"
+              type="text"
+              required={true}
+            />
             <InputForDrawer
               label="Número de calle"
+              id="nro_calle"
+              name="nro_calle"
               placeholder="4574"
               type="text"
               required={true}
             />
             <InputForDrawer
               label="Apto/Piso/Block"
+              id="apto"
+              name="apto"
               placeholder="205"
               type="text"
               optional="(optional)"
@@ -163,12 +180,25 @@ function ButtonNewDespacho() {
             <SelectComuna />
             <SelectCelular />
             <SelectTipoDocumento />
-            <InputForDrawer label="Orden de Compra" type="text" required={true}/>
+            <InputForDrawer
+              label="Orden de Compra"
+              id="oc"
+              name="oc"
+              type="text"
+              required={true}
+            />
             <SelectDespachador />
             <SelectPatente />
             <SelectSucursales />
-            <InputForDrawer label="Total" placeholder="$" type="number" required={true}/>
-            <TextAreaForDrawer label="Comentario" optional="(optional)"/>
+            <InputForDrawer
+              label="Total"
+              id="total_venta"
+              name="total_venta"
+              placeholder="$"
+              type="number"
+              required={true}
+            />
+            <TextAreaForDrawer label="Comentario" gridcol="grid-col-2" optional="(optional)" />
           </form>
         </div>
       </Drawer>
