@@ -3,12 +3,12 @@ interface Props {
   label: string;
   placeholder?: string;
   optional?: string;
-  gridcol: string
+  colspan: string
 }
 
-function TextAreaForDrawer({ label, placeholder, optional, gridcol}: Props) {
+function TextAreaForDrawer({ label, placeholder, optional, colspan}: Props) {
   return (
-    <div className={gridcol}>
+    <div className={colspan}>
       <label
         htmlFor="comentario"
         className="block mb-2 text-sm font-medium text-gray-900"

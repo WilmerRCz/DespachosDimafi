@@ -64,7 +64,7 @@ function ButtonEditDespacho(record:any) {
       >
         <form
           id="formEditDespacho"
-          className="grid grid-col-1 "
+          className="grid grid-col-1 gap-4"
           onSubmit={handleSubmit}
         >
           <InputForDrawer
@@ -126,7 +126,7 @@ function ButtonEditDespacho(record:any) {
             type="number"
             required={true}
           />
-          <TextAreaForDrawer label="Comentario" gridcol="grid-col-1" optional="(optional)" />
+          <TextAreaForDrawer label="Comentario" colspan="col-span-1" optional="(optional)" />
         </form>
       </Drawer>
     </div>
