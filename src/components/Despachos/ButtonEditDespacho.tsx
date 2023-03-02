@@ -113,7 +113,7 @@ function ButtonEditDespacho(record:any) {
             type="text"
             optional={true}
           />
-          <SelectComuna />
+          <SelectComuna isValue={true} value={dataDespacho.comuna_cliente}/>
           <SelectCelular />
           <SelectTipoDocumento />
           <InputForDrawer

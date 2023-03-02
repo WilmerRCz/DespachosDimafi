@@ -3,7 +3,12 @@ import React from 'react'
 import { getComunas } from '../api/resComunas';
 import { Comunas } from '../interface/Comunas';
 
-function SelectComuna() {
+interface Props {
+  isValue?: boolean,
+  value?: string | number
+}
+
+function SelectComuna({isValue, value}:Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Comunas"],
     queryFn: getComunas,
@@ -12,10 +17,12 @@ function SelectComuna() {
 
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
+  console.log(data.nombre_comuna)
   return (
     <div className="col-span-1">
       <label htmlFor="comunas" className="block mb-2 text-sm font-medium text-gray-900">Comunas</label>
       <select name="comunas" id="comunas" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+      {isValue ? <option value={value}>{data.nombre_comuna}</option> : null}
         {data.map((comuna: Comunas) => (
           <option key={comuna.id_comuna} value={comuna.id_comuna}>{comuna.nombre_comuna}</option>
         ))}
