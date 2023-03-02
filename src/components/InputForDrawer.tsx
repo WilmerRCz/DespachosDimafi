@@ -3,24 +3,26 @@ interface Props {
   label: string;
   placeholder?: string;
   type: string;
-  optional?: string;
+  optional?: boolean;
   required?: boolean;
   name?: string;
   id?: string;
+  value?: string | number;
 }
 
-function InputForDrawer({ label, placeholder, name, id, type, optional, required }: Props) {
+function InputForDrawer({ label, placeholder, name, id, type, optional, value, required }: Props) {
   return (
     <div className="col-span-1">
       <label
         htmlFor={id}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        {required ? <span className="text-red-500">*</span> : null}{label}<span className="text-xs text-slate-400"> {optional}</span>
+        {required ? <span className="text-red-500">*</span> : null}{label}{optional ? <span className="text-xs text-slate-400">(optional)</span>: null}
       </label>
       <input
         type={type}
         id={id}
+        value={value}
         name={name}
         placeholder={placeholder}
         className={

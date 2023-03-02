@@ -175,7 +175,7 @@ function ButtonNewDespacho() {
               name="apto"
               placeholder="205"
               type="text"
-              optional="(optional)"
+              optional={true}
             />
             <SelectComuna />
             <SelectCelular />

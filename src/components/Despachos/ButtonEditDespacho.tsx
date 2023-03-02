@@ -10,6 +10,8 @@ import SelectSucursales from "../SelectSucursales";
 import SelectTipoDocumento from "../SelectTipoDocumento";
 import TextAreaForDrawer from "../TextAreaForDrawer";
 import { findIndexInTable } from '../../utilities/findIndexInTable';
+import SelectEstadoDespacho from '../SelectEstadoDespacho';
+import { Despachos } from '../../interface/Despachos';
 
 function ButtonEditDespacho(record:any) {
   const [open, setOpen] = useState(false);
@@ -22,7 +24,8 @@ function ButtonEditDespacho(record:any) {
     setOpen(false);
   };
 
-  const dataDespacho = findIndexInTable(record)
+  const dataDespacho: Despachos = findIndexInTable(record)
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
 
@@ -71,6 +74,7 @@ function ButtonEditDespacho(record:any) {
             label="Rut"
             id="rut"
             name="rut"
+            value={dataDespacho.rut_cliente_despacho}
             placeholder="01.123.456-7"
             type="text"
             required={true}
@@ -79,6 +83,7 @@ function ButtonEditDespacho(record:any) {
             label="Nombre Cliente"
             id="nombre_cliente"
             name="nombre_cliente"
+            value={dataDespacho.nombre_cliente}
             type="text"
             required={true}
           />
@@ -86,6 +91,7 @@ function ButtonEditDespacho(record:any) {
             label="Dirección de despacho (Calle)"
             id="direccion"
             name="direccion"
+            value={dataDespacho.direccion_calle_cliente}
             type="text"
             required={true}
           />
@@ -93,6 +99,7 @@ function ButtonEditDespacho(record:any) {
             label="Número de calle"
             id="nro_calle"
             name="nro_calle"
+            value={dataDespacho.nro_calle_cliente}
             placeholder="4574"
             type="text"
             required={true}
@@ -101,9 +108,10 @@ function ButtonEditDespacho(record:any) {
             label="Apto/Piso/Block"
             id="apto"
             name="apto"
+            value={dataDespacho.apto_cliente}
             placeholder="205"
             type="text"
-            optional="(optional)"
+            optional={true}
           />
           <SelectComuna />
           <SelectCelular />
@@ -112,6 +120,7 @@ function ButtonEditDespacho(record:any) {
             label="Orden de Compra"
             id="oc"
             name="oc"
+            value={dataDespacho.nro_oc}
             type="text"
             required={true}
           />
@@ -122,10 +131,12 @@ function ButtonEditDespacho(record:any) {
             label="Total"
             id="total_venta"
             name="total_venta"
+            value={dataDespacho.monto_venta}
             placeholder="$"
             type="number"
             required={true}
           />
+          <SelectEstadoDespacho/>
           <TextAreaForDrawer label="Comentario" colspan="col-span-1" optional="(optional)" />
         </form>
       </Drawer>
