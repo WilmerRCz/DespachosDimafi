@@ -74,7 +74,7 @@ function ButtonEditDespacho(record:any) {
             label="Rut"
             id="rut"
             name="rut"
-            value={dataDespacho.rut_cliente_despacho}
+            defaultValue={dataDespacho.rut_cliente_despacho}
             placeholder="01.123.456-7"
             type="text"
             required={true}
@@ -83,7 +83,7 @@ function ButtonEditDespacho(record:any) {
             label="Nombre Cliente"
             id="nombre_cliente"
             name="nombre_cliente"
-            value={dataDespacho.nombre_cliente}
+            defaultValue={dataDespacho.nombre_cliente}
             type="text"
             required={true}
           />
@@ -91,7 +91,7 @@ function ButtonEditDespacho(record:any) {
             label="Dirección de despacho (Calle)"
             id="direccion"
             name="direccion"
-            value={dataDespacho.direccion_calle_cliente}
+            defaultValue={dataDespacho.direccion_calle_cliente}
             type="text"
             required={true}
           />
@@ -99,7 +99,7 @@ function ButtonEditDespacho(record:any) {
             label="Número de calle"
             id="nro_calle"
             name="nro_calle"
-            value={dataDespacho.nro_calle_cliente}
+            defaultValue={dataDespacho.nro_calle_cliente}
             placeholder="4574"
             type="text"
             required={true}
@@ -108,19 +108,19 @@ function ButtonEditDespacho(record:any) {
             label="Apto/Piso/Block"
             id="apto"
             name="apto"
-            value={dataDespacho.apto_cliente}
+            defaultValue={dataDespacho.apto_cliente}
             placeholder="205"
             type="text"
             optional={true}
           />
-          <SelectComuna isValue={true} value={dataDespacho.comuna_cliente}/>
+          <SelectComuna value={dataDespacho.nombre_comuna}/>
           <SelectCelular />
           <SelectTipoDocumento />
           <InputForDrawer
             label="Orden de Compra"
             id="oc"
             name="oc"
-            value={dataDespacho.nro_oc}
+            defaultValue={dataDespacho.nro_oc}
             type="text"
             required={true}
           />
@@ -131,7 +131,7 @@ function ButtonEditDespacho(record:any) {
             label="Total"
             id="total_venta"
             name="total_venta"
-            value={dataDespacho.monto_venta}
+            defaultValue={dataDespacho.monto_venta}
             placeholder="$"
             type="number"
             required={true}

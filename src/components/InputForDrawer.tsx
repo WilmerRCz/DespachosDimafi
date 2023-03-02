@@ -7,10 +7,10 @@ interface Props {
   required?: boolean;
   name?: string;
   id?: string;
-  value?: string | number;
+  defaultValue?: string | number;
 }
 
-function InputForDrawer({ label, placeholder, name, id, type, optional, value, required }: Props) {
+function InputForDrawer({ label, placeholder, name, id, type, optional, defaultValue, required }: Props) {
   return (
     <div className="col-span-1">
       <label
@@ -22,7 +22,7 @@ function InputForDrawer({ label, placeholder, name, id, type, optional, value, r
       <input
         type={type}
         id={id}
-        value={value}
+        defaultValue={defaultValue}
         name={name}
         placeholder={placeholder}
         className={
