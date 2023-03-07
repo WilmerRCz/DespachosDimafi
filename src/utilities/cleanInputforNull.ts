@@ -1,8 +1,8 @@
-export function cleanInputForNull(inputValue : string | null){
+export function cleanInputForNull(inputValue : string | undefined){
   
 
   if (inputValue === '') {
-    inputValue = null;
+    inputValue = undefined;
   }
   
   return inputValue

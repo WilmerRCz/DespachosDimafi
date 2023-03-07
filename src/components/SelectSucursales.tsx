@@ -2,7 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { getSucursalesActivas } from "../api/resSucursales";
 import { Sucursales } from "../interface/Sucursales";
 
-function SelectSucursales() {
+interface Props {
+  value?: string | number
+  isEdit?: boolean
+}
+
+function SelectSucursales({value, isEdit}:Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["sucursalesActivas"],
     queryFn: getSucursalesActivas,
@@ -11,10 +16,14 @@ function SelectSucursales() {
 
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
+
+  const findSucursal = data.find((element: Sucursales) => element.nombre_sucursal === value)
+
   return (
     <div className="col-span-1">
       <label htmlFor="sucursales" className="block mb-2 text-sm font-medium text-gray-900">Sucursales</label>
       <select name="sucursales" id="sucursales" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
+      {isEdit ? <option value={findSucursal.id_sucursal}>{findSucursal.nombre_sucursal}</option> : null}
         {data.map((sucursal: Sucursales) => (
           <option key={sucursal.id_sucursal} value={sucursal.id_sucursal}>{sucursal.nombre_sucursal}</option>
         ))}

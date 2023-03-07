@@ -3,7 +3,13 @@ import React from "react";
 import { getCelulares } from "../api/resCelulares";
 import { Celulares } from "../interface/Celulares";
 
-function SelectCelular() {
+
+interface Props {
+  valueCod?: string | number
+  valueCelular?: string | number
+  isEdit?: boolean
+}
+function SelectCelular({valueCod, valueCelular, isEdit}:Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Celulares"],
     queryFn: getCelulares,
@@ -11,6 +17,9 @@ function SelectCelular() {
 
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
+
+  const findCod = data.find((element: Celulares) => element.codigo_celular === valueCod)
+  
   return (
     <div className="col-span-1">
       <label
@@ -25,7 +34,8 @@ function SelectCelular() {
           id="codigo_celular"
           className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
-          {data.map((celular: Celulares) => (
+          {isEdit ? <option value={findCod.id}>{findCod.codigo_celular}</option> : null}
+          {data.map((celular: Celulares) => (   
             <option key={celular.id} value={celular.id}>
               {celular.codigo_celular}
             </option>
@@ -34,6 +44,7 @@ function SelectCelular() {
         <input
         id="celular"
         name="celular"
+        defaultValue={valueCelular}
           type="number"
           placeholder="9 0123 4567"
           className={

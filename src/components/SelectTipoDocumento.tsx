@@ -1,6 +1,25 @@
 import React from "react";
+import { useQuery } from '@tanstack/react-query';
+import { getTipoDocumento } from '../api/resTipoDocumento';
+import { TipoDocumento } from "../interface/TipoDocumento";
 
-function SelectTipoDocumento() {
+interface Props {
+  valueTipoDoc?: string
+  valueDoc?: string
+  isEdit?: boolean
+}
+
+function SelectTipoDocumento({valueTipoDoc, valueDoc, isEdit}:Props) {
+
+    const { data, isLoading, isError } = useQuery({
+      queryKey: ["TipoDocumento"],
+      queryFn: getTipoDocumento,
+    });
+  
+  
+    if (isLoading) return <div>Cargando...</div>;
+    else if (isError) return <div>Error: desde react query</div>;
+    const findDocumento = data.find((element: TipoDocumento) => element.nombre_documento === valueTipoDoc)
   return (
     <div className="col-span-1">
       <label
@@ -15,13 +34,15 @@ function SelectTipoDocumento() {
           id="tipo_documento"
           className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
-          <option value="1">Factura</option>
-          <option value="2">Guia de despacho</option>
-          <option value="3">Boleta</option>
+          {isEdit ? <option value={findDocumento.id_tipo_documento}>{findDocumento.nombre_documento}</option> : null}
+          {data.map((documento: TipoDocumento) => (
+          <option key={documento.id_tipo_documento} value={documento.id_tipo_documento}>{documento.nombre_documento}</option>
+        ))}
         </select>
         <input
           id="nro_documento"
           name="nro_documento"
+          defaultValue={valueDoc}
           type="text"
           placeholder="435672"
           className={

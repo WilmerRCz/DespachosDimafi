@@ -1,6 +1,11 @@
 import React from "react";
 
-function SelectEstadoDespacho() {
+interface Props {
+  value?: string | number
+  isEdit?: boolean
+}
+
+function SelectEstadoDespacho({value, isEdit}:Props) {
   return (
     <div className="col-span-1">
       <label

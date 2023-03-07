@@ -5,9 +5,10 @@ import { Comunas } from '../interface/Comunas';
 
 interface Props {
   value?: string | number
+  isEdit?: boolean
 }
 
-function SelectComuna({value}:Props) {
+function SelectComuna({value, isEdit}:Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Comunas"],
     queryFn: getComunas,
@@ -16,10 +17,13 @@ function SelectComuna({value}:Props) {
 
   if (isLoading) return <div>Cargando...</div>;
   else if (isError) return <div>Error: desde react query</div>;
+
+  const findComuna = data.find((element: Comunas) => element.nombre_comuna === value)
   return (
     <div className="col-span-1">
       <label htmlFor="comunas" className="block mb-2 text-sm font-medium text-gray-900">Comunas</label>
       <select name="comunas" id="comunas" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1">     
+        {isEdit ? <option value={findComuna.id_comuna}>{findComuna.nombre_comuna}</option> : null}
         {data.map((comuna: Comunas) => (
           <option key={comuna.id_comuna} value={comuna.id_comuna}>{comuna.nombre_comuna}</option>
         ))}

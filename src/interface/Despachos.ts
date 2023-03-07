@@ -2,6 +2,8 @@ export interface Despachos {
   id_despacho?: number;
   usuario_despachador: number;
   sucursal_despacho: number;
+  //nombre_sucursal for component selectSucrusales in editDespacho
+  nombre_sucursal?: string;
   nombre_cliente: string;
   rut_cliente_despacho: string;
   direccion_calle_cliente: string;
@@ -11,11 +13,18 @@ export interface Despachos {
   //nombre_comuna for view tableDespacho
   nombre_comuna?: string;
   codigo_celular_cliente: number;
-  celular_cliente?: string | null;
+  //codigo_celular for component selectComuna in editDespacho
+  codigo_celular?: number;
+  celular_cliente?: string;
   tipo_documento: number;
+  //nombre_documento for component selectTipoDocumento in editDespacho
+  nombre_documento?: string;
   nro_documento: string;
+ 
   nro_oc: string;
   vehiculo_despacho: string;
+  //patente for component selectPatente in editDespacho
+  patente: string;
   monto_venta: string;
   comentario_despacho?: string | null;
   nombre_estado?: string;

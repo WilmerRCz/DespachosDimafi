@@ -25,8 +25,7 @@ function ButtonEditDespacho(record:any) {
   };
 
   const dataDespacho: Despachos = findIndexInTable(record)
-
-
+  console.log(dataDespacho)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
 
   return (
@@ -46,7 +45,7 @@ function ButtonEditDespacho(record:any) {
         width={425}
         onClose={onClose}
         open={open}
-        maskClosable={false}
+        maskClosable={true}
         extra={
           <Space>
             <button
@@ -113,9 +112,9 @@ function ButtonEditDespacho(record:any) {
             type="text"
             optional={true}
           />
-          <SelectComuna value={dataDespacho.nombre_comuna}/>
-          <SelectCelular />
-          <SelectTipoDocumento />
+          <SelectComuna value={dataDespacho.nombre_comuna} isEdit={true}/>
+          <SelectCelular valueCod={dataDespacho.codigo_celular} valueCelular={dataDespacho.celular_cliente} isEdit={true}/>
+          <SelectTipoDocumento isEdit={true} valueTipoDoc={dataDespacho.nombre_documento} valueDoc={dataDespacho.nro_documento}/>
           <InputForDrawer
             label="Orden de Compra"
             id="oc"
@@ -124,9 +123,9 @@ function ButtonEditDespacho(record:any) {
             type="text"
             required={true}
           />
-          <SelectDespachador />
-          <SelectPatente />
-          <SelectSucursales />
+          <SelectDespachador value={dataDespacho.usuario_despachador} isEdit={true}/>
+          <SelectPatente value={dataDespacho.patente} isEdit={true}/>
+          <SelectSucursales value={dataDespacho.nombre_sucursal} isEdit={true}/>
           <InputForDrawer
             label="Total"
             id="total_venta"
