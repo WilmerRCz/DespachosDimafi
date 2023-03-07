@@ -26,7 +26,52 @@ function ButtonEditDespacho(record:any) {
 
   const dataDespacho: Despachos = findIndexInTable(record)
   console.log(dataDespacho)
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const rut_cliente_despacho = (
+      e.currentTarget.elements[1] as HTMLInputElement
+    ).value;
+    const nombre_cliente = (e.currentTarget.elements[2] as HTMLInputElement)
+    .value;
+    const direccion_calle_cliente = (
+      e.currentTarget.elements[3] as HTMLInputElement
+    ).value;
+    const nro_calle_cliente = parseInt(
+      (e.currentTarget.elements[4] as HTMLInputElement).value
+    );
+    const apto_cliente = parseInt(
+      (e.currentTarget.elements[5] as HTMLInputElement)?.value
+    );
+    const comuna_cliente = parseInt(
+      (e.currentTarget.elements[6] as HTMLInputElement).value
+    );
+    const codigo_celular_cliente = parseInt(
+      (e.currentTarget.elements[7] as HTMLInputElement).value
+    );
+    const celular_cliente = (e.currentTarget.elements[8] as HTMLInputElement)
+      ?.value;
+    const tipo_documento = parseInt(
+      (e.currentTarget.elements[9] as HTMLInputElement).value
+    );
+    const nro_documento = (e.currentTarget.elements[10] as HTMLInputElement)
+    .value;
+    const nro_oc = (e.currentTarget.elements[11] as HTMLInputElement).value;
+    const usuario_despachador = parseInt(
+      (e.currentTarget.elements[12] as HTMLInputElement).value
+    );
+    const vehiculo_despacho = (e.currentTarget.elements[13] as HTMLInputElement)
+    .value;
+    const sucursal_despacho = parseInt(
+      (e.currentTarget.elements[14] as HTMLInputElement).value
+    );
+    const monto_venta = (e.currentTarget.elements[15] as HTMLInputElement)
+    .value;
+    const nombre_estado = (e.currentTarget.elements[16] as HTMLInputElement).value
+    const comentario_despacho = (
+      e.currentTarget.elements[17] as HTMLInputElement
+    )?.value;
+    console.log(e.currentTarget.elements) 
+  };
 
   return (
     <div>
@@ -135,8 +180,8 @@ function ButtonEditDespacho(record:any) {
             type="number"
             required={true}
           />
-          <SelectEstadoDespacho/>
-          <TextAreaForDrawer label="Comentario" colspan="col-span-1" optional="(optional)" />
+          <SelectEstadoDespacho value={dataDespacho.nombre_estado} isEdit={true}/>
+          <TextAreaForDrawer label="Comentario" colspan="col-span-1" optional="(optional)" value={dataDespacho.comentario_despacho}/>
         </form>
       </Drawer>
     </div>

@@ -3,10 +3,11 @@ interface Props {
   label: string;
   placeholder?: string;
   optional?: string;
-  colspan: string
+  colspan: string;
+  value?: string;
 }
 
-function TextAreaForDrawer({ label, placeholder, optional, colspan}: Props) {
+function TextAreaForDrawer({ label, placeholder, optional, colspan, value}: Props) {
   return (
     <div className={colspan}>
       <label
@@ -18,6 +19,7 @@ function TextAreaForDrawer({ label, placeholder, optional, colspan}: Props) {
       <textarea
         id="comentario"
         className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+        defaultValue={value}
         placeholder={placeholder}
       ></textarea>
     </div>

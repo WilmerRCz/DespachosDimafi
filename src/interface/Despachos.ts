@@ -20,13 +20,12 @@ export interface Despachos {
   //nombre_documento for component selectTipoDocumento in editDespacho
   nombre_documento?: string;
   nro_documento: string;
- 
   nro_oc: string;
   vehiculo_despacho: string;
   //patente for component selectPatente in editDespacho
-  patente: string;
+  patente?: string;
   monto_venta: string;
-  comentario_despacho?: string | null;
+  comentario_despacho?: string;
   nombre_estado?: string;
   fecha_creacion_despacho?: string;
   fecha_modificacion_despacho?: string;
