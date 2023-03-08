@@ -198,7 +198,11 @@ function ButtonNewDespacho() {
               type="number"
               required={true}
             />
-            <TextAreaForDrawer label="Comentario" colspan="col-span-2" optional="(optional)" />
+            <TextAreaForDrawer
+              label="Comentario"
+              colspan="col-span-2"
+              optional="(optional)"
+            />
           </form>
         </div>
       </Drawer>

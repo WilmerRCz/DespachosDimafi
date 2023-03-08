@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Table } from "antd";
 import { getDespachos } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
-import { FiEye, FiEdit3, FiTrash2 } from "react-icons/fi";
 import { AlignType } from "rc-table/lib/interface";
 import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
 import ButtonEditDespacho from "./ButtonEditDespacho";
+import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -59,9 +59,7 @@ function DespachosTable() {
           <div className="flex gap-4 justify-center">
             <ButtonViewDespachoInTable record={record} data={data} />
             <ButtonEditDespacho record={record} data={data}/>
-            <button>
-              <FiTrash2 size={19} color={"red"} />
-            </button>
+            <ButtonDeleteDespacho record={record} data={data}/>
           </div>
         );
       },

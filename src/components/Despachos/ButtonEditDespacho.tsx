@@ -9,12 +9,17 @@ import SelectPatente from "../SelectPatente";
 import SelectSucursales from "../SelectSucursales";
 import SelectTipoDocumento from "../SelectTipoDocumento";
 import TextAreaForDrawer from "../TextAreaForDrawer";
-import { findIndexInTable } from '../../utilities/findIndexInTable';
-import SelectEstadoDespacho from '../SelectEstadoDespacho';
-import { Despachos } from '../../interface/Despachos';
+import { findIndexInTable } from "../../utilities/findIndexInTable";
+import SelectEstadoDespacho from "../SelectEstadoDespacho";
+import { Despachos } from "../../interface/Despachos";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateDespacho } from "../../api/resDespachos";
+import { cleanInputForNull } from "../../utilities/cleanInputforNull";
+import { getDateNow } from "../../utilities/getDateNow";
 
-function ButtonEditDespacho(record:any) {
+function ButtonEditDespacho(record: any) {
   const [open, setOpen] = useState(false);
+  const dataDespacho: Despachos = findIndexInTable(record);
 
   const inOpen = () => {
     setOpen(true);
@@ -24,15 +29,24 @@ function ButtonEditDespacho(record:any) {
     setOpen(false);
   };
 
-  const dataDespacho: Despachos = findIndexInTable(record)
-  console.log(dataDespacho)
+  const queryClient = useQueryClient();
+  const updateDespachoMutation = useMutation({
+    mutationFn: updateDespacho,
+    onSuccess: () => {
+      console.log("Despacho editado!");
+      queryClient.invalidateQueries({ queryKey: ["despachos"] });
+      onClose();
+    },
+  });
+  //console.log(dataDespacho)
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const id_despacho = dataDespacho.id_despacho;
     const rut_cliente_despacho = (
       e.currentTarget.elements[1] as HTMLInputElement
     ).value;
     const nombre_cliente = (e.currentTarget.elements[2] as HTMLInputElement)
-    .value;
+      .value;
     const direccion_calle_cliente = (
       e.currentTarget.elements[3] as HTMLInputElement
     ).value;
@@ -54,23 +68,92 @@ function ButtonEditDespacho(record:any) {
       (e.currentTarget.elements[9] as HTMLInputElement).value
     );
     const nro_documento = (e.currentTarget.elements[10] as HTMLInputElement)
-    .value;
+      .value;
     const nro_oc = (e.currentTarget.elements[11] as HTMLInputElement).value;
     const usuario_despachador = parseInt(
       (e.currentTarget.elements[12] as HTMLInputElement).value
     );
     const vehiculo_despacho = (e.currentTarget.elements[13] as HTMLInputElement)
-    .value;
+      .value;
     const sucursal_despacho = parseInt(
       (e.currentTarget.elements[14] as HTMLInputElement).value
     );
     const monto_venta = (e.currentTarget.elements[15] as HTMLInputElement)
-    .value;
-    const nombre_estado = (e.currentTarget.elements[16] as HTMLInputElement).value
+      .value;
+    const estado_despacho = parseInt(
+      (e.currentTarget.elements[16] as HTMLInputElement).value
+    );
     const comentario_despacho = (
       e.currentTarget.elements[17] as HTMLInputElement
     )?.value;
-    console.log(e.currentTarget.elements) 
+    const cleanCelular = cleanInputForNull(celular_cliente);
+    const cleanComentario = cleanInputForNull(comentario_despacho);
+    if (estado_despacho === 2) {
+      updateDespachoMutation.mutate({
+        id_despacho,
+        usuario_despachador,
+        sucursal_despacho,
+        nombre_cliente,
+        rut_cliente_despacho,
+        direccion_calle_cliente,
+        nro_calle_cliente,
+        apto_cliente,
+        comuna_cliente,
+        codigo_celular_cliente,
+        celular_cliente: cleanCelular,
+        tipo_documento,
+        nro_documento,
+        nro_oc,
+        vehiculo_despacho,
+        monto_venta,
+        estado_despacho,
+        comentario_despacho: cleanComentario,
+        fechayhora_comienzo_despacho: getDateNow(),
+      });
+    } else if (estado_despacho === 3 || estado_despacho === 4) {
+      updateDespachoMutation.mutate({
+        id_despacho,
+        usuario_despachador,
+        sucursal_despacho,
+        nombre_cliente,
+        rut_cliente_despacho,
+        direccion_calle_cliente,
+        nro_calle_cliente,
+        apto_cliente,
+        comuna_cliente,
+        codigo_celular_cliente,
+        celular_cliente: cleanCelular,
+        tipo_documento,
+        nro_documento,
+        nro_oc,
+        vehiculo_despacho,
+        monto_venta,
+        estado_despacho,
+        comentario_despacho: cleanComentario,
+        fechayhora_termino_despacho: getDateNow(),
+      });
+    } else {
+      updateDespachoMutation.mutate({
+        id_despacho,
+        usuario_despachador,
+        sucursal_despacho,
+        nombre_cliente,
+        rut_cliente_despacho,
+        direccion_calle_cliente,
+        nro_calle_cliente,
+        apto_cliente,
+        comuna_cliente,
+        codigo_celular_cliente,
+        celular_cliente: cleanCelular,
+        tipo_documento,
+        nro_documento,
+        nro_oc,
+        vehiculo_despacho,
+        monto_venta,
+        estado_despacho,
+        comentario_despacho: cleanComentario,
+      });
+    }
   };
 
   return (
@@ -157,9 +240,17 @@ function ButtonEditDespacho(record:any) {
             type="text"
             optional={true}
           />
-          <SelectComuna value={dataDespacho.nombre_comuna} isEdit={true}/>
-          <SelectCelular valueCod={dataDespacho.codigo_celular} valueCelular={dataDespacho.celular_cliente} isEdit={true}/>
-          <SelectTipoDocumento isEdit={true} valueTipoDoc={dataDespacho.nombre_documento} valueDoc={dataDespacho.nro_documento}/>
+          <SelectComuna value={dataDespacho.nombre_comuna} isEdit={true} />
+          <SelectCelular
+            valueCod={dataDespacho.codigo_celular}
+            valueCelular={dataDespacho.celular_cliente}
+            isEdit={true}
+          />
+          <SelectTipoDocumento
+            isEdit={true}
+            valueTipoDoc={dataDespacho.nombre_documento}
+            valueDoc={dataDespacho.nro_documento}
+          />
           <InputForDrawer
             label="Orden de Compra"
             id="oc"
@@ -168,9 +259,15 @@ function ButtonEditDespacho(record:any) {
             type="text"
             required={true}
           />
-          <SelectDespachador value={dataDespacho.usuario_despachador} isEdit={true}/>
-          <SelectPatente value={dataDespacho.patente} isEdit={true}/>
-          <SelectSucursales value={dataDespacho.nombre_sucursal} isEdit={true}/>
+          <SelectDespachador
+            value={dataDespacho.usuario_despachador}
+            isEdit={true}
+          />
+          <SelectPatente value={dataDespacho.patente} isEdit={true} />
+          <SelectSucursales
+            value={dataDespacho.nombre_sucursal}
+            isEdit={true}
+          />
           <InputForDrawer
             label="Total"
             id="total_venta"
@@ -180,8 +277,16 @@ function ButtonEditDespacho(record:any) {
             type="number"
             required={true}
           />
-          <SelectEstadoDespacho value={dataDespacho.nombre_estado} isEdit={true}/>
-          <TextAreaForDrawer label="Comentario" colspan="col-span-1" optional="(optional)" value={dataDespacho.comentario_despacho}/>
+          <SelectEstadoDespacho
+            value={dataDespacho.nombre_estado}
+            isEdit={true}
+          />
+          <TextAreaForDrawer
+            label="Comentario"
+            colspan="col-span-1"
+            optional="(optional)"
+            value={dataDespacho.comentario_despacho}
+          />
         </form>
       </Drawer>
     </div>

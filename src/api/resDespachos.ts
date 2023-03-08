@@ -11,5 +11,5 @@ export const createDespacho = (despacho: Despachos) => {
 };
 
 export const updateDespacho = (despacho: Despachos) => {
-  return axios.post(`/${despacho.id_despacho}`, despacho);
+  return axios.put(`/despachos/${despacho.id_despacho}`, despacho);
 };
