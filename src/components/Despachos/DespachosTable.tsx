@@ -6,6 +6,7 @@ import { AlignType } from "rc-table/lib/interface";
 import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
 import ButtonEditDespacho from "./ButtonEditDespacho";
 import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
+import SpinnerLoading from "../SpinnerLoading";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -14,7 +15,7 @@ function DespachosTable() {
     select: despachos => despachos.sort((a: any, b: any) => b.id_despacho - a.id_despacho)
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={28}/>;
   else if (isError) return <div>Error: desde react query</div>;
 
   const columns = [

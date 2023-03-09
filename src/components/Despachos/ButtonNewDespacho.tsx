@@ -200,7 +200,7 @@ function ButtonNewDespacho() {
             />
             <TextAreaForDrawer
               label="Comentario"
-              colspan="col-span-2"
+              colspan="col-span-1 sm:col-span-2"
               optional="(optional)"
             />
           </form>

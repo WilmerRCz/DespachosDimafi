@@ -33,9 +33,9 @@ function ButtonEditDespacho(record: any) {
   const updateDespachoMutation = useMutation({
     mutationFn: updateDespacho,
     onSuccess: () => {
-      console.log("Despacho editado!");
-      queryClient.invalidateQueries({ queryKey: ["despachos"] });
       onClose();
+      queryClient.invalidateQueries({ queryKey: ["despachos"] });
+      alert("Despacho editado!");
     },
   });
   //console.log(dataDespacho)
@@ -88,7 +88,31 @@ function ButtonEditDespacho(record: any) {
     )?.value;
     const cleanCelular = cleanInputForNull(celular_cliente);
     const cleanComentario = cleanInputForNull(comentario_despacho);
-    if (estado_despacho === 2) {
+
+    if (
+      dataDespacho.nombre_estado === "Completado" ||
+      dataDespacho.nombre_estado === "Rechazado"
+    ) {
+      return updateDespachoMutation.mutate({
+        id_despacho,
+        usuario_despachador,
+        sucursal_despacho,
+        nombre_cliente,
+        rut_cliente_despacho,
+        direccion_calle_cliente,
+        nro_calle_cliente,
+        apto_cliente,
+        comuna_cliente,
+        codigo_celular_cliente,
+        celular_cliente: cleanCelular,
+        tipo_documento,
+        nro_documento,
+        nro_oc,
+        vehiculo_despacho,
+        monto_venta,
+        comentario_despacho: cleanComentario,
+      });
+    } else if (estado_despacho === 2) {
       updateDespachoMutation.mutate({
         id_despacho,
         usuario_despachador,
@@ -194,7 +218,7 @@ function ButtonEditDespacho(record: any) {
       >
         <form
           id="formEditDespacho"
-          className="grid grid-col-1 gap-4"
+          className="grid grid-cols-1 gap-4"
           onSubmit={handleSubmit}
         >
           <InputForDrawer
@@ -280,6 +304,10 @@ function ButtonEditDespacho(record: any) {
           <SelectEstadoDespacho
             value={dataDespacho.nombre_estado}
             isEdit={true}
+            isDisable={
+              dataDespacho.nombre_estado === "Completado" ||
+              dataDespacho.nombre_estado === "Rechazado"
+            }
           />
           <TextAreaForDrawer
             label="Comentario"

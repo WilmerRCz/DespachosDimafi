@@ -2,6 +2,7 @@ import { getVehiculos } from "../../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
 import { Vehiculos } from "../../interface/Vehiculos";
 import TitlePage from '../TitlePage';
+import SpinnerLoading from "../SpinnerLoading";
 
 function VehiculosTable() {
   const { data, isLoading, isError} = useQuery({
@@ -10,7 +11,7 @@ function VehiculosTable() {
     
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={28}/>;
   else if (isError) return <div>Error: desde react query</div>;
 
   return (

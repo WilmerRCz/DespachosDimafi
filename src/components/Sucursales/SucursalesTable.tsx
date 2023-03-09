@@ -2,6 +2,7 @@ import { getSucursales } from "../../api/resSucursales";
 import { useQuery } from "@tanstack/react-query";
 import { Sucursales } from '../../interface/Sucursales';
 import TitlePage from "../TitlePage";
+import SpinnerLoading from "../SpinnerLoading";
 
 function SucursalesTable() {
   const { data, isLoading, isError } = useQuery({
@@ -9,7 +10,7 @@ function SucursalesTable() {
     queryFn: getSucursales,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={28}/>;
   else if (isError) return <div>Error: desde react query</div>;
 
   return (

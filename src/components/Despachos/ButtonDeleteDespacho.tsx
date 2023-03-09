@@ -1,6 +1,5 @@
-import React from "react";
 import { FiTrash2 } from "react-icons/fi";
-import { useQueryClient, useMutation } from '@tanstack/react-query';
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { updateDespacho } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
 import { findIndexInTable } from "../../utilities/findIndexInTable";
@@ -11,17 +10,17 @@ function ButtonDeleteDespacho(record: any) {
   const updateDespachoMutation = useMutation({
     mutationFn: updateDespacho,
     onSuccess: () => {
-      console.log("Despacho eliminado!");
-      queryClient.invalidateQueries({ queryKey: ["despachos"] });
+      alert("Despacho eliminado!");
+      queryClient.invalidateQueries({ queryKey: ["despachos"] }); 
     },
   });
 
   const handleDeleteDespacho = () => {
     updateDespachoMutation.mutate({
       id_despacho: dataDespacho.id_despacho,
-      estado_actividad: 2
-    })
-  }
+      estado_actividad: 2,
+    });
+  };
 
   return (
     <div>

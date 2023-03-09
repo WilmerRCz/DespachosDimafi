@@ -2,6 +2,7 @@ import { getUsuarios } from "../../api/resUsuarios";
 import { useQuery } from "@tanstack/react-query";
 import { Usuarios } from "../../interface/Usuario";
 import TitlePage from "../TitlePage";
+import SpinnerLoading from "../SpinnerLoading";
 
 function UsuariosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -9,7 +10,7 @@ function UsuariosTable() {
     queryFn: getUsuarios,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={28}/>;
   else if (isError) return <div>Error: desde react query</div>;
 
   return (
