@@ -7,9 +7,11 @@ import SelectComuna from "../SelectComuna";
 import SelectCelular from "../SelectCelular";
 import SelectTipoDocumento from "../SelectTipoDocumento";
 import useFormNewDespacho from "../../hooks/useFormNewDespacho";
-
-function FormNewDespacho() {
-  const { handleSubmit, onSubmit, register } = useFormNewDespacho();
+interface Props {
+  onClose: () => void
+}
+function FormNewDespacho({onClose}:Props) {
+  const { handleSubmit, onSubmit, register } = useFormNewDespacho({onClose});
 
   return (
     <form

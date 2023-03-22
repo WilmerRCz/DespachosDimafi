@@ -1,28 +1,26 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { createDespacho } from "../api/resDespachos";
+import { updateDespacho } from "../api/resDespachos";
 import { Despachos } from "../interface/Despachos";
 
 interface Props {
-  onClose: () => void
+  onClose: () => void;
 }
 
-export default function useFormNewDespacho({onClose}: Props) {
-  
+export default function useFormEditDespacho({ onClose }: Props) {
   const queryClient = useQueryClient();
-  const createNewDespacho = useMutation({
-    mutationFn: createDespacho,
+  const updateDespachoMutation = useMutation({
+    mutationFn: updateDespacho,
     onSuccess: () => {
-      console.log("Despacho creado!");
+      onClose();
       queryClient.invalidateQueries({ queryKey: ["despachos"] });
-      reset()
-      onClose()
+      alert("Despacho editado!");
     },
   });
-  const { register, handleSubmit, reset } = useForm<Despachos>();
+  const { register, handleSubmit } = useForm<Despachos>();
   const onSubmit: SubmitHandler<Despachos> = (data) => {
-    createNewDespacho.mutate(data)
+    console.log(data);
   };
 
   return {

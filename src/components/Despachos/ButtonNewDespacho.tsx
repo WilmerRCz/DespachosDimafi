@@ -41,7 +41,7 @@ function ButtonNewDespacho({open, showDrawer, onClose}:Props) {
         }
       >
         <div>
-          <FormNewDespacho/>
+          <FormNewDespacho onClose={onClose}/>
         </div>
       </Drawer>
     </div>
