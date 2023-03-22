@@ -1,23 +1,12 @@
-import { useState } from "react";
 import { Drawer } from "antd";
 import { FiEye } from "react-icons/fi";
-import { Despachos } from "../../interface/Despachos";
 import { convertDate } from '../../utilities/convertDate';
 import { findIndexInTable } from '../../utilities/findIndexInTable';
+import useModal from "../../hooks/useModal";
 
 
 function ButtonViewDespachoInTable(record: any) {
-  const [open, setOpen] = useState(false);
-
-  const inOpen = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
-
+  const {open, showDrawer, onClose} = useModal()
 
   const dataDespacho = findIndexInTable(record)
   
@@ -26,9 +15,7 @@ function ButtonViewDespachoInTable(record: any) {
       <button>
         <FiEye
           size={19}
-          onClick={() => {
-            inOpen();
-          }}
+          onClick={showDrawer}
         />
       </button>
       <Drawer

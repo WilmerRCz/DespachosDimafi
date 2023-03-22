@@ -8,6 +8,7 @@ import ButtonEditDespacho from "./ButtonEditDespacho";
 import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import SpinnerLoading from "../SpinnerLoading";
 
+
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["despachos"],
@@ -58,7 +59,7 @@ function DespachosTable() {
       render: (text: any, record: any, index: any) => {
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonViewDespachoInTable record={record} data={data} />
+            <ButtonViewDespachoInTable record={record} data={data}/>
             <ButtonEditDespacho record={record} data={data}/>
             <ButtonDeleteDespacho record={record} data={data}/>
           </div>

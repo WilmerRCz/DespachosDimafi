@@ -16,18 +16,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateDespacho } from "../../api/resDespachos";
 import { cleanInputForNull } from "../../utilities/cleanInputforNull";
 import { getDateNow } from "../../utilities/getDateNow";
+import useModal from "../../hooks/useModal";
 
 function ButtonEditDespacho(record: any) {
-  const [open, setOpen] = useState(false);
+  const {open, showDrawer, onClose} = useModal()
   const dataDespacho: Despachos = findIndexInTable(record);
-
-  const inOpen = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
 
   const queryClient = useQueryClient();
   const updateDespachoMutation = useMutation({
@@ -186,9 +179,7 @@ function ButtonEditDespacho(record: any) {
         <FiEdit3
           size={19}
           color={"#FFC300"}
-          onClick={() => {
-            inOpen();
-          }}
+          onClick={showDrawer}
         />
       </button>
       <Drawer

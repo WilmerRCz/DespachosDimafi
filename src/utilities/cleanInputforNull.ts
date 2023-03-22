@@ -1,7 +1,7 @@
 export function cleanInputForNull(inputValue : string | undefined){
   
 
-  if (inputValue === '') {
+  if (inputValue === undefined) {
     inputValue = undefined;
   }
   
