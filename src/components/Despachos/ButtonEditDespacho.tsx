@@ -3,7 +3,7 @@ import { FiEdit3 } from "react-icons/fi";
 import { findIndexInTable } from "../../utilities/findIndexInTable";
 import { Despachos } from "../../interface/Despachos";
 import useModal from "../../hooks/useModal";
-import FormEditDespacho from "./formEditDespacho";
+import FormEditDespacho from "./FormDespachos/FormEditDespacho";
 
 function ButtonEditDespacho(record: any) {
   const {open, showDrawer, onClose} = useModal()

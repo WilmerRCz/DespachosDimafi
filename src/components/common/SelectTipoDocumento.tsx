@@ -1,7 +1,7 @@
 import { UseFormRegister, FieldValues } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
-import { getTipoDocumento } from "../api/resTipoDocumento";
-import { TipoDocumento } from "../interface/TipoDocumento";
+import { getTipoDocumento } from "../../api/resTipoDocumento";
+import { TipoDocumento } from "../../interface/TipoDocumento";
 
 interface Props {
   valueTipoDoc?: string;

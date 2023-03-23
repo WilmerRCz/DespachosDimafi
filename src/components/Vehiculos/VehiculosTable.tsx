@@ -1,8 +1,8 @@
 import { getVehiculos } from "../../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
 import { Vehiculos } from "../../interface/Vehiculos";
-import TitlePage from '../TitlePage';
-import SpinnerLoading from "../SpinnerLoading";
+import TitlePage from '../common/TitlePage';
+import SpinnerLoading from "../common/SpinnerLoading";
 
 function VehiculosTable() {
   const { data, isLoading, isError} = useQuery({

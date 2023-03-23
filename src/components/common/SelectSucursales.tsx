@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { UseFormRegister, FieldValues } from 'react-hook-form';
-import { getSucursalesActivas } from "../api/resSucursales";
-import { Sucursales } from "../interface/Sucursales";
+import { getSucursalesActivas } from "../../api/resSucursales";
+import { Sucursales } from "../../interface/Sucursales";
 
 interface Props {
   value?: string | number

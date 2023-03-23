@@ -1,8 +1,8 @@
 import { getSucursales } from "../../api/resSucursales";
 import { useQuery } from "@tanstack/react-query";
 import { Sucursales } from '../../interface/Sucursales';
-import TitlePage from "../TitlePage";
-import SpinnerLoading from "../SpinnerLoading";
+import TitlePage from "../common/TitlePage";
+import SpinnerLoading from "../common/SpinnerLoading";
 
 function SucursalesTable() {
   const { data, isLoading, isError } = useQuery({

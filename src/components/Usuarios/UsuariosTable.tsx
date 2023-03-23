@@ -1,8 +1,8 @@
 import { getUsuarios } from "../../api/resUsuarios";
 import { useQuery } from "@tanstack/react-query";
 import { Usuarios } from "../../interface/Usuario";
-import TitlePage from "../TitlePage";
-import SpinnerLoading from "../SpinnerLoading";
+import TitlePage from "../common/TitlePage";
+import SpinnerLoading from "../common/SpinnerLoading";
 
 function UsuariosTable() {
   const { data, isLoading, isError } = useQuery({

@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { getComunas } from "../api/resComunas";
-import { Comunas } from "../interface/Comunas";
+import { getComunas } from "../../api/resComunas";
+import { Comunas } from "../../interface/Comunas";
 import { UseFormRegister, FieldValues } from "react-hook-form";
 
 interface Props {

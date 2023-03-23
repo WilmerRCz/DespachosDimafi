@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDespachadoresActivos } from '../api/resUsuarios';
-import { Usuarios } from '../interface/Usuario';
+import { getDespachadoresActivos } from '../../api/resUsuarios';
+import { Usuarios } from '../../interface/Usuario';
 import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 interface Props {

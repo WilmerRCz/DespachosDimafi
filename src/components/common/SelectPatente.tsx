@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { UseFormRegister, FieldValues } from 'react-hook-form';
-import { getVehiculosActivos } from '../api/resVehiculos';
-import { Vehiculos } from '../interface/Vehiculos';
+import { getVehiculosActivos } from '../../api/resVehiculos';
+import { Vehiculos } from '../../interface/Vehiculos';
 
 interface Props {
   value?: string | number

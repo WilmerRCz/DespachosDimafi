@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getEstadoDespacho } from "../api/resEstadoDespacho";
-import { EstadoDespacho } from "../interface/EstadoDespacho";
+import { getEstadoDespacho } from "../../api/resEstadoDespacho";
+import { EstadoDespacho } from "../../interface/EstadoDespacho";
 import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 interface Props {
@@ -33,7 +33,7 @@ function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
       </label>
       {isDisable ? (
         <select
-        {...register("estado_despacho")}
+        {...register("estado_despacho", { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
         >
           {isEdit ? (
@@ -44,7 +44,7 @@ function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
         </select>
       ) : (
         <select
-        {...register("estado_despacho")}
+        {...register("estado_despacho", { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
         >
           {isEdit ? (

@@ -6,7 +6,7 @@ import { AlignType } from "rc-table/lib/interface";
 import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
 import ButtonEditDespacho from "./ButtonEditDespacho";
 import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
-import SpinnerLoading from "../SpinnerLoading";
+import SpinnerLoading from "../common/SpinnerLoading";
 
 
 function DespachosTable() {

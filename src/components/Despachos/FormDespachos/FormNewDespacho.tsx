@@ -1,18 +1,19 @@
-import SelectSucursales from "../SelectSucursales";
-import InputForDrawer from "../InputForDrawer";
-import TextAreaForDrawer from "../TextAreaForDrawer";
-import SelectDespachador from "../SelectDespachador";
-import SelectPatente from "../SelectPatente";
-import SelectComuna from "../SelectComuna";
-import SelectCelular from "../SelectCelular";
-import SelectTipoDocumento from "../SelectTipoDocumento";
-import useFormNewDespacho from "../../hooks/useFormNewDespacho";
+import SelectSucursales from "../../../components/common/SelectSucursales";
+import InputForDrawer from "../../../components/common/InputForDrawer";
+import TextAreaForDrawer from "../../../components/common/TextAreaForDrawer";
+import SelectDespachador from "../../../components/common/SelectDespachador";
+import SelectPatente from "../../../components/common/SelectPatente";
+import SelectComuna from "../../../components/common/SelectComuna";
+import SelectCelular from "../../../components/common/SelectCelular";
+import SelectTipoDocumento from "../../../components/common/SelectTipoDocumento";
+import useFormNewDespacho from "../../../hooks/useFormNewDespacho";
+import { getDateNow } from "../../../utilities/getDateNow";
 interface Props {
   onClose: () => void
 }
 function FormNewDespacho({onClose}:Props) {
   const { handleSubmit, onSubmit, register } = useFormNewDespacho({onClose});
-
+console.log(getDateNow())
   return (
     <form
       id="formNewDespacho"

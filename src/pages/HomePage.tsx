@@ -1,7 +1,7 @@
-import TitlePage from "../components/TitlePage";
+import TitlePage from "../components/common/TitlePage";
 import Navbar from "../components/Navbar/Navbar";
 import DespachosTable from "../components/Despachos/DespachosTable";
-import ButtonExport from "../components/ButtonExport";
+import ButtonExport from "../components/common/ButtonExport";
 import ButtonNewDespacho from "../components/Despachos/ButtonNewDespacho";
 import useModal from '../hooks/useModal';
 

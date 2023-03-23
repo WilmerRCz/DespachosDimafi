@@ -1,14 +1,14 @@
-import useFormEditDespacho from "../../hooks/useFormEditDespacho";
-import { Despachos } from "../../interface/Despachos";
-import InputForDrawer from "../InputForDrawer";
-import SelectCelular from "../SelectCelular";
-import SelectComuna from "../SelectComuna";
-import SelectDespachador from "../SelectDespachador";
-import SelectEstadoDespacho from "../SelectEstadoDespacho";
-import SelectPatente from "../SelectPatente";
-import SelectSucursales from "../SelectSucursales";
-import SelectTipoDocumento from "../SelectTipoDocumento";
-import TextAreaForDrawer from "../TextAreaForDrawer";
+import useFormEditDespacho from '../../../hooks/useFormEditDespacho';
+import { Despachos } from "../../../interface/Despachos";
+import InputForDrawer from "../../../components/common/InputForDrawer";
+import SelectCelular from "../../../components/common/SelectCelular";
+import SelectComuna from "../../../components/common/SelectComuna";
+import SelectDespachador from "../../../components/common/SelectDespachador";
+import SelectEstadoDespacho from "../../../components/common/SelectEstadoDespacho";
+import SelectPatente from "../../../components/common/SelectPatente";
+import SelectSucursales from "../../../components/common/SelectSucursales";
+import SelectTipoDocumento from "../../../components/common/SelectTipoDocumento";
+import TextAreaForDrawer from "../../../components/common/TextAreaForDrawer";
 
 interface Props {
   dataDespacho: Despachos;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 function FormEditDespacho({ dataDespacho, onClose }: Props) {
-  const { handleSubmit, onSubmit, register } = useFormEditDespacho({ onClose });
+  const { handleSubmit, onSubmit, register } = useFormEditDespacho({onClose, dataDespacho});
   return (
     <form
       id="formEditDespacho"

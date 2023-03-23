@@ -1,5 +1,5 @@
 import { Drawer, Space } from "antd";
-import FormNewDespacho from "./FormNewDespacho";
+import FormNewDespacho from "./FormDespachos/FormNewDespacho";
 interface Props {
   open: boolean
   showDrawer: () => void

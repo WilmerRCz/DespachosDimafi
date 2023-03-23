@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
-import TitlePage from "../components/TitlePage";
+import TitlePage from "../components/common/TitlePage";
 
 function DashboardPage() {
   return (

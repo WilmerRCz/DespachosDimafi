@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { UseFormRegister, FieldValues } from "react-hook-form";
-import { getCelulares } from "../api/resCelulares";
-import { Celulares } from "../interface/Celulares";
+import { getCelulares } from "../../api/resCelulares";
+import { Celulares } from "../../interface/Celulares";
 
 interface Props {
   valueCod?: string | number;

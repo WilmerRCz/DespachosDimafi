@@ -1,4 +1,4 @@
-import TitlePage from "../components/TitlePage";
+import TitlePage from "../components/common/TitlePage";
 
 function NotFoundPage() {
   return <TitlePage title="Página no encontrada" />;

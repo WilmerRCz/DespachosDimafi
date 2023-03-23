@@ -1,8 +1,8 @@
-import ButtonExport from "../components/ButtonExport";
+import ButtonExport from "../components/common/ButtonExport";
 import ButtonNew from "../components/Despachos/ButtonNewDespacho";
 import Navbar from "../components/Navbar/Navbar";
 import SucursalesTable from "../components/Sucursales/SucursalesTable";
-import TitlePage from "../components/TitlePage";
+import TitlePage from "../components/common/TitlePage";
 
 function SucursalesPage() {
   return (
@@ -11,7 +11,7 @@ function SucursalesPage() {
       <div className="sm:container xl:px-16 mx-auto">
         <TitlePage title="Sucursales" />
         <div className="flex justify-end gap-2">
-          <ButtonNew/>
+          {/* <ButtonNew/> */}
           <ButtonExport />
         </div>
         <SucursalesTable />
