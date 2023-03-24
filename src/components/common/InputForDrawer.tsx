@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FieldError, FieldValues, UseFormRegister } from "react-hook-form";
 interface Props {
   label: string;
   placeholder?: string;
@@ -10,6 +10,7 @@ interface Props {
   name: string;
   defaultValue?: string | number;
   register: UseFormRegister<FieldValues>;
+  errorMessage?: string
 }
 
 function InputForDrawer({
@@ -22,6 +23,7 @@ function InputForDrawer({
   defaultValue,
   required,
   register,
+  errorMessage
 }: Props) {
   return (
     <div className="col-span-1">
@@ -46,6 +48,9 @@ function InputForDrawer({
           "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
         }
       />
+      {errorMessage && (
+        <span className="text-xs text-red-500 mt-1">{errorMessage}</span>
+      )}
     </div>
   );
 }

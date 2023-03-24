@@ -8,6 +8,7 @@ interface Props {
   valueDoc?: string;
   isEdit?: boolean;
   register: UseFormRegister<FieldValues>;
+  errorMessage?: string;
 }
 
 function SelectTipoDocumento({
@@ -15,6 +16,7 @@ function SelectTipoDocumento({
   valueDoc,
   isEdit,
   register,
+  errorMessage
 }: Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["TipoDocumento"],
@@ -62,6 +64,9 @@ function SelectTipoDocumento({
             "bg-gray-50 border border-gray-300 w-full sm:w-2/3 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
           }
         />
+        {errorMessage && (
+          <span className="text-xs text-red-500 mt-1">{errorMessage}</span>
+        )}
       </div>
     </div>
   );

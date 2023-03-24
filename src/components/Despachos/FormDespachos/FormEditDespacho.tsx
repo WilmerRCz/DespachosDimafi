@@ -51,7 +51,6 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
       <InputForDrawer
         label="Número de calle"
         register={register}
-        setNumber={true}
         name="nro_calle_cliente"
         defaultValue={dataDespacho.nro_calle_cliente}
         placeholder="4574"
@@ -61,7 +60,6 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
       <InputForDrawer
         label="Apto/Piso/Block"
         register={register}
-        setNumber={true}
         name="apto_cliente"
         defaultValue={dataDespacho.apto_cliente}
         placeholder="205"
@@ -129,6 +127,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
       <TextAreaForDrawer
         label="Comentario"
         register={register}
+        name="comentario_despacho"
         colspan="col-span-1"
         optional="(optional)"
         value={dataDespacho.comentario_despacho}

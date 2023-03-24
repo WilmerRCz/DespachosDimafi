@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { createDespacho } from "../api/resDespachos";
 import { Despachos } from "../interface/Despachos";
+import {yupResolver} from "@hookform/resolvers/yup"
+import { despachoSchema } from "../schemas/despachoSchema";
 
 interface Props {
   onClose: () => void
 }
 
 export default function useFormNewDespacho({onClose}: Props) {
-  
   const queryClient = useQueryClient();
   const createNewDespacho = useMutation({
     mutationFn: createDespacho,
@@ -20,13 +21,17 @@ export default function useFormNewDespacho({onClose}: Props) {
       onClose()
     },
   });
-  const { register, handleSubmit, reset } = useForm<Despachos>();
+  const { register, handleSubmit, reset, formState:{errors} } = useForm<Despachos>({
+    resolver: yupResolver(despachoSchema)
+  });
   const onSubmit: SubmitHandler<Despachos> = (data) => {
+    console.log(data)
     createNewDespacho.mutate(data)
   };
 
   return {
     onSubmit,
+    errors,
     register,
     handleSubmit,
   };

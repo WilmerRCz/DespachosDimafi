@@ -24,7 +24,6 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
   });
   const { register, handleSubmit } = useForm<Despachos>();
   const onSubmit: SubmitHandler<Despachos> = (data) => {
-    console.log(dataDespacho)
      if (
       dataDespacho.nombre_estado === "Completado" ||
       dataDespacho.nombre_estado === "Rechazado"

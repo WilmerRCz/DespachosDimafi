@@ -8,8 +8,15 @@ interface Props {
   valueCelular?: string | number;
   isEdit?: boolean;
   register: UseFormRegister<FieldValues>;
+  errorMessage?: string;
 }
-function SelectCelular({ valueCod, valueCelular, isEdit, register }: Props) {
+function SelectCelular({
+  valueCod,
+  valueCelular,
+  isEdit,
+  register,
+  errorMessage,
+}: Props) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Celulares"],
     queryFn: getCelulares,
@@ -47,12 +54,15 @@ function SelectCelular({ valueCod, valueCelular, isEdit, register }: Props) {
         <input
           {...register("celular_cliente")}
           defaultValue={valueCelular}
-          type="number"
+          type="text"
           placeholder="9 0123 4567"
           className={
             "bg-gray-50 border border-gray-300 w-full sm:w-2/3 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
           }
         />
+        {errorMessage && (
+          <span className="text-xs text-red-500 mt-1">{errorMessage}</span>
+        )}
       </div>
     </div>
   );

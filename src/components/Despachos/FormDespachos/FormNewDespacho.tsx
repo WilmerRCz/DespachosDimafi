@@ -7,13 +7,13 @@ import SelectComuna from "../../../components/common/SelectComuna";
 import SelectCelular from "../../../components/common/SelectCelular";
 import SelectTipoDocumento from "../../../components/common/SelectTipoDocumento";
 import useFormNewDespacho from "../../../hooks/useFormNewDespacho";
-import { getDateNow } from "../../../utilities/getDateNow";
+
 interface Props {
   onClose: () => void
 }
 function FormNewDespacho({onClose}:Props) {
-  const { handleSubmit, onSubmit, register } = useFormNewDespacho({onClose});
-console.log(getDateNow())
+  const { handleSubmit, onSubmit, register, errors } = useFormNewDespacho({onClose});
+
   return (
     <form
       id="formNewDespacho"
@@ -27,6 +27,7 @@ console.log(getDateNow())
         placeholder="01.123.456-7"
         type="text"
         required={true}
+        errorMessage={errors.rut_cliente_despacho?.message}
       />
       <InputForDrawer
         label="Nombre Cliente"
@@ -34,6 +35,7 @@ console.log(getDateNow())
         name="nombre_cliente"
         type="text"
         required={true}
+        errorMessage={errors.nombre_cliente?.message}
       />
       <InputForDrawer
         label="Dirección de despacho (Calle)"
@@ -41,34 +43,36 @@ console.log(getDateNow())
         name="direccion_calle_cliente"
         type="text"
         required={true}
+        errorMessage={errors.direccion_calle_cliente?.message}
       />
       <InputForDrawer
         label="Número de calle"
         register={register}
-        setNumber={true}
         name="nro_calle_cliente"
         placeholder="4574"
         type="text"
         required={true}
+        errorMessage={errors.nro_calle_cliente?.message}
       />
       <InputForDrawer
         label="Apto/Piso/Block"
         register={register}
-        setNumber={true}
         name="apto_cliente"
         placeholder="205"
         type="text"
         optional={true}
+        errorMessage={errors.apto_cliente?.message}
       />
       <SelectComuna register={register} />
-      <SelectCelular register={register} />
-      <SelectTipoDocumento register={register} />
+      <SelectCelular register={register} errorMessage={errors.celular_cliente?.message}/>
+      <SelectTipoDocumento register={register} errorMessage={errors.nro_documento?.message}/>
       <InputForDrawer
         label="Orden de Compra"
         register={register}
         name="nro_oc"
         type="text"
         required={true}
+        errorMessage={errors.nro_oc?.message}
       />
       <SelectDespachador register={register} />
       <SelectPatente register={register} />
@@ -80,12 +84,15 @@ console.log(getDateNow())
         placeholder="$"
         type="number"
         required={true}
+        errorMessage={errors.monto_venta?.message}
       />
       <TextAreaForDrawer
         label="Comentario"
         register={register}
+        name="comentario_despacho"
         colspan="col-span-1 sm:col-span-2"
         optional="(optional)"
+        errorMessage={errors.comentario_despacho?.message}
       />
     </form>
   );
