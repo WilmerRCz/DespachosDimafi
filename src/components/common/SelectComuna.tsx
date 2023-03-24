@@ -27,7 +27,7 @@ function SelectComuna({ value, isEdit, register }: Props) {
         htmlFor="comuna_cliente"
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        Comunas
+        <span className="text-red-500">*</span>Comunas
       </label>
       <select
         {...register("comuna_cliente", { valueAsNumber: true })}

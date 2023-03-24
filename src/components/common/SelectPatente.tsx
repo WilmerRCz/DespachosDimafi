@@ -23,7 +23,7 @@ function SelectPatente({value, isEdit, register}:Props) {
 
   return (
     <div className="col-span-1">
-      <label htmlFor="vehiculo_despacho" className="block mb-2 text-sm font-medium text-gray-900">Patente</label>
+      <label htmlFor="vehiculo_despacho" className="block mb-2 text-sm font-medium text-gray-900"><span className="text-red-500">*</span>Patente</label>
       <select {...register("vehiculo_despacho")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
         {isEdit ? <option value={findVehiculo.patente}>{findVehiculo.patente}</option> : null}
         {data.map((vehiculo: Vehiculos) => (

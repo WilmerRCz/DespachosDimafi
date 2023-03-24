@@ -1,8 +1,10 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { updateDespacho } from "../api/resDespachos";
 import { Despachos } from "../interface/Despachos";
+import { despachoSchema } from "../schemas/despachoSchema";
 import { getDateNow } from '../utilities/getDateNow';
 
 interface Props {
@@ -17,12 +19,12 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
     onSuccess: () => {
       alert("Despacho editado!");
       queryClient.invalidateQueries({ queryKey: ["despachos"] });
-      
       onClose();
-      
     },
   });
-  const { register, handleSubmit } = useForm<Despachos>();
+  const { register, handleSubmit, formState:{errors} } = useForm<Despachos>({
+    resolver: yupResolver(despachoSchema)
+  });
   const onSubmit: SubmitHandler<Despachos> = (data) => {
      if (
       dataDespacho.nombre_estado === "Completado" ||
@@ -52,6 +54,7 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
 
   return {
     onSubmit,
+    errors,
     register,
     handleSubmit,
   };

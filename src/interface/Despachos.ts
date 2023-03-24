@@ -7,8 +7,8 @@ export interface Despachos {
   nombre_cliente?: string;
   rut_cliente_despacho?: string;
   direccion_calle_cliente?: string;
-  nro_calle_cliente?: number;
-  apto_cliente?: number;
+  nro_calle_cliente?: string;
+  apto_cliente?: string;
   comuna_cliente?: number;
   //nombre_comuna for view tableDespacho
   nombre_comuna?: string;

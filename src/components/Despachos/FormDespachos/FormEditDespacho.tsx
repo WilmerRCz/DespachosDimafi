@@ -16,7 +16,7 @@ interface Props {
 }
 
 function FormEditDespacho({ dataDespacho, onClose }: Props) {
-  const { handleSubmit, onSubmit, register } = useFormEditDespacho({onClose, dataDespacho});
+  const { handleSubmit, onSubmit, register, errors } = useFormEditDespacho({onClose, dataDespacho});
   return (
     <form
       id="formEditDespacho"
@@ -31,6 +31,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         placeholder="01.123.456-7"
         type="text"
         required={true}
+        errorMessage={errors.rut_cliente_despacho?.message}
       />
       <InputForDrawer
         label="Nombre Cliente"
@@ -39,6 +40,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         defaultValue={dataDespacho.nombre_cliente}
         type="text"
         required={true}
+        errorMessage={errors.nombre_cliente?.message}
       />
       <InputForDrawer
         label="Dirección de despacho (Calle)"
@@ -47,6 +49,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         defaultValue={dataDespacho.direccion_calle_cliente}
         type="text"
         required={true}
+        errorMessage={errors.direccion_calle_cliente?.message}
       />
       <InputForDrawer
         label="Número de calle"
@@ -56,6 +59,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         placeholder="4574"
         type="text"
         required={true}
+        errorMessage={errors.nro_calle_cliente?.message}
       />
       <InputForDrawer
         label="Apto/Piso/Block"
@@ -65,6 +69,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         placeholder="205"
         type="text"
         optional={true}
+        errorMessage={errors.apto_cliente?.message}
       />
       <SelectComuna
         register={register}
@@ -76,12 +81,14 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         valueCod={dataDespacho.codigo_celular}
         valueCelular={dataDespacho.celular_cliente}
         isEdit={true}
+        errorMessage={errors.celular_cliente?.message}
       />
       <SelectTipoDocumento
         register={register}
         isEdit={true}
         valueTipoDoc={dataDespacho.nombre_documento}
         valueDoc={dataDespacho.nro_documento}
+        errorMessage={errors.nro_documento?.message}
       />
       <InputForDrawer
         label="Orden de Compra"
@@ -90,6 +97,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         defaultValue={dataDespacho.nro_oc}
         type="text"
         required={true}
+        errorMessage={errors.nro_oc?.message}
       />
       <SelectDespachador
         register={register}
@@ -114,6 +122,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         placeholder="$"
         type="number"
         required={true}
+        errorMessage={errors.monto_venta?.message}
       />
       <SelectEstadoDespacho
         value={dataDespacho.nombre_estado}
@@ -131,6 +140,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         colspan="col-span-1"
         optional="(optional)"
         value={dataDespacho.comentario_despacho}
+        errorMessage={errors.comentario_despacho?.message}
       />
     </form>
   );

@@ -15,7 +15,7 @@ export default function useFormNewDespacho({onClose}: Props) {
   const createNewDespacho = useMutation({
     mutationFn: createDespacho,
     onSuccess: () => {
-      console.log("Despacho creado!");
+      alert("Despacho creado!");
       queryClient.invalidateQueries({ queryKey: ["despachos"] });
       reset()
       onClose()
@@ -25,7 +25,6 @@ export default function useFormNewDespacho({onClose}: Props) {
     resolver: yupResolver(despachoSchema)
   });
   const onSubmit: SubmitHandler<Despachos> = (data) => {
-    console.log(data)
     createNewDespacho.mutate(data)
   };
 

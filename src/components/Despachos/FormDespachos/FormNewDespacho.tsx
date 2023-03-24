@@ -82,7 +82,7 @@ function FormNewDespacho({onClose}:Props) {
         register={register}
         name="monto_venta"
         placeholder="$"
-        type="number"
+        type="text"
         required={true}
         errorMessage={errors.monto_venta?.message}
       />

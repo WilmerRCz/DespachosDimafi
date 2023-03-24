@@ -29,7 +29,7 @@ function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
         htmlFor="estado_despacho"
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        Estado del despacho
+        Estado del despacho<span className="text-xs text-slate-400">(optional)</span>
       </label>
       {isDisable ? (
         <select

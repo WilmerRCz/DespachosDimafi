@@ -23,7 +23,7 @@ function SelectDespachador({value, isEdit, register}:Props) {
 
   return (
     <div className="col-span-1">
-      <label htmlFor="usuario_despachador" className="block mb-2 text-sm font-medium text-gray-900">Despachadores</label>
+      <label htmlFor="usuario_despachador" className="block mb-2 text-sm font-medium text-gray-900"><span className="text-red-500">*</span>Despachadores</label>
       <select {...register("usuario_despachador", {valueAsNumber: true})} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1">
       {isEdit ? <option value={findDespachador.id_usuario}>{`${findDespachador.nombre_usuario} ${findDespachador.apellido_usuario}`}</option> : null}
         {data.map((usuario: Usuarios) => (

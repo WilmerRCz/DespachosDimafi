@@ -14,7 +14,7 @@ export const despachoSchema = Yup.object({
     .max(12, "Rut invalido")
     .required("El rut es obligatorio"),
   direccion_calle_cliente: Yup.string()
-    .matches(/^[A-Za-z\u00C0-\u017F0-9\s]{3,60}$/g, "Dirección inválida")
+    .matches(/^[A-Za-z\u00C0-\u017F0-9\s.-]{3,60}$/g, "Dirección inválida")
     .trim()
     .min(3, "Por favor introducir una dirección válida")
     .max(60, "Dirección muy larga")
@@ -39,7 +39,7 @@ export const despachoSchema = Yup.object({
     .trim()
     .required("La OC es obligatorio"),
   monto_venta: Yup.string()
-    .matches(/^[0-9.]{0,12}$/g, "Monto de venta inválido")
+    .matches(/^(?!-)(\d{1,12}(\.\d{0,2})?)?$/, "Monto de venta inválido")
     .required("El total es obligatorio"),
   comentario_despacho: Yup.string()
     .trim()
