@@ -9,7 +9,6 @@ import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import SpinnerLoading from "../common/SpinnerLoading";
 import EstadoStyled from "../common/EstadoStyled";
 import DespachoCard from "./DespachoCard";
-import { showDate } from "../../utilities/showDate";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -65,9 +64,23 @@ function DespachosTable() {
       render: (text: any, record: any, index: any) => {
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonViewDespachoInTable nro_record={record.nro} data={data} sizeButton={19} sizeDrawer={500}/>
-            <ButtonEditDespacho nro_record={record.nro} data={data} sizeButton={19} sizeDrawer={500}/>
-            <ButtonDeleteDespacho nro_record={record.nro} data={data} sizeButton={19}/>
+            <ButtonViewDespachoInTable
+              nro_record={record.nro}
+              data={data}
+              sizeButton={19}
+              sizeDrawer={500}
+            />
+            <ButtonEditDespacho
+              nro_record={record.nro}
+              data={data}
+              sizeButton={19}
+              sizeDrawer={500}
+            />
+            <ButtonDeleteDespacho
+              nro_record={record.nro}
+              data={data}
+              sizeButton={19}
+            />
           </div>
         );
       },
@@ -82,6 +95,7 @@ function DespachosTable() {
     despachador: despacho.usuario_despachador,
     estado: despacho.nombre_estado,
   }));
+
   return (
     <div>
       <div className="mt-2 hidden sm:block">
@@ -93,7 +107,9 @@ function DespachosTable() {
             nro_despacho={despacho.id_despacho}
             estado_despacho={despacho.nombre_estado}
             direccion={`${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`}
-            fecha_creación={showDate(despacho.fecha_creacion_despacho)}
+            fecha_creación={despacho.fecha_creacion_despacho}
+            despachador={despacho.usuario_despachador}
+            rut_cliente={despacho.rut_cliente_despacho}
             total={despacho.monto_venta}
             data={data}
             nro_record={despacho.id_despacho}
