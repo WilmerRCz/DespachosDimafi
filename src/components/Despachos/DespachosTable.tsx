@@ -7,16 +7,19 @@ import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
 import ButtonEditDespacho from "./ButtonEditDespacho";
 import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import SpinnerLoading from "../common/SpinnerLoading";
-
+import EstadoStyled from "../common/EstadoStyled";
+import DespachoCard from "./DespachoCard";
+import { showDate } from "../../utilities/showDate";
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["despachos"],
     queryFn: getDespachos,
-    select: despachos => despachos.sort((a: any, b: any) => b.id_despacho - a.id_despacho)
+    select: (despachos) =>
+      despachos.sort((a: any, b: any) => b.id_despacho - a.id_despacho),
   });
 
-  if (isLoading) return <SpinnerLoading size={28}/>;
+  if (isLoading) return <SpinnerLoading size={28} />;
   else if (isError) return <div>Error: desde react query</div>;
 
   const columns = [
@@ -25,7 +28,7 @@ function DespachosTable() {
       dataIndex: "nro",
       key: "nro",
       align: "center" as AlignType,
-      className: 'font-bold'
+      className: "font-bold",
     },
     {
       title: "Rut",
@@ -50,6 +53,9 @@ function DespachosTable() {
       dataIndex: "estado",
       key: "estado",
       align: "center" as AlignType,
+      render: (estado: string) => {
+        return <EstadoStyled estado={estado} />;
+      },
     },
     {
       title: "Acciones",
@@ -59,9 +65,9 @@ function DespachosTable() {
       render: (text: any, record: any, index: any) => {
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonViewDespachoInTable record={record} data={data}/>
-            <ButtonEditDespacho record={record} data={data}/>
-            <ButtonDeleteDespacho record={record} data={data}/>
+            <ButtonViewDespachoInTable nro_record={record.nro} data={data} sizeButton={19} sizeDrawer={500}/>
+            <ButtonEditDespacho nro_record={record.nro} data={data} sizeButton={19} sizeDrawer={500}/>
+            <ButtonDeleteDespacho nro_record={record.nro} data={data} sizeButton={19}/>
           </div>
         );
       },
@@ -69,17 +75,31 @@ function DespachosTable() {
   ];
 
   const fileData = data.map((despacho: Despachos) => ({
-      key: despacho.id_despacho,
-      nro: despacho.id_despacho,
-      rut: despacho.rut_cliente_despacho,
-      direccion: `${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`,
-      despachador: despacho.usuario_despachador,
-      estado: despacho.nombre_estado,
-    }));
-
+    key: despacho.id_despacho,
+    nro: despacho.id_despacho,
+    rut: despacho.rut_cliente_despacho,
+    direccion: `${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`,
+    despachador: despacho.usuario_despachador,
+    estado: despacho.nombre_estado,
+  }));
   return (
-    <div className="mt-2">
-      <Table columns={columns} dataSource={fileData} />
+    <div>
+      <div className="mt-2 hidden sm:block">
+        <Table columns={columns} dataSource={fileData} />
+      </div>
+      {data.map((despacho: Despachos) => (
+        <div key={despacho.id_despacho} className="sm:hidden">
+          <DespachoCard
+            nro_despacho={despacho.id_despacho}
+            estado_despacho={despacho.nombre_estado}
+            direccion={`${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`}
+            fecha_creación={showDate(despacho.fecha_creacion_despacho)}
+            total={despacho.monto_venta}
+            data={data}
+            nro_record={despacho.id_despacho}
+          />
+        </div>
+      ))}
     </div>
   );
 }

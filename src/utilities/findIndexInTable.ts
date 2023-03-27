@@ -1,6 +1,4 @@
-export function findIndexInTable(record:any){
-  const nroRecord = record.record.nro
-  const data = record.data;
-  const idDespacho = data.findIndex((data: { id_despacho: any; }) => data.id_despacho === nroRecord)
-  return record.data[idDespacho]
+export function findIndexInTable(nro_record:any, data: any){
+  const idDespacho = data.findIndex((data: { id_despacho: any; }) => data.id_despacho === nro_record)
+  return data[idDespacho]
 }

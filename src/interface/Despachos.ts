@@ -24,12 +24,12 @@ export interface Despachos {
   vehiculo_despacho?: string;
   //patente for component selectPatente in editDespacho
   patente?: string;
-  monto_venta?: string;
+  monto_venta: string;
   comentario_despacho?: string;
-  nombre_estado?: string;
+  nombre_estado: string;
   estado_despacho?: number;
   estado_actividad?: number
-  fecha_creacion_despacho?: string;
+  fecha_creacion_despacho: string;
   fecha_modificacion_despacho?: string;
   fechayhora_comienzo_despacho?: string;
   fechayhora_termino_despacho?: string;

@@ -4,8 +4,13 @@ import { updateDespacho } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
 import { findIndexInTable } from "../../utilities/findIndexInTable";
 
-function ButtonDeleteDespacho(record: any) {
-  const dataDespacho: Despachos = findIndexInTable(record);
+interface Props {
+  nro_record: any,
+  data: any
+  sizeButton: number
+}
+function ButtonDeleteDespacho({nro_record, data, sizeButton}:Props) {
+  const dataDespacho: Despachos = findIndexInTable(nro_record, data);
   const queryClient = useQueryClient();
   const updateDespachoMutation = useMutation({
     mutationFn: updateDespacho,
@@ -25,7 +30,7 @@ function ButtonDeleteDespacho(record: any) {
   return (
     <div>
       <button onClick={handleDeleteDespacho}>
-        <FiTrash2 size={19} color={"red"} />
+        <FiTrash2 size={sizeButton} color={"red"} />
       </button>
     </div>
   );

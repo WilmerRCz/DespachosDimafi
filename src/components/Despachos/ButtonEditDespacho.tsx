@@ -5,15 +5,21 @@ import { Despachos } from "../../interface/Despachos";
 import useModal from "../../hooks/useModal";
 import FormEditDespacho from "./FormDespachos/FormEditDespacho";
 
-function ButtonEditDespacho(record: any) {
+interface Props {
+  nro_record: any,
+  data: any
+  sizeButton: number
+  sizeDrawer: number | string
+}
+function ButtonEditDespacho({nro_record, data, sizeButton, sizeDrawer}:Props) {
   const {open, showDrawer, onClose} = useModal()
-  const dataDespacho: Despachos = findIndexInTable(record);
+  const dataDespacho: Despachos = findIndexInTable(nro_record, data);
   //console.log(dataDespacho)
   return (
     <div>
       <button>
         <FiEdit3
-          size={19}
+          size={sizeButton}
           color={"#FFC300"}
           onClick={showDrawer}
         />
@@ -21,7 +27,7 @@ function ButtonEditDespacho(record: any) {
       <Drawer
         title={"Editar Despacho"}
         placement={"right"}
-        width={425}
+        width={sizeDrawer}
         onClose={onClose}
         open={open}
         maskClosable={true}

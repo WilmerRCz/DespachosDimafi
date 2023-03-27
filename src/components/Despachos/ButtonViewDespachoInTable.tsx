@@ -3,25 +3,31 @@ import { FiEye } from "react-icons/fi";
 import { convertDate } from '../../utilities/convertDate';
 import { findIndexInTable } from '../../utilities/findIndexInTable';
 import useModal from "../../hooks/useModal";
+import EstadoStyled from "../common/EstadoStyled";
 
+interface Props {
+  nro_record: any,
+  data: any
+  sizeButton: number
+  sizeDrawer: number | string
+}
 
-function ButtonViewDespachoInTable(record: any) {
+function ButtonViewDespachoInTable({nro_record, data, sizeButton, sizeDrawer}:Props) {
   const {open, showDrawer, onClose} = useModal()
-
-  const dataDespacho = findIndexInTable(record)
+  const dataDespacho = findIndexInTable(nro_record, data)
   
   return (
     <div>
       <button>
         <FiEye
-          size={19}
+          size={sizeButton}
           onClick={showDrawer}
         />
       </button>
       <Drawer
         title={"Ver Despacho"}
         placement={"right"}
-        width={425}
+        width={sizeDrawer}
         onClose={onClose}
         open={open}
       >
@@ -68,7 +74,7 @@ function ButtonViewDespachoInTable(record: any) {
             </div>
             <div className="">
               <p className="text-slate-500">Estado</p>
-              <p className="text-slate-800">{dataDespacho.nombre_estado}</p>
+              <EstadoStyled estado={dataDespacho.nombre_estado}/>
             </div>
             <div className="">
               <p className="text-slate-500">Sucursal</p>
