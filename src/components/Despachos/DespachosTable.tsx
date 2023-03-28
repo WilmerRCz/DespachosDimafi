@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Table } from "antd";
 import { getDespachos } from "../../api/resDespachos";
-import { Despachos } from "../../interface/Despachos";
+import { Despachocard, Despachos } from "../../interface/Despachos";
 import { AlignType } from "rc-table/lib/interface";
 import ButtonViewDespachoInTable from "./ButtonViewDespachoInTable";
 import ButtonEditDespacho from "./ButtonEditDespacho";
@@ -9,6 +9,7 @@ import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import SpinnerLoading from "../common/SpinnerLoading";
 import EstadoStyled from "../common/EstadoStyled";
 import DespachoCard from "./DespachoCard";
+
 
 function DespachosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -101,7 +102,7 @@ function DespachosTable() {
       <div className="mt-2 hidden sm:block">
         <Table columns={columns} dataSource={fileData} />
       </div>
-      {data.map((despacho: Despachos) => (
+      {data.map((despacho: Despachocard) => (
         <div key={despacho.id_despacho} className="sm:hidden">
           <DespachoCard
             nro_despacho={despacho.id_despacho}

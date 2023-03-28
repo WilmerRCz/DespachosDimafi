@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getComunas } from "../../api/resComunas";
 import { Comunas } from "../../interface/Comunas";
-import { UseFormRegister, FieldValues } from "react-hook-form";
+import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 
-interface Props {
+interface Props<T extends FieldValues> {
   value?: string | number;
   isEdit?: boolean;
-  register: UseFormRegister<FieldValues>;
+  name: Path<T>
+  register: UseFormRegister<T>;
 }
 
-function SelectComuna({ value, isEdit, register }: Props) {
+function SelectComuna<T extends FieldValues>({ value, isEdit ,name, register }: Props<T>) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["Comunas"],
     queryFn: getComunas,
@@ -24,13 +25,13 @@ function SelectComuna({ value, isEdit, register }: Props) {
   return (
     <div className="col-span-1">
       <label
-        htmlFor="comuna_cliente"
+        htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         <span className="text-red-500">*</span>Comunas
       </label>
       <select
-        {...register("comuna_cliente", { valueAsNumber: true })}
+        {...register(name, { valueAsNumber: true })}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
       >
         {isEdit ? (

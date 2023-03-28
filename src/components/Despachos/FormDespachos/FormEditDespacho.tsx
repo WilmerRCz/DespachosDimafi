@@ -1,4 +1,4 @@
-import useFormEditDespacho from '../../../hooks/useFormEditDespacho';
+import useFormEditDespacho from "../../../hooks/useFormEditDespacho";
 import { Despachos } from "../../../interface/Despachos";
 import InputForDrawer from "../../../components/common/InputForDrawer";
 import SelectCelular from "../../../components/common/SelectCelular";
@@ -16,7 +16,10 @@ interface Props {
 }
 
 function FormEditDespacho({ dataDespacho, onClose }: Props) {
-  const { handleSubmit, onSubmit, register, errors } = useFormEditDespacho({onClose, dataDespacho});
+  const { handleSubmit, onSubmit, register, errors } = useFormEditDespacho({
+    onClose,
+    dataDespacho,
+  });
   return (
     <form
       id="formEditDespacho"
@@ -72,11 +75,14 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         errorMessage={errors.apto_cliente?.message}
       />
       <SelectComuna
+        name={"comuna_cliente"}
         register={register}
         value={dataDespacho.nombre_comuna}
         isEdit={true}
       />
       <SelectCelular
+        name={"codigo_celular_cliente"}
+        celular_cliente={"celular_cliente"}
         register={register}
         valueCod={dataDespacho.codigo_celular}
         valueCelular={dataDespacho.celular_cliente}
@@ -84,6 +90,8 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         errorMessage={errors.celular_cliente?.message}
       />
       <SelectTipoDocumento
+        name={"tipo_documento"}
+        nro_documento={"nro_documento"}
         register={register}
         isEdit={true}
         valueTipoDoc={dataDespacho.nombre_documento}
@@ -100,16 +108,19 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         errorMessage={errors.nro_oc?.message}
       />
       <SelectDespachador
+        name={"usuario_despachador"}
         register={register}
         value={dataDespacho.usuario_despachador}
         isEdit={true}
       />
       <SelectPatente
+        name={"vehiculo_despacho"}
         register={register}
         value={dataDespacho.patente}
         isEdit={true}
       />
       <SelectSucursales
+        name={"sucursal_despacho"}
         register={register}
         value={dataDespacho.nombre_sucursal}
         isEdit={true}
@@ -125,6 +136,7 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
         errorMessage={errors.monto_venta?.message}
       />
       <SelectEstadoDespacho
+        name={"estado_despacho"}
         value={dataDespacho.nombre_estado}
         register={register}
         isEdit={true}

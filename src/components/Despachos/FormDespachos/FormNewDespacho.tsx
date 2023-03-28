@@ -63,9 +63,9 @@ function FormNewDespacho({onClose}:Props) {
         optional={true}
         errorMessage={errors.apto_cliente?.message}
       />
-      <SelectComuna register={register} />
-      <SelectCelular register={register} errorMessage={errors.celular_cliente?.message}/>
-      <SelectTipoDocumento register={register} errorMessage={errors.nro_documento?.message}/>
+      <SelectComuna register={register} name={"comuna_cliente"}/>
+      <SelectCelular register={register} name={"codigo_celular_cliente"} celular_cliente={"celular_cliente"} errorMessage={errors.celular_cliente?.message}/>
+      <SelectTipoDocumento register={register} name={"tipo_documento"} nro_documento={"nro_documento"} errorMessage={errors.nro_documento?.message}/>
       <InputForDrawer
         label="Orden de Compra"
         register={register}
@@ -74,9 +74,9 @@ function FormNewDespacho({onClose}:Props) {
         required={true}
         errorMessage={errors.nro_oc?.message}
       />
-      <SelectDespachador register={register} />
-      <SelectPatente register={register} />
-      <SelectSucursales register={register} />
+      <SelectDespachador register={register} name={"usuario_despachador"}/>
+      <SelectPatente register={register} name={"vehiculo_despacho"}/>
+      <SelectSucursales register={register} name={"sucursal_despacho"}/>
       <InputForDrawer
         label="Total"
         register={register}

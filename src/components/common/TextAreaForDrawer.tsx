@@ -1,24 +1,34 @@
 import React from "react";
-import { UseFormRegister, FieldValues } from 'react-hook-form';
-interface Props {
+import { UseFormRegister, FieldValues, Path } from "react-hook-form";
+interface Props<T extends FieldValues> {
   label: string;
   placeholder?: string;
   optional?: string;
   colspan: string;
-  name: string
+  name: Path<T>;
   value?: string;
-  register: UseFormRegister<FieldValues>
-  errorMessage?: string
+  register: UseFormRegister<T>;
+  errorMessage?: string;
 }
 
-function TextAreaForDrawer({ label, placeholder, name, optional, colspan, value, register, errorMessage}: Props) {
+function TextAreaForDrawer<T extends FieldValues>({
+  label,
+  placeholder,
+  name,
+  optional,
+  colspan,
+  value,
+  register,
+  errorMessage,
+}: Props<T>) {
   return (
     <div className={colspan}>
       <label
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        {label}<span className="text-xs text-slate-400"> {optional}</span>
+        {label}
+        <span className="text-xs text-slate-400"> {optional}</span>
       </label>
       <textarea
         {...register(name)}

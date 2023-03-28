@@ -1,16 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import { getEstadoDespacho } from "../../api/resEstadoDespacho";
 import { EstadoDespacho } from "../../interface/EstadoDespacho";
-import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 
-interface Props {
+interface Props<T extends FieldValues> {
   value?: string | number;
+  name: Path<T>;
   isEdit?: boolean;
   isDisable?: boolean;
-  register: UseFormRegister<FieldValues>
+  register: UseFormRegister<T>;
 }
 
-function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
+function SelectEstadoDespacho<T extends FieldValues>({
+  value,
+  isEdit,
+  isDisable,
+  name,
+  register,
+}: Props<T>) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["EstadoDespacho"],
     queryFn: getEstadoDespacho,
@@ -26,14 +33,15 @@ function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
   return (
     <div className="col-span-1">
       <label
-        htmlFor="estado_despacho"
+        htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        Estado del despacho<span className="text-xs text-slate-400">(optional)</span>
+        Estado del despacho
+        <span className="text-xs text-slate-400">(optional)</span>
       </label>
       {isDisable ? (
         <select
-        {...register("estado_despacho", { valueAsNumber: true })}
+          {...register(name, { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
         >
           {isEdit ? (
@@ -44,7 +52,7 @@ function SelectEstadoDespacho({ value, isEdit, isDisable, register }: Props) {
         </select>
       ) : (
         <select
-        {...register("estado_despacho", { valueAsNumber: true })}
+          {...register(name, { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
         >
           {isEdit ? (

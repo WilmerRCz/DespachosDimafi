@@ -1,23 +1,27 @@
-import { UseFormRegister, FieldValues } from "react-hook-form";
+import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { getTipoDocumento } from "../../api/resTipoDocumento";
 import { TipoDocumento } from "../../interface/TipoDocumento";
 
-interface Props {
+interface Props<T extends FieldValues> {
   valueTipoDoc?: string;
+  name: Path<T>
+  nro_documento: Path<T>
   valueDoc?: string;
   isEdit?: boolean;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<T>;
   errorMessage?: string;
 }
 
-function SelectTipoDocumento({
+function SelectTipoDocumento<T extends FieldValues>({
   valueTipoDoc,
   valueDoc,
+  name,
+  nro_documento,
   isEdit,
   register,
   errorMessage
-}: Props) {
+}: Props<T>) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["TipoDocumento"],
     queryFn: getTipoDocumento,
@@ -31,14 +35,14 @@ function SelectTipoDocumento({
   return (
     <div className="col-span-1">
       <label
-        htmlFor="nro_documento"
+        htmlFor={nro_documento}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         <span className="text-red-500">*</span>Tipo de documento
       </label>
       <div className="block w-full">
         <select
-          {...register("tipo_documento", { valueAsNumber: true })}
+          {...register(name, { valueAsNumber: true })}
           className="bg-gray-50 border border-gray-300 w-full sm:w-2/6 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-1"
         >
           {isEdit ? (
@@ -56,7 +60,7 @@ function SelectTipoDocumento({
           ))}
         </select>
         <input
-          {...register("nro_documento")}
+          {...register(nro_documento)}
           defaultValue={valueDoc}
           type="text"
           placeholder="435672"

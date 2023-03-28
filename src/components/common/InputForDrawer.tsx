@@ -1,19 +1,18 @@
-import React from "react";
-import { FieldError, FieldValues, UseFormRegister } from "react-hook-form";
-interface Props {
+import { FieldValues, Path, UseFormRegister } from "react-hook-form";
+interface Props<T extends FieldValues> {
   label: string;
   placeholder?: string;
   type: string;
   optional?: boolean;
   required?: boolean;
   setNumber?: boolean;
-  name: string;
+  name: Path<T>;
   defaultValue?: string | number;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<T>;
   errorMessage?: string
 }
 
-function InputForDrawer({
+function InputForDrawer<T extends FieldValues>({
   label,
   placeholder,
   name,
@@ -24,7 +23,7 @@ function InputForDrawer({
   required,
   register,
   errorMessage
-}: Props) {
+}: Props<T>) {
   return (
     <div className="col-span-1">
       <label
