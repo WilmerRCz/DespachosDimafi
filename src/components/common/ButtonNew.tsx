@@ -1,12 +1,15 @@
 import { Drawer, Space } from "antd";
-import FormNewDespacho from "./FormDespachos/FormNewDespacho";
+
 interface Props {
   open: boolean
   showDrawer: () => void
   onClose: () => void
+  children: React.ReactNode
+  title: string
+  idForm?: string
 }
 
-function ButtonNewDespacho({open, showDrawer, onClose}:Props) {
+function ButtonNew({open, showDrawer, onClose, children, title, idForm}:Props) {
   return (
     <div>
       <button
@@ -16,7 +19,7 @@ function ButtonNewDespacho({open, showDrawer, onClose}:Props) {
         Nuevo
       </button>
       <Drawer
-        title="Crea un nuevo despacho"
+        title={title}
         placement={"bottom"}
         height={500}
         onClose={onClose}
@@ -32,7 +35,7 @@ function ButtonNewDespacho({open, showDrawer, onClose}:Props) {
             </button>
             <button
               type="submit"
-              form="formNewDespacho"
+              form={idForm}
               className="bg-green-500 rounded text-slate-700 font-semibold p-0.5 border-2 border-green-600 hover:text-white shadow-md"
             >
               Crear
@@ -41,11 +44,11 @@ function ButtonNewDespacho({open, showDrawer, onClose}:Props) {
         }
       >
         <div>
-          <FormNewDespacho onClose={onClose}/>
+          {children}
         </div>
       </Drawer>
     </div>
   );
 }
 
-export default ButtonNewDespacho;
+export default ButtonNew;
