@@ -16,7 +16,7 @@ function VehiculosPage() {
         <TitlePage title="Vehiculos" />
         <div className="flex justify-end gap-2">
           <ButtonNew open={open} showDrawer={showDrawer} onClose={onClose} title={"Crea un nuevo vehiculo"} idForm={"formNewVehiculo"}>
-            <FormNewVehiculo/>
+            <FormNewVehiculo onClose={onClose}/>
           </ButtonNew>
           <ButtonExport />
         </div>

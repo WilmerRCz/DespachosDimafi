@@ -1,3 +1,4 @@
+import { Vehiculos } from "../interface/Vehiculos";
 import axios from "../libs/axios";
 
 export const getVehiculos = async () => {
@@ -8,4 +9,8 @@ export const getVehiculos = async () => {
 export const getVehiculosActivos = async () => {
   const {data} = await axios.get("/vehiculos/activos");
   return data;
+};
+
+export const createVehiculo = (vehiculo: Vehiculos) => {
+  return axios.post("/vehiculos", vehiculo);
 };
