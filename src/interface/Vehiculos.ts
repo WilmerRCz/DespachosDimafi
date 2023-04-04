@@ -6,6 +6,6 @@ export interface Vehiculos {
   nombre_sucursal?: string
   estado_vehiculo: string;
   nombre_estado?: string
-  fecha_creacion_vehiculo?: string;
-  fecha_modificacion_vehiculo?: string;
+  fecha_creacion_vehiculo: string;
+  fecha_modificacion_vehiculo: string;
 }

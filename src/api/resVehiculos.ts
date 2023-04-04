@@ -14,3 +14,7 @@ export const getVehiculosActivos = async () => {
 export const createVehiculo = (vehiculo: Vehiculos) => {
   return axios.post("/vehiculos", vehiculo);
 };
+
+export const updateVehiculo = (vehiculo: Vehiculos) => {
+  return axios.put(`/vehiculos/${vehiculo.patente}`, vehiculo);
+};
