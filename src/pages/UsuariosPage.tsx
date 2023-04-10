@@ -1,5 +1,4 @@
 import ButtonExport from "../components/common/ButtonExport";
-import ButtonNew from "../components/common/ButtonNew";
 import Navbar from "../components/Navbar/Navbar";
 import TitlePage from "../components/common/TitlePage";
 import UsuariosTable from "../components/Usuarios/UsuariosTable";
