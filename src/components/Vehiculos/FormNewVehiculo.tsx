@@ -1,7 +1,5 @@
-import React from 'react'
-import useFormNewVehiculo from '../../hooks/useFormNewVehiculo';
+import useFormNewVehiculo from './hooks/useFormNewVehiculo';
 import InputForDrawer from '../common/InputForDrawer'
-import SelectEstadoActividad from '../common/SelectEstadoActividad';
 import SelectSucursales from '../common/SelectSucursales';
 interface Props {
   onClose: () => void

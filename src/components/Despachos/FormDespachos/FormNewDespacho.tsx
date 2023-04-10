@@ -6,7 +6,7 @@ import SelectPatente from "../../../components/common/SelectPatente";
 import SelectComuna from "../../../components/common/SelectComuna";
 import SelectCelular from "../../../components/common/SelectCelular";
 import SelectTipoDocumento from "../../../components/common/SelectTipoDocumento";
-import useFormNewDespacho from "../../../hooks/useFormNewDespacho";
+import useFormNewDespacho from "../hooks/useFormNewDespacho";
 
 interface Props {
   onClose: () => void

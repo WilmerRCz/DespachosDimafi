@@ -1,9 +1,9 @@
-import { Vehiculos } from "../interface/Vehiculos";
+import { Vehiculos } from "../../../interface/Vehiculos";
 import {yupResolver} from "@hookform/resolvers/yup"
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createVehiculo } from "../api/resVehiculos";
-import { vehiculoSchema } from "../schemas/vehiculoSchema";
+import { createVehiculo } from "../../../api/resVehiculos";
+import { vehiculoSchema } from "../../../schemas/vehiculoSchema";
 
 interface Props {
   onClose: () => void

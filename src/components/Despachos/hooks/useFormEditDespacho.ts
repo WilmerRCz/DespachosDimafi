@@ -2,10 +2,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { updateDespacho } from "../api/resDespachos";
-import { Despachos } from "../interface/Despachos";
-import { despachoSchema } from "../schemas/despachoSchema";
-import { getDateNow } from '../utilities/getDateNow';
+import { updateDespacho } from "../../../api/resDespachos";
+import { Despachos } from "../../../interface/Despachos";
+import { despachoSchema } from "../../../schemas/despachoSchema";
+import { getDateNow } from '../../../utilities/getDateNow';
 
 interface Props {
   dataDespacho: Despachos;

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { EstadoDespacho } from "../../interface/EstadoDespacho";
+import { EstadoActividad } from "../../interface/EstadoDespacho";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getEstadoActividad } from "../../api/resEstadoActividad";
 
@@ -27,7 +27,7 @@ function SelectEstadoActividad<T extends FieldValues>({
   else if (isError) return <div>Error: desde react query</div>;
 
   const findEstado = data.find(
-    (element: EstadoDespacho) => element.nombre_estado === value
+    (element: EstadoActividad) => element.nombre_estado === value
   );
 
   return (
@@ -60,7 +60,7 @@ function SelectEstadoActividad<T extends FieldValues>({
               {findEstado.nombre_estado}
             </option>
           ) : null}
-          {data.map((estado: EstadoDespacho) => (
+          {data.map((estado: EstadoActividad) => (
             <option key={estado.id_estado} value={estado.id_estado}>
               {estado.nombre_estado}
             </option>

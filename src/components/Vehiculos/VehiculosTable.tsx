@@ -7,7 +7,6 @@ import { AlignType } from "rc-table/lib/interface";
 import SpinnerLoading from "../common/SpinnerLoading";
 import { convertDate } from "../../utilities/convertDate";
 import InactiveStyle from "../common/InactiveStyle";
-import ButtonViewVehiculo from "./ButtonViewVehiculo";
 import ButtonEditVehiculo from "./ButtonEditVehiculo";
 
 function VehiculosTable() {
@@ -61,12 +60,6 @@ function VehiculosTable() {
       render: (text: any, record: any, index: any) => {
         return (
           <div className="flex gap-4 justify-center">
-            <ButtonViewVehiculo
-              nro_record={record.patente}
-              data={data}
-              sizeButton={19}
-              sizeDrawer={500}
-            />
             <ButtonEditVehiculo
               nro_record={record.patente}
               data={data}

@@ -1,4 +1,3 @@
-import React from 'react'
 import useModal from '../../hooks/useModal'
 import { FiEdit3 } from "react-icons/fi";
 import { Drawer, Space } from "antd";

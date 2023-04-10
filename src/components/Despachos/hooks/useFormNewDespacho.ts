@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
-import { createDespacho } from "../api/resDespachos";
-import { Despachos } from "../interface/Despachos";
+import { createDespacho } from "../../../api/resDespachos";
+import { Despachos } from "../../../interface/Despachos";
 import {yupResolver} from "@hookform/resolvers/yup"
-import { despachoSchema } from "../schemas/despachoSchema";
+import { despachoSchema } from "../../../schemas/despachoSchema";
 
 interface Props {
   onClose: () => void

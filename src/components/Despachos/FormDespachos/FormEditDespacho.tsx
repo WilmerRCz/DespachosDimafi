@@ -1,4 +1,4 @@
-import useFormEditDespacho from "../../../hooks/useFormEditDespacho";
+import useFormEditDespacho from "../hooks/useFormEditDespacho";
 import { Despachos } from "../../../interface/Despachos";
 import InputForDrawer from "../../../components/common/InputForDrawer";
 import SelectCelular from "../../../components/common/SelectCelular";
