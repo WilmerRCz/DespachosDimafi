@@ -25,7 +25,7 @@ function FormEditSucursal({onClose, dataSucursal}:Props) {
         defaultValue={dataSucursal.nombre_sucursal}
         errorMessage={errors.nombre_sucursal?.message}
       />
-      <SelectEstadoActividad name={"estado_sucursal"} register={register} isEdit={true} value={dataSucursal.nombre_estado}/>
+      <SelectEstadoActividad name={"estado_sucursal"} nameLabel='Estado sucursal' register={register} isEdit={true} value={dataSucursal.nombre_estado}/>
     </form>
   )
 }

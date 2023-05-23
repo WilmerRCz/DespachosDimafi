@@ -6,6 +6,7 @@ import { getEstadoActividad } from "../../api/resEstadoActividad";
 interface Props<T extends FieldValues> {
   value?: string | number;
   name: Path<T>;
+  nameLabel: string
   isEdit?: boolean;
   isDisable?: boolean;
   register: UseFormRegister<T>;
@@ -16,6 +17,7 @@ function SelectEstadoActividad<T extends FieldValues>({
   isEdit,
   isDisable,
   name,
+  nameLabel,
   register,
 }: Props<T>) {
   const { data, isLoading, isError } = useQuery({
@@ -36,8 +38,8 @@ function SelectEstadoActividad<T extends FieldValues>({
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        Estado del despacho
-        <span className="text-xs text-slate-400">(optional)</span>
+        {nameLabel}
+        <span className="text-xs text-slate-400"> (optional)</span>
       </label>
       {isDisable ? (
         <select

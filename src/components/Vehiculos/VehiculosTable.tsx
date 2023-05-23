@@ -1,7 +1,6 @@
 import { getVehiculos } from "../../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
 import { Vehiculos } from "../../interface/Vehiculos";
-import TitlePage from "../common/TitlePage";
 import { Table } from "antd";
 import { AlignType } from "rc-table/lib/interface";
 import SpinnerLoading from "../common/SpinnerLoading";

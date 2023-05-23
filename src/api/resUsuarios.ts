@@ -1,3 +1,4 @@
+import { Usuarios } from "../interface/Usuario";
 import axios from "../libs/axios";
 
 export const getUsuarios = async () => {
@@ -8,4 +9,12 @@ export const getUsuarios = async () => {
 export const getDespachadoresActivos = async () => {
   const { data } = await axios.get("/usuarios/activos/despachadores");
   return data;
+};
+
+export const createUsuario = (usuario: Usuarios) => {
+  return axios.post("/usuarios", usuario);
+};
+
+export const updateUsuario = (usuario: Usuarios) => {
+  return axios.put(`/usuarios/${usuario.id_usuario}`, usuario);
 };

@@ -18,7 +18,7 @@ const { handleSubmit, onSubmit, register} =  useFormEditVehiculo({onClose, dataV
         isEdit={true}
         value={dataVehiculo.nombre_sucursal}
       />
-      <SelectEstadoActividad name={"estado_vehiculo"} register={register} isEdit={true} value={dataVehiculo.nombre_estado}/>
+      <SelectEstadoActividad name={"estado_vehiculo"} nameLabel='Estado vehiculo' register={register} isEdit={true} value={dataVehiculo.nombre_estado}/>
     </form>
   )
 }
