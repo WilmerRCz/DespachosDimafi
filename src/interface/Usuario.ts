@@ -12,3 +12,8 @@ export interface Usuarios {
   fecha_creacion_usuario: string
   fecha_modificacion_usuario: string
 }
+
+export interface PrivilegioUsuarios {
+  id_privilegios: number,
+  privilegio: string
+}

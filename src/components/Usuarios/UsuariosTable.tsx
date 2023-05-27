@@ -89,7 +89,7 @@ function UsuariosTable() {
 
   return (
     <div>
-    <div className="mt-2 hidden sm:block">
+    <div className="mt-2">
       <Table columns={columns} dataSource={fileData} />
     </div>
   </div>
