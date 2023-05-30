@@ -11,7 +11,7 @@ interface Props {
 
 export default function useFormNewUsuario({ onClose }: Props) {
   const queryClient = useQueryClient();
-  const createNewSucursal = useMutation({
+  const createNewUsuario = useMutation({
     mutationFn: createUsuario,
     onSuccess: () => {
       alert("Usuario creado!");
@@ -26,7 +26,7 @@ export default function useFormNewUsuario({ onClose }: Props) {
   });
   const onSubmit: SubmitHandler<Usuarios> = (data) => {
     console.log(data)
-    createNewSucursal.mutate(data)
+    createNewUsuario.mutate(data)
   };
 
   return {

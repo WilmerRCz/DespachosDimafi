@@ -5,6 +5,7 @@ import { AlignType } from "rc-table/lib/interface";
 import { Table } from "antd";
 import SpinnerLoading from "../common/SpinnerLoading";
 import InactiveStyle from "../common/InactiveStyle";
+import ButtonEditUsuario from "./ButtonEditUsuario";
 
 
 function UsuariosTable() {
@@ -64,13 +65,12 @@ function UsuariosTable() {
       render: (text: any, record: any, index: any) => {
         return (
           <div className="flex gap-4 justify-center">
-            ...
-{/*             <ButtonEditVehiculo
-              nro_record={record.patente}
+            <ButtonEditUsuario
+              nro_record={record.id}
               data={data}
               sizeButton={19}
               sizeDrawer={500}
-            /> */}
+            />
           </div>
         );
       },

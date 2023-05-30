@@ -17,28 +17,30 @@ function SelectPrivilegio<T extends FieldValues>({ value, isEdit ,name, register
     queryFn: getPrivilegios,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
-  else if (isError) return <div>Error: desde react query</div>;
+  if (isLoading) return <div>Cargando...</div>
+  else if (isError) return <div>Error: desde react query</div>
+
   const findPrivilegio:PrivilegioUsuarios  = data.find(
     (element: PrivilegioUsuarios) => element.privilegio === value
-  );
+  )
+  
   return (
     <div className="col-span-1">
       <label
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        <span className="text-red-500">*</span>Privilegios
+        <span className="text-red-500">*</span>Privilegio
       </label>
       <select
         {...register(name, { valueAsNumber: true })}
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1"
       >
-        {isEdit ? (
+        {isEdit && (
           <option value={findPrivilegio.id_privilegios}>
             {findPrivilegio.privilegio}
           </option>
-        ) : null}
+        )}
         {data.map((privilegios: PrivilegioUsuarios) => (
           <option key={privilegios.id_privilegios} value={privilegios.id_privilegios}>
             {privilegios.privilegio}

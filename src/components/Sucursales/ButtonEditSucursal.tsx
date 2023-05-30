@@ -14,7 +14,6 @@ interface Props {
 function ButtonEditSucursal({nro_record, data, sizeButton, sizeDrawer}:Props) {
   const {open, showDrawer, onClose} = useModal()
   const dataSucursal = data.findIndex((data: { id_sucursal: any; }) => data.id_sucursal === nro_record)
-
   return (
     <div>
     <button>
