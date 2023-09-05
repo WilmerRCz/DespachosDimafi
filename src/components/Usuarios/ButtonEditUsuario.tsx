@@ -1,7 +1,7 @@
 import { FiEdit3 } from "react-icons/fi";
 import { Drawer, Space } from "antd";
 import useModal from "../../hooks/useModal";
-import FormEditUsuario from "./formEditUsuario";
+import FormEditUsuario from "./FormEditUsuario";
 
 interface Props {
   nro_record: any;
