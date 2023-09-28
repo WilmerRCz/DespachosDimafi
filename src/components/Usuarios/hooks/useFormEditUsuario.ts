@@ -29,7 +29,7 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
 
   
   const onSubmit: SubmitHandler<Usuarios> = (data) => {
-    console.log(data)
+    // console.log(data)
     updateUsuarioMutation.mutate({
       ...data,
       id_usuario: dataUsuario?.id_usuario

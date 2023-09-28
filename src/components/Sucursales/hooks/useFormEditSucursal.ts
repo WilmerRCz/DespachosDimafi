@@ -25,7 +25,7 @@ export default function useFormEditSucursal({ onClose, dataSucursal }: Props) {
     resolver: yupResolver(sucursalSchema)
   });
   const onSubmit: SubmitHandler<Sucursales> = (data) => {
-    console.log(data)
+    // console.log(data)
     updateSucursalMutation.mutate({
       ...data,
       id_sucursal: dataSucursal.id_sucursal

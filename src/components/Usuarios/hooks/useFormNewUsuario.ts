@@ -25,7 +25,7 @@ export default function useFormNewUsuario({ onClose }: Props) {
     resolver: yupResolver(usuarioSchema)
   });
   const onSubmit: SubmitHandler<Usuarios> = (data) => {
-    console.log(data)
+    // console.log(data)
     createNewUsuario.mutate(data)
   };
 

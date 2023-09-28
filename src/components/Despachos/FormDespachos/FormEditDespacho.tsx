@@ -26,6 +26,12 @@ function FormEditDespacho({ dataDespacho, onClose }: Props) {
       className="grid grid-cols-1 gap-4"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <button
+        type="submit"
+        className="bg-green-500 rounded text-slate-700 font-semibold p-0.5 mx-2 border-2 border-green-600 hover:text-white shadow-md"
+      >
+        Editar
+      </button>      
       <InputForDrawer
         label="Rut"
         register={register}

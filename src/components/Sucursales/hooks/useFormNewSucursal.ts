@@ -25,7 +25,7 @@ export default function useFormNewSucursal({onClose}: Props) {
     resolver: yupResolver(sucursalSchema)
   });
   const onSubmit: SubmitHandler<Sucursales> = (data) => {
-    console.log(data)
+    // console.log(data)
     createNewSucursal.mutate(data)
   };
 
