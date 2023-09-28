@@ -20,19 +20,21 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
       queryClient.invalidateQueries({ queryKey: ["DespachadoresActivos"] })
       onClose()
       
-     // reset
     },
   });
 
   const { register, handleSubmit, formState:{errors} } = useForm<Usuarios>({
     resolver: yupResolver(editUsuarioSchema)
   });
+
+  
   const onSubmit: SubmitHandler<Usuarios> = (data) => {
     console.log(data)
     updateUsuarioMutation.mutate({
       ...data,
       id_usuario: dataUsuario?.id_usuario
     })
+
   };
 
   return {
