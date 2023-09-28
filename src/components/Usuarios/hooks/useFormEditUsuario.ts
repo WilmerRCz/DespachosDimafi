@@ -7,7 +7,7 @@ import { editUsuarioSchema } from '../../../schemas/usuarioSchema';
 
 interface Props {
   onClose: () => void
-  dataUsuario?: Usuarios
+  dataUsuario: Usuarios
 }
 
 export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
@@ -19,6 +19,8 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
       queryClient.invalidateQueries({ queryKey: ["usuarios"] })
       queryClient.invalidateQueries({ queryKey: ["DespachadoresActivos"] })
       onClose()
+      
+     // reset
     },
   });
 
@@ -27,7 +29,10 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
   });
   const onSubmit: SubmitHandler<Usuarios> = (data) => {
     console.log(data)
-    //updateUsuarioMutation.mutate(data)
+    updateUsuarioMutation.mutate({
+      ...data,
+      id_usuario: dataUsuario?.id_usuario
+    })
   };
 
   return {

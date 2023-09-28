@@ -26,10 +26,10 @@ export default function useFormEditSucursal({ onClose, dataSucursal }: Props) {
   });
   const onSubmit: SubmitHandler<Sucursales> = (data) => {
     console.log(data)
-/*     updateSucursalMutation.mutate({
+    updateSucursalMutation.mutate({
       ...data,
       id_sucursal: dataSucursal.id_sucursal
-    }); */
+    });
 
     } 
 

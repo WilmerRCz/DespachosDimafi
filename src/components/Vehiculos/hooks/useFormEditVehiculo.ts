@@ -24,10 +24,10 @@ export default function useFormEditVehiculo({ onClose, dataVehiculo }: Props) {
   const { register, handleSubmit } = useForm<Vehiculos>();
   const onSubmit: SubmitHandler<Vehiculos> = (data) => {
     console.log(data)
-/*     updateVehiculoMutation.mutate({
+    updateVehiculoMutation.mutate({
       ...data,
       patente: dataVehiculo.patente
-    }); */
+    });
     } 
 
   return {
