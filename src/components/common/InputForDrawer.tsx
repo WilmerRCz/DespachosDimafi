@@ -30,9 +30,9 @@ function InputForDrawer<T extends FieldValues>({
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        {required && <span className="text-red-500">*</span>}
         {label}
-        {optional && <span className="text-xs text-slate-400">(optional)</span>
+        {required && <span className="text-red-500">*</span>}
+        {optional && <span className="text-xs text-slate-400"> (optional)</span>
         }
       </label>
       <input

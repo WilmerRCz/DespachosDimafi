@@ -34,7 +34,7 @@ function SelectSucursales<T extends FieldValues>({
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        <span className="text-red-500">*</span>Sucursales
+        Sucursales<span className="text-red-500">*</span>
       </label>
       <select
         {...register(name, { valueAsNumber: true })}

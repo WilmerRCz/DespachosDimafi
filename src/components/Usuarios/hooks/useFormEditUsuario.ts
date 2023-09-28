@@ -34,7 +34,7 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
       ...data,
       id_usuario: dataUsuario?.id_usuario
     })
-
+    
   };
 
   return {

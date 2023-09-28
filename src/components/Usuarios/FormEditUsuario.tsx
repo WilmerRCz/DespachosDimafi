@@ -15,10 +15,15 @@ function FormEditUsuario({ onClose, dataUsuario }: Props) {
 
   return (
     <form
-      id={`formEditUsuario`}
       onSubmit={handleSubmit(onSubmit)}
       className="grid grid-cols-1 gap-4"
     >
+      <button
+        type="submit"
+        className="bg-green-500 rounded text-slate-700 font-semibold p-0.5 mx-4 border-2 border-green-600 hover:text-white shadow-md"
+      >
+        Editar
+      </button>      
       <InputForDrawer
         label="Nombre"
         register={register}
@@ -76,6 +81,7 @@ function FormEditUsuario({ onClose, dataUsuario }: Props) {
         isEdit={true}
         value={dataUsuario.nombre_estado}
       />
+
     </form>
   );
 }

@@ -93,20 +93,6 @@ function UsuariosTable() {
       <Table columns={columns} dataSource={fileData} />
     </div>
   </div>
-/*     <div>
-      <TitlePage title="Usuarios:"/>
-      {data.map((usuario: Usuarios) => (
-        <div key={usuario.id_usuario}>
-          <h3>{`${usuario.nombre_usuario}  ${usuario.apellido_usuario}`}</h3>
-          <p>{usuario.correo}</p>
-          <p>{usuario.nombre_sucursal}</p>
-          <p>{usuario.nombre_estado}</p>
-          <p>{usuario.privilegio}</p>
-          <p>{usuario.fecha_creacion_usuario}</p>
-          <p>{usuario.fecha_modificacion_usuario}</p>
-        </div>
-      ))}
-    </div> */
   )
 }
 

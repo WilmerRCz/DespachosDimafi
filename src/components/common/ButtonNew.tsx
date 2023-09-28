@@ -24,7 +24,7 @@ function ButtonNew({open, showDrawer, onClose, children, title, idForm}:Props) {
         height={500}
         onClose={onClose}
         open={open}
-        maskClosable={false}
+        maskClosable={true}
         extra={
           <Space>
             <button

@@ -37,7 +37,7 @@ function SelectEstadoDespacho<T extends FieldValues>({
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         Estado del despacho
-        <span className="text-xs text-slate-400">(optional)</span>
+        <span className="text-xs text-slate-400"> (optional)</span>
       </label>
       {isDisable ? (
         <select

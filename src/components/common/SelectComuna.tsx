@@ -28,7 +28,7 @@ function SelectComuna<T extends FieldValues>({ value, isEdit ,name, register }: 
         htmlFor={name}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        <span className="text-red-500">*</span>Comunas
+        Comunas<span className="text-red-500">*</span>
       </label>
       <select
         {...register(name, { valueAsNumber: true })}
