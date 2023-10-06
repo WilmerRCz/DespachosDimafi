@@ -1,15 +1,17 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "../components/Guard/ProtectedRoute";
 import { ProtectedRouteForRole } from "../components/Guard/ProtectedRouteForRole";
 import { ProtectedRoutePublic } from "../components/Guard/ProtectedRoutePublic";
-import DashboardPage from "../pages/DashboardPage";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import NotFoundPage from "../pages/NotFoundPage";
-import SucursalesPage from "../pages/SucursalesPage";
-import UsuariosPage from "../pages/UsuariosPage";
-import VehiculosPage from "../pages/VehiculosPage";
+const DashboardPage = lazy(() => import("../pages/DashboardPage"))
+const LazyHomePage = lazy(() => import("../pages/HomePage")) 
+const LoginPage = lazy(() => import("../pages/LoginPage"))
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage"))
+const SucursalesPage = lazy(() => import("../pages/SucursalesPage"))
+const UsuariosPage = lazy(() => import("../pages/UsuariosPage"))
+const VehiculosPage = lazy(() => import("../pages/VehiculosPage"))
 import { useAuthStore } from "../store/auth";
+import SpinnerLoading from '../components/common/SpinnerLoading'
 
 function AppRoutes() {
   const isAuth = useAuthStore((state) => state.isAuth);
@@ -20,6 +22,7 @@ function AppRoutes() {
     lector: 4,
   };
   return (
+    <Suspense fallback={<SpinnerLoading size={38}/>}>
     <BrowserRouter>
       <Routes>
         {/* Rutas Publicas */}
@@ -42,7 +45,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="/home" index element={<HomePage />} />
+            <Route path="/home" index element={<LazyHomePage />} />
           </Route>
         </Route>
 
@@ -112,6 +115,7 @@ function AppRoutes() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </Suspense>
   );
 }
 
