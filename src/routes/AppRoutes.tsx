@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProtectedRoute } from "../components/Guard/ProtectedRoute";
 import { ProtectedRouteForRole } from "../components/Guard/ProtectedRouteForRole";
 import { ProtectedRoutePublic } from "../components/Guard/ProtectedRoutePublic";
-const DashboardPage = lazy(() => import("../pages/DashboardPage"))
+const LazyDashboardPage = lazy(() => import("../pages/DashboardPage"))
 const LazyHomePage = lazy(() => import("../pages/HomePage")) 
-const LoginPage = lazy(() => import("../pages/LoginPage"))
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage"))
-const SucursalesPage = lazy(() => import("../pages/SucursalesPage"))
-const UsuariosPage = lazy(() => import("../pages/UsuariosPage"))
-const VehiculosPage = lazy(() => import("../pages/VehiculosPage"))
+const LazyLoginPage = lazy(() => import("../pages/LoginPage"))
+const LazyNotFoundPage = lazy(() => import("../pages/NotFoundPage"))
+const LazySucursalesPage = lazy(() => import("../pages/SucursalesPage"))
+const LazyUsuariosPage = lazy(() => import("../pages/UsuariosPage"))
+const LazyVehiculosPage = lazy(() => import("../pages/VehiculosPage"))
 import { useAuthStore } from "../store/auth";
 import SpinnerLoading from '../components/common/SpinnerLoading'
 
@@ -27,8 +27,8 @@ function AppRoutes() {
       <Routes>
         {/* Rutas Publicas */}
         <Route element={<ProtectedRoutePublic isAllowed={isAuth} />}>
-          <Route path="/" index element={<LoginPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" index element={<LazyLoginPage />} />
+          <Route path="/login" element={<LazyLoginPage />} />
         </Route>
 
         {/* Rutas Privadas */}
@@ -57,7 +57,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="/usuarios" element={<UsuariosPage />} />
+            <Route path="/usuarios" element={<LazyUsuariosPage />} />
           </Route>
         </Route>
 
@@ -69,7 +69,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="/vehiculos" element={<VehiculosPage />} />
+            <Route path="/vehiculos" element={<LazyVehiculosPage />} />
           </Route>
         </Route>
 
@@ -81,7 +81,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="/sucursales" element={<SucursalesPage />} />
+            <Route path="/sucursales" element={<LazySucursalesPage />} />
           </Route>
         </Route>
 
@@ -93,7 +93,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard" element={<LazyDashboardPage />} />
           </Route>
         </Route>
 
@@ -110,7 +110,7 @@ function AppRoutes() {
               />
             }
           >
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<LazyNotFoundPage />} />
           </Route>
         </Route>
       </Routes>
