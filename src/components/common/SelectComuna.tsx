@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getComunas } from "../../api/resComunas";
 import { Comunas } from "../../interface/Comunas";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -16,7 +17,7 @@ function SelectComuna<T extends FieldValues>({ value, isEdit ,name, register }: 
     queryFn: getComunas,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
   else if (isError) return <div>Error: desde react query</div>;
 
   const findComuna = data.find(

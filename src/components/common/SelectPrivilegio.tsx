@@ -3,6 +3,7 @@ import { Comunas } from "../../interface/Comunas";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getPrivilegios } from "../../api/resPrivilegios";
 import { PrivilegioUsuarios } from "../../interface/Usuario";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -17,7 +18,7 @@ function SelectPrivilegio<T extends FieldValues>({ value, isEdit ,name, register
     queryFn: getPrivilegios,
   });
 
-  if (isLoading) return <div>Cargando...</div>
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
   else if (isError) return <div>Error: desde react query</div>
 
   const findPrivilegio:PrivilegioUsuarios  = data.find(

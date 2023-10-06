@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getDespachadoresActivos } from "../../api/resUsuarios";
 import { Usuarios } from "../../interface/Usuario";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -21,7 +22,7 @@ function SelectDespachador<T extends FieldValues>({
     queryFn: getDespachadoresActivos,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
   else if (isError) return <div>Error: desde react query</div>;
 
   const findDespachador = data.find(

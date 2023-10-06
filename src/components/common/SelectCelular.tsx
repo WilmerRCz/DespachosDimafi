@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getCelulares } from "../../api/resCelulares";
 import { Celulares } from "../../interface/Celulares";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   valueCod?: string | number;
@@ -26,8 +27,9 @@ function SelectCelular<T extends FieldValues>({
     queryFn: getCelulares,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
-  else if (isError) return <div>Error: desde react query</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
+
+  else if (isError) return <div>Error: desde react query</div>
 
   const findCod = data.find(
     (element: Celulares) => element.codigo_celular === valueCod

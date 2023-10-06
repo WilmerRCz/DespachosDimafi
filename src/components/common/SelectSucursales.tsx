@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getSucursalesActivas } from "../../api/resSucursales";
 import { Sucursales } from "../../interface/Sucursales";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -21,7 +22,7 @@ function SelectSucursales<T extends FieldValues>({
     queryFn: getSucursalesActivas,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
   else if (isError) return <div>Error: desde react query</div>;
 
   const findSucursal = data.find(

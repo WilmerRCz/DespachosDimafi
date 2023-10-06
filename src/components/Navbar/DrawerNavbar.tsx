@@ -69,14 +69,14 @@ function DrawerNavbar() {
             </li>
           </Link>
 
-          <Link to="/dashboard" onClick={onClose}>
+          {/* <Link to="/dashboard" onClick={onClose}>
             <li
               className={`text-gray-900 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-md`}
             >
               <MdDashboard size={28} />
               <span className={`text-slate-700 font-semibold`}>Dashboard</span>
             </li>
-          </Link>
+          </Link> */}
         </ul>
       </Drawer>
     </div>

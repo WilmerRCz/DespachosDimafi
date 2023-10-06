@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getEstadoDespacho } from "../../api/resEstadoDespacho";
-import { EstadoDespacho } from "../../interface/EstadoDespacho";
+import { EstadoActividad } from "../../interface/EstadoActividad";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -23,11 +24,11 @@ function SelectEstadoDespacho<T extends FieldValues>({
     queryFn: getEstadoDespacho,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
-  else if (isError) return <div>Error: desde react query</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
+  else if (isError) return <div>Error: desde react query</div>
 
   const findEstado = data.find(
-    (element: EstadoDespacho) => element.nombre_estado === value
+    (element: EstadoActividad) => element.nombre_estado === value
   );
 
   return (
@@ -60,7 +61,7 @@ function SelectEstadoDespacho<T extends FieldValues>({
               {findEstado.nombre_estado}
             </option>
           ) : null}
-          {data.map((estado: EstadoDespacho) => (
+          {data.map((estado: EstadoActividad) => (
             <option key={estado.id_estado} value={estado.id_estado}>
               {estado.nombre_estado}
             </option>

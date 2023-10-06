@@ -2,6 +2,7 @@ import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { getTipoDocumento } from "../../api/resTipoDocumento";
 import { TipoDocumento } from "../../interface/TipoDocumento";
+import SpinnerLoading from './SpinnerLoading'
 
 interface Props<T extends FieldValues> {
   valueTipoDoc?: string;
@@ -27,7 +28,7 @@ function SelectTipoDocumento<T extends FieldValues>({
     queryFn: getTipoDocumento,
   });
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <SpinnerLoading size={12} isSelect/>
   else if (isError) return <div>Error: desde react query</div>;
   const findDocumento = data.find(
     (element: TipoDocumento) => element.nombre_documento === valueTipoDoc
@@ -38,7 +39,7 @@ function SelectTipoDocumento<T extends FieldValues>({
         htmlFor={nro_documento}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
-        <span className="text-red-500">*</span>Tipo de documento
+        Tipo de documento<span className="text-red-500">*</span>
       </label>
       <div className="block w-full">
         <select
