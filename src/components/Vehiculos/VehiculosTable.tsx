@@ -7,6 +7,7 @@ import SpinnerLoading from "../common/SpinnerLoading";
 import { convertDate } from "../../utilities/convertDate";
 import InactiveStyle from "../common/InactiveStyle";
 import ButtonEditVehiculo from "./ButtonEditVehiculo";
+import ErrorReactQuery from '../common/ErrorReactQuery'
 
 function VehiculosTable() {
   const { data, isLoading, isError } = useQuery({
@@ -15,7 +16,7 @@ function VehiculosTable() {
   });
 
   if (isLoading) return <SpinnerLoading size={28} />;
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery/>
   const columns = [
     {
       title: "Patente",

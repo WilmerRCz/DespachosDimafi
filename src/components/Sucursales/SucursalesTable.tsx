@@ -7,6 +7,7 @@ import InactiveStyle from "../common/InactiveStyle";
 import { convertDate } from "../../utilities/convertDate";
 import { Table } from "antd";
 import ButtonEditSucursal from "./ButtonEditSucursal";
+import ErrorReactQuery from '../common/ErrorReactQuery'
 
 function SucursalesTable() {
   const { data, isLoading, isError } = useQuery({
@@ -15,7 +16,7 @@ function SucursalesTable() {
   });
 
   if (isLoading) return <SpinnerLoading size={28}/>;
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery/>
 
   const columns = [
     {

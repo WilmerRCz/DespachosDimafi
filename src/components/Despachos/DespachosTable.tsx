@@ -9,6 +9,7 @@ import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import SpinnerLoading from "../common/SpinnerLoading";
 import EstadoStyled from "../common/EstadoStyled";
 import DespachoCard from "./DespachoCard";
+import ErrorReactQuery from '../common/ErrorReactQuery'
 
 
 function DespachosTable() {
@@ -20,8 +21,7 @@ function DespachosTable() {
   });
 
   if (isLoading) return <SpinnerLoading size={28} />;
-  else if (isError) return <div>Error: desde react query</div>;
-
+  else if (isError) return <ErrorReactQuery/>
   const columns = [
     {
       title: "Nro",

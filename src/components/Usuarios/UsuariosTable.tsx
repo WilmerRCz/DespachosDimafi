@@ -6,6 +6,7 @@ import { Table } from "antd";
 import SpinnerLoading from "../common/SpinnerLoading";
 import InactiveStyle from "../common/InactiveStyle";
 import ButtonEditUsuario from "./ButtonEditUsuario";
+import ErrorReactQuery from '../common/ErrorReactQuery'
 
 
 function UsuariosTable() {
@@ -15,7 +16,7 @@ function UsuariosTable() {
   });
 
   if (isLoading) return <SpinnerLoading size={28}/>;
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery/>
   const columns = [
     {
       title: "Id",
