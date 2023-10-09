@@ -3,6 +3,7 @@ import { getDespachadoresActivos } from "../../api/resUsuarios";
 import { Usuarios } from "../../interface/Usuario";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import SpinnerLoading from './SpinnerLoading'
+import ErrorReactQuery from './ErrorReactQuery'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -23,7 +24,7 @@ function SelectDespachador<T extends FieldValues>({
   });
 
   if (isLoading) return <SpinnerLoading size={12} isSelect/>
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery isSelect/>
 
   const findDespachador = data.find(
     (element: Usuarios) =>

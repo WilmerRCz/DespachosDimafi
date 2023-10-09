@@ -4,6 +4,7 @@ import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getPrivilegios } from "../../api/resPrivilegios";
 import { PrivilegioUsuarios } from "../../interface/Usuario";
 import SpinnerLoading from './SpinnerLoading'
+import ErrorReactQuery from './ErrorReactQuery'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -19,7 +20,7 @@ function SelectPrivilegio<T extends FieldValues>({ value, isEdit ,name, register
   });
 
   if (isLoading) return <SpinnerLoading size={12} isSelect/>
-  else if (isError) return <div>Error: desde react query</div>
+  else if (isError) return <ErrorReactQuery isSelect/>
 
   const findPrivilegio:PrivilegioUsuarios  = data.find(
     (element: PrivilegioUsuarios) => element.privilegio === value

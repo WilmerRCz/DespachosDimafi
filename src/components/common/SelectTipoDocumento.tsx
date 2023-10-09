@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getTipoDocumento } from "../../api/resTipoDocumento";
 import { TipoDocumento } from "../../interface/TipoDocumento";
 import SpinnerLoading from './SpinnerLoading'
+import ErrorReactQuery from './ErrorReactQuery'
 
 interface Props<T extends FieldValues> {
   valueTipoDoc?: string;
@@ -29,7 +30,9 @@ function SelectTipoDocumento<T extends FieldValues>({
   });
 
   if (isLoading) return <SpinnerLoading size={12} isSelect/>
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery isSelect/>
+
+
   const findDocumento = data.find(
     (element: TipoDocumento) => element.nombre_documento === valueTipoDoc
   );

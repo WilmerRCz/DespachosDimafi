@@ -3,6 +3,7 @@ import { getComunas } from "../../api/resComunas";
 import { Comunas } from "../../interface/Comunas";
 import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import SpinnerLoading from './SpinnerLoading'
+import ErrorReactQuery from './ErrorReactQuery'
 
 interface Props<T extends FieldValues> {
   value?: string | number;
@@ -18,7 +19,7 @@ function SelectComuna<T extends FieldValues>({ value, isEdit ,name, register }: 
   });
 
   if (isLoading) return <SpinnerLoading size={12} isSelect/>
-  else if (isError) return <div>Error: desde react query</div>;
+  else if (isError) return <ErrorReactQuery isSelect/>
 
   const findComuna = data.find(
     (element: Comunas) => element.nombre_comuna === value

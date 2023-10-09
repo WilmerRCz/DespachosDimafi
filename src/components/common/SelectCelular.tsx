@@ -3,6 +3,7 @@ import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 import { getCelulares } from "../../api/resCelulares";
 import { Celulares } from "../../interface/Celulares";
 import SpinnerLoading from './SpinnerLoading'
+import ErrorReactQuery from './ErrorReactQuery'
 
 interface Props<T extends FieldValues> {
   valueCod?: string | number;
@@ -29,7 +30,7 @@ function SelectCelular<T extends FieldValues>({
 
   if (isLoading) return <SpinnerLoading size={12} isSelect/>
 
-  else if (isError) return <div>Error: desde react query</div>
+  else if (isError) return <ErrorReactQuery isSelect/>
 
   const findCod = data.find(
     (element: Celulares) => element.codigo_celular === valueCod
