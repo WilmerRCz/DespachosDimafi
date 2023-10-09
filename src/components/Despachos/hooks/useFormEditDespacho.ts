@@ -6,6 +6,7 @@ import { updateDespacho } from "../../../api/resDespachos";
 import { Despachos } from "../../../interface/Despachos";
 import { despachoSchema } from "../../../schemas/despachoSchema";
 import { getDateNow } from '../../../utilities/getDateNow';
+import { errorToast, successToast, warningToast } from '../../../utilities/showToast'
 
 interface Props {
   dataDespacho: Despachos;
@@ -17,10 +18,13 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
   const updateDespachoMutation = useMutation({
     mutationFn: updateDespacho,
     onSuccess: () => {
-      alert("Despacho editado!");
+      successToast("Despacho editado!");
       queryClient.invalidateQueries({ queryKey: ["despachos"] });
       onClose();
     },
+    onError: () => {
+      errorToast('Ocurrio un error al editar el despacho')
+    }
   });
   const { register, handleSubmit, formState:{errors} } = useForm<Despachos>({
     resolver: yupResolver(despachoSchema)
@@ -30,7 +34,7 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
       dataDespacho.nombre_estado === "Completado" ||
       dataDespacho.nombre_estado === "Rechazado"
     ) {
-      return alert('Una vez el despacho este completo o rechazado, este no se puede modificar');
+      return warningToast('Una vez el despacho este completo o rechazado, este no se puede modificar');
     } else if (data.estado_despacho === 2) {
       updateDespachoMutation.mutate(
         {...data,

@@ -5,6 +5,7 @@ import { createDespacho } from "../../../api/resDespachos";
 import { Despachos } from "../../../interface/Despachos";
 import {yupResolver} from "@hookform/resolvers/yup"
 import { despachoSchema } from "../../../schemas/despachoSchema";
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void
@@ -15,11 +16,14 @@ export default function useFormNewDespacho({onClose}: Props) {
   const createNewDespacho = useMutation({
     mutationFn: createDespacho,
     onSuccess: () => {
-      alert("Despacho creado!");
+      successToast('Despacho creado!')
       queryClient.invalidateQueries({ queryKey: ["despachos"] });
       reset()
       onClose()
     },
+    onError: () => {
+      errorToast('Ocurrio un error al crear el despacho')
+    }
   });
   const { register, handleSubmit, reset, formState:{errors} } = useForm<Despachos>({
     resolver: yupResolver(despachoSchema)

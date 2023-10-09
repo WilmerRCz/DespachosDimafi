@@ -5,6 +5,7 @@ import { SubmitHandler } from "react-hook-form/dist/types";
 import { Sucursales } from "../../../interface/Sucursales";
 import { updateSucursal } from "../../../api/resSucursales";
 import { sucursalSchema } from "../../../schemas/sucursalSchema";
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void;
@@ -16,10 +17,13 @@ export default function useFormEditSucursal({ onClose, dataSucursal }: Props) {
   const updateSucursalMutation = useMutation({
     mutationFn: updateSucursal,
     onSuccess: () => {
-      alert("Sucursal editada!");
+      successToast("Sucursal editada!");
       queryClient.invalidateQueries({ queryKey: ["sucursales"] });
       onClose();
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al editar la sucursal')
+    }
   });
   const { register, handleSubmit, formState:{errors} } = useForm<Sucursales>({
     resolver: yupResolver(sucursalSchema)

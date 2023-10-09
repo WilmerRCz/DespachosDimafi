@@ -3,6 +3,7 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { updateDespacho } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
 import { findIndexInTable } from "../../utilities/findIndexInTable";
+import { errorToast, successToast } from '../../utilities/showToast'
 
 interface Props {
   nro_record: any,
@@ -15,9 +16,12 @@ function ButtonDeleteDespacho({nro_record, data, sizeButton}:Props) {
   const updateDespachoMutation = useMutation({
     mutationFn: updateDespacho,
     onSuccess: () => {
-      alert("Despacho eliminado!");
+      successToast("Despacho eliminado!");
       queryClient.invalidateQueries({ queryKey: ["despachos"] }); 
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al eliminar el despacho')
+    }
   });
 
   const handleDeleteDespacho = () => {

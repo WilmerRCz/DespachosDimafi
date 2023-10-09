@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsuario } from "../../../api/resUsuarios";
 import { Usuarios } from "../../../interface/Usuario";
 import { usuarioSchema } from '../../../schemas/usuarioSchema';
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void
@@ -14,11 +15,14 @@ export default function useFormNewUsuario({ onClose }: Props) {
   const createNewUsuario = useMutation({
     mutationFn: createUsuario,
     onSuccess: () => {
-      alert("Usuario creado!");
+      successToast("Usuario creado!");
       queryClient.invalidateQueries({ queryKey: ["usuarios"] });
       reset()
       onClose()
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al crear el usuario')
+    }
   });
 
   const { register, handleSubmit, reset, formState:{errors} } = useForm<Usuarios>({

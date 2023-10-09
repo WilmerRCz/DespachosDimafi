@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Sucursales } from "../../../interface/Sucursales";
 import { createSucursal } from "../../../api/resSucursales";
 import { sucursalSchema } from "../../../schemas/sucursalSchema";
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void
@@ -14,11 +15,14 @@ export default function useFormNewSucursal({onClose}: Props) {
   const createNewSucursal = useMutation({
     mutationFn: createSucursal,
     onSuccess: () => {
-      alert("Sucursal creada!");
+      successToast("Sucursal creada!");
       queryClient.invalidateQueries({ queryKey: ["sucursales"] });
       reset()
       onClose()
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al crear la sucursal')
+    }
   });
 
   const { register, handleSubmit, reset, formState:{errors} } = useForm<Sucursales>({

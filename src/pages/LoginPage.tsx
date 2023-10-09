@@ -4,6 +4,7 @@ import { useAuthStore } from "../store/auth";
 import { DecodedToken } from "../interface/DecodedToken";
 import jwt_decode from "jwt-decode";
 import { useUserStore } from "../store/user";
+import { errorToast, successToast } from '../utilities/showToast'
 
 function LoginPage() {
   const setToken = useAuthStore((state) => state.setToken);
@@ -24,9 +25,10 @@ function LoginPage() {
       setSucursal(decodedtoken.sucursal);
       setPrivilegio(decodedtoken.privilegio);
 
+      successToast('Sesión Iniciada!')
       navigate("/home");
     } catch (error: any) {
-      console.log(error);
+      errorToast('Correo o contraseña incorrecta')
     }
   };
   return (

@@ -3,6 +3,7 @@ import { useAuthStore } from "../../store/auth";
 import jwt_decode from "jwt-decode";
 import { DecodedToken } from "../../interface/DecodedToken"
 import { validateExpDateToken } from '../../utilities/validateExpDateToken'
+import { errorToast } from '../../utilities/showToast'
 
 interface Props {
   isAllowed: Boolean;
@@ -16,6 +17,7 @@ export const ProtectedRoute = ({ isAllowed }: Props) => {
     // console.log(decodedtoken)
 
     if (validateExpDateToken(decodedtoken.exp)){
+      errorToast('Sesión caducada!')
       return <Navigate to={"/login"} />
     } 
     

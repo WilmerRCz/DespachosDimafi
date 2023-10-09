@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 import { updateVehiculo } from "../../../api/resVehiculos";
 import { Vehiculos } from "../../../interface/Vehiculos";
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void;
@@ -15,12 +16,16 @@ export default function useFormEditVehiculo({ onClose, dataVehiculo }: Props) {
   const updateVehiculoMutation = useMutation({
     mutationFn: updateVehiculo,
     onSuccess: () => {
-      alert("Vehiculo editado!");
+      successToast("Vehiculo editado!");
       queryClient.invalidateQueries({ queryKey: ["vehiculos"] });
       queryClient.invalidateQueries({ queryKey: ["VehiculosActivos"] });
       onClose();
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al editar el vehiculo')
+    }
   });
+  
   const { register, handleSubmit } = useForm<Vehiculos>();
   const onSubmit: SubmitHandler<Vehiculos> = (data) => {
     // console.log(data)

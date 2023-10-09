@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateUsuario } from "../../../api/resUsuarios";
 import { Usuarios } from "../../../interface/Usuario";
 import { editUsuarioSchema } from '../../../schemas/usuarioSchema';
+import { errorToast, successToast } from '../../../utilities/showToast'
 
 interface Props {
   onClose: () => void
@@ -15,12 +16,15 @@ export default function useFormEditUsuario({ onClose, dataUsuario }: Props) {
   const updateUsuarioMutation = useMutation({
     mutationFn: updateUsuario,
     onSuccess: () => {
-      alert("Usuario editado!");
+      successToast("Usuario editado!");
       queryClient.invalidateQueries({ queryKey: ["usuarios"] })
       queryClient.invalidateQueries({ queryKey: ["DespachadoresActivos"] })
       onClose()
       
     },
+    onError: () => {
+      errorToast('Ha ocurrido un error al editar el usuario')
+    }
   });
 
   const { register, handleSubmit, formState:{errors} } = useForm<Usuarios>({
