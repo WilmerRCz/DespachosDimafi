@@ -7,6 +7,8 @@ import { Despachos } from "../../../interface/Despachos";
 import { despachoSchema } from "../../../schemas/despachoSchema";
 import { getDateNow } from '../../../utilities/getDateNow';
 import { errorToast, successToast, warningToast } from '../../../utilities/showToast'
+import { convertDate } from '../../../utilities/convertDate'
+import { showDate } from '../../../utilities/showDate'
 
 interface Props {
   dataDespacho: Despachos;
@@ -40,6 +42,7 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
         {...data,
           id_despacho: dataDespacho.id_despacho,
         fechayhora_comienzo_despacho: getDateNow()}
+        
       );
     } else if (data.estado_despacho === 3 || data.estado_despacho === 4) {
       updateDespachoMutation.mutate(
