@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "../../store/auth";
 import jwt_decode from "jwt-decode";
-import { DecodedToken } from "../../interface/DecodedToken";
+import { DecodedToken } from "../../interface/DecodedToken"
+import { validateExpDateToken } from '../../utilities/validateExpDateToken'
 
 interface Props {
   isAllowed: Boolean;
@@ -12,6 +13,12 @@ export const ProtectedRoute = ({ isAllowed }: Props) => {
   try {
     const token = useAuthStore((state) => state.token);
     const decodedtoken: DecodedToken = jwt_decode(token);
+    // console.log(decodedtoken)
+
+    if (validateExpDateToken(decodedtoken.exp)){
+      return <Navigate to={"/login"} />
+    } 
+    
     if (!decodedtoken.auth || !isAllowed) {
       return <Navigate to={"/login"} />;
     }

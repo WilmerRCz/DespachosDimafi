@@ -11,6 +11,7 @@ export const ProtectedRoutePublic = ({ isAllowed }: Props) => {
   try {
     const token = useAuthStore((state) => state.token);
     const decodedtoken: DecodedToken = jwt_decode(token);
+    // console.log(decodedtoken)
     if (decodedtoken.auth && isAllowed) {
       return <Navigate to={"/home"} />;
     }
