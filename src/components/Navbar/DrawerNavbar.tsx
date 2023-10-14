@@ -19,12 +19,9 @@ function DrawerNavbar() {
         title={
           <div className=" gap-x-4 items-center flex">
             <img
-              src="/src/assets/LogoDimafi.svg"
-              className={`cursor-pointer`}
+              src="/src/assets/LOGO DIMAFI.PNG"
+              className="w-48 cursor-pointer"
             />
-            <h1 className={`text-black text-xl font-bold cursor-pointer`}>
-              DIMAFI
-            </h1>
           </div>
         }
         placement={"left"}

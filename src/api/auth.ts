@@ -1,6 +1,7 @@
+import { Login } from '../interface/Login'
 import axios from "../libs/axios";
 
-export const submitLogin = async (correo: string, contrasena: string) => {
+export const submitLogin = async ({correo, contrasena}: Login) => {
   return axios
     .post(
       "/login",
