@@ -10,9 +10,15 @@ import SpinnerLoading from "../common/SpinnerLoading";
 import EstadoStyled from "../common/EstadoStyled";
 import DespachoCard from "./DespachoCard";
 import ErrorReactQuery from '../common/ErrorReactQuery'
+import { verifyRoleInComponent } from '../../utilities/verifyRoleInComponent'
+import { DiccionarioRoles } from '../../interface/DiccionarioRoles'
+import useScreenSize from '../../hooks/useScreenSize'
 
 
 function DespachosTable() {
+  const { Administrador, Coordinador, Despachador, Lector} = DiccionarioRoles
+  const { width } = useScreenSize()
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["despachos"],
     queryFn: getDespachos,
@@ -77,6 +83,7 @@ function DespachosTable() {
               sizeButton={19}
               sizeDrawer={500}
             />
+            {/* {verifyRoleInComponent([Despachador, Lector])} */}
             <ButtonDeleteDespacho
               nro_record={record.nro}
               data={data}
@@ -99,24 +106,30 @@ function DespachosTable() {
 
   return (
     <div>
-      <div className="mt-2 hidden sm:block">
-        <Table columns={columns} dataSource={fileData} />
-      </div>
-      {data.map((despacho: Despachocard) => (
-        <div key={despacho.id_despacho} className="sm:hidden">
-          <DespachoCard
-            nro_despacho={despacho.id_despacho}
-            estado_despacho={despacho.nombre_estado}
-            direccion={`${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`}
-            fecha_creación={despacho.fecha_creacion_despacho}
-            despachador={despacho.usuario_despachador}
-            rut_cliente={despacho.rut_cliente_despacho}
-            total={despacho.monto_venta}
-            data={data}
-            nro_record={despacho.id_despacho}
-          />
+      {(width > 640)
+        ?
+          <div className="mt-2">
+            <Table columns={columns} dataSource={fileData} />
+          </div>
+        :
+        <div>
+          {data.map((despacho: Despachocard) => (
+            <div key={despacho.id_despacho} className="">
+              <DespachoCard
+                nro_despacho={despacho.id_despacho}
+                estado_despacho={despacho.nombre_estado}
+                direccion={`${despacho.direccion_calle_cliente}, ${despacho.nro_calle_cliente} - ${despacho.nombre_comuna}`}
+                fecha_creación={despacho.fecha_creacion_despacho}
+                despachador={despacho.usuario_despachador}
+                rut_cliente={despacho.rut_cliente_despacho}
+                total={despacho.monto_venta}
+                data={data}
+                nro_record={despacho.id_despacho}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+      }
     </div>
   );
 }

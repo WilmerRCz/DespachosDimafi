@@ -1,4 +1,6 @@
+import { DiccionarioRoles } from '../../interface/DiccionarioRoles'
 import { showDate } from "../../utilities/showDate";
+import { verifyRoleInComponent } from '../../utilities/verifyRoleInComponent'
 import EstadoStyled from "../common/EstadoStyled";
 import ButtonDeleteDespacho from "./ButtonDeleteDespacho";
 import ButtonEditDespacho from "./ButtonEditDespacho";
@@ -27,6 +29,10 @@ function DespachoCard({
   despachador,
   data,
 }: Props) {
+
+  const { Despachador, Lector } = DiccionarioRoles
+
+
   return (
     <div className="grid grid-cols-1 gap-4 m-4">
       <div className="bg-white p-4 space-y-2 rounded-lg shadow">
@@ -73,11 +79,14 @@ function DespachoCard({
               sizeButton={24}
               sizeDrawer={"w-full"}
             />
-            <ButtonDeleteDespacho
-              nro_record={nro_record}
-              data={data}
-              sizeButton={24}
-            />
+            {verifyRoleInComponent([Despachador, Lector])
+              &&
+              <ButtonDeleteDespacho
+                nro_record={nro_record}
+                data={data}
+                sizeButton={24}
+              />
+            }
           </div>
         </div>
       </div>
