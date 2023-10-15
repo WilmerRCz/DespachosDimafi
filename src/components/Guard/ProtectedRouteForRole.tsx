@@ -13,11 +13,11 @@ export const ProtectedRouteForRole = ({ allowedRoles }: Props) => {
     const decodedtoken: DecodedToken = jwt_decode(token);
 
     if (!allowedRoles?.includes(decodedtoken.privilegio)) {
-      return <Navigate to={"/NotPermissionPage"} replace={true} />;
+      return <Navigate to={"/notpermissionpage"} replace={true} />;
     }
 
     return <Outlet />;
   } catch (error) {
-    return <Navigate to={"/NotPermissionPage"} replace={true} />;
+    return <Navigate to={"/notpermissionpage"} replace={true} />;
   }
 };

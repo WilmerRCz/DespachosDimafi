@@ -5,9 +5,15 @@ import ButtonExport from "../components/common/ButtonExport";
 import useModal from '../hooks/useModal';
 import FormNewDespacho from "../components/Despachos/FormDespachos/FormNewDespacho";
 import ButtonNew from "../components/common/ButtonNew";
+import { DecodedToken } from '../interface/DecodedToken'
+import jwt_decode from 'jwt-decode';
+import { useAuthStore } from '../store/auth'
+import { DiccionarioRoles } from '../interface/DiccionarioRoles'
+import { verifyRoleInComponent } from '../utilities/verifyRoleInComponent'
 
 function HomePage() {
 const {open, showDrawer, onClose} = useModal()
+const { Administrador, Coordinador, Despachador, Lector} = DiccionarioRoles
 
   return (
     <div>
@@ -15,10 +21,20 @@ const {open, showDrawer, onClose} = useModal()
       <div className="sm:container xl:px-16 mx-auto">
         <TitlePage title="Despachos" />
         <div className="flex justify-end gap-2">
+        { verifyRoleInComponent([Despachador, Lector])
+          ?
+            null
+          :
           <ButtonNew open={open} showDrawer={showDrawer} onClose={onClose} title={"Crea un nuevo despacho"} idForm={"formNewDespacho"}>
             <FormNewDespacho onClose={onClose}/>
-          </ButtonNew>
+          </ButtonNew> 
+        }
+        { verifyRoleInComponent([Lector])
+        ?
           <ButtonExport />
+        :
+          null
+        }     
         </div>
         <DespachosTable/>
       </div>

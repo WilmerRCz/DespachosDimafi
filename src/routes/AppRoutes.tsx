@@ -10,6 +10,7 @@ const LazyNotFoundPage = lazy(() => import("../pages/NotFoundPage"))
 const LazySucursalesPage = lazy(() => import("../pages/SucursalesPage"))
 const LazyUsuariosPage = lazy(() => import("../pages/UsuariosPage"))
 const LazyVehiculosPage = lazy(() => import("../pages/VehiculosPage"))
+const LazyNotPermissionPage = lazy(() => import("../pages/NotPermissionPage"))
 import { useAuthStore } from "../store/auth";
 import SpinnerLoading from '../components/common/SpinnerLoading'
 
@@ -97,6 +98,22 @@ function AppRoutes() {
           </Route>
         </Route>
 
+        <Route element={<ProtectedRoute isAllowed={isAuth} />}>
+          <Route
+            element={
+              <ProtectedRouteForRole
+                allowedRoles={[
+                  ROL.admin,
+                  ROL.coordinador,
+                  ROL.despachador,
+                  ROL.lector,
+                ]}
+              />
+            }
+          >
+            <Route path="/notpermissionpage" element={<LazyNotPermissionPage />} />
+          </Route>
+        </Route>
         <Route element={<ProtectedRoute isAllowed={isAuth} />}>
           <Route
             element={
