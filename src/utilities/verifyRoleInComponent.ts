@@ -6,9 +6,9 @@ export const verifyRoleInComponent = (roles: number[]) => {
   const token = useAuthStore((state) => state.token);
   const { privilegio }: DecodedToken = jwt_decode(token);
 
-  if (roles.includes(privilegio)) {
-    return false
+  if (!roles.includes(privilegio)) {
+    return true
   }
 
-  return true
+  return false
 }

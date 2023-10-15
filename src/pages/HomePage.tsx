@@ -22,18 +22,14 @@ const { Administrador, Coordinador, Despachador, Lector} = DiccionarioRoles
         <TitlePage title="Despachos" />
         <div className="flex justify-end gap-2">
         { verifyRoleInComponent([Despachador, Lector])
-          ?
-            null
-          :
-          <ButtonNew open={open} showDrawer={showDrawer} onClose={onClose} title={"Crea un nuevo despacho"} idForm={"formNewDespacho"}>
-            <FormNewDespacho onClose={onClose}/>
-          </ButtonNew> 
+          &&
+            <ButtonNew open={open} showDrawer={showDrawer} onClose={onClose} title={"Crea un nuevo despacho"} idForm={"formNewDespacho"}>
+              <FormNewDespacho onClose={onClose}/>
+            </ButtonNew> 
         }
-        { verifyRoleInComponent([Lector])
-        ?
-          <ButtonExport />
-        :
-          null
+        { verifyRoleInComponent([Despachador])
+          &&
+            <ButtonExport />
         }     
         </div>
         <DespachosTable/>
