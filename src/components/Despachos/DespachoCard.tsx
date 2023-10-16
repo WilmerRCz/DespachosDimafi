@@ -73,12 +73,15 @@ function DespachoCard({
               sizeButton={24}
               sizeDrawer={"w-full"}
             />
-            <ButtonEditDespacho
-              nro_record={nro_record}
-              data={data}
-              sizeButton={24}
-              sizeDrawer={"w-full"}
-            />
+            {verifyRoleInComponent([Lector])
+              &&
+              <ButtonEditDespacho
+                nro_record={nro_record}
+                data={data}
+                sizeButton={24}
+                sizeDrawer={"w-full"}
+              />
+            }
             {verifyRoleInComponent([Despachador, Lector])
               &&
               <ButtonDeleteDespacho

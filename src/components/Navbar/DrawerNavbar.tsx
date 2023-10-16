@@ -20,7 +20,7 @@ function DrawerNavbar() {
           <div className=" gap-x-4 items-center flex">
             <img
               src="/src/assets/LOGO DIMAFI.PNG"
-              className="w-48 cursor-pointer"
+              className="w-40 cursor-pointer m-2"
             />
           </div>
         }
