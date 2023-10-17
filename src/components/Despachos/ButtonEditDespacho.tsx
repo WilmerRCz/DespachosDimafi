@@ -31,7 +31,6 @@ function ButtonEditDespacho({nro_record, data, sizeButton, sizeDrawer}:Props) {
         onClose={onClose}
         open={open}
         maskClosable={true}
-        
       >
         <FormEditDespacho dataDespacho={dataDespacho} onClose={onClose}/>
       </Drawer>

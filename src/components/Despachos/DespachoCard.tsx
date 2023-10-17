@@ -1,3 +1,4 @@
+import useScreenSize from '../../hooks/useScreenSize'
 import { DiccionarioRoles } from '../../interface/DiccionarioRoles'
 import { showDate } from "../../utilities/showDate";
 import { verifyRoleInComponent } from '../../utilities/verifyRoleInComponent'
@@ -31,7 +32,7 @@ function DespachoCard({
 }: Props) {
 
   const { Despachador, Lector } = DiccionarioRoles
-
+  const { width } = useScreenSize()
 
   return (
     <div className="grid grid-cols-1 gap-4 m-4">
@@ -66,12 +67,12 @@ function DespachoCard({
               <span className="text-sm font-medium text-black">${total}</span>
             </div>
           </div>
-          <div className="">
+          <div className="self-center">
             <ButtonViewDespachoInTable
               nro_record={nro_record}
               data={data}
               sizeButton={24}
-              sizeDrawer={"w-full"}
+              sizeDrawer={width}
             />
             {verifyRoleInComponent([Lector])
               &&
@@ -79,7 +80,7 @@ function DespachoCard({
                 nro_record={nro_record}
                 data={data}
                 sizeButton={24}
-                sizeDrawer={"w-full"}
+                sizeDrawer={width}
               />
             }
             {verifyRoleInComponent([Despachador, Lector])

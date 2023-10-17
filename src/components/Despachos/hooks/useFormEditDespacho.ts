@@ -26,7 +26,7 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
     const updateDespachoMutation = useMutation({
       mutationFn: updateDespacho,
       onSuccess: () => {
-        successToast("Despacho editado! Si eres despachador solo puedes modificar el estado del despacho. ");
+        successToast("Despacho editado!");
         queryClient.invalidateQueries({ queryKey: ["despachos"] });
         onClose();
       },
@@ -77,7 +77,7 @@ export default function useFormEditDespacho({ onClose, dataDespacho }: Props) {
     const updateDespachoMutation = useMutation({
       mutationFn: updateDespacho,
       onSuccess: () => {
-        successToast("Despacho editado!");
+        successToast("Despacho editado! Si eres despachador solo puedes modificar el estado del despacho.");
         queryClient.invalidateQueries({ queryKey: ["despachos"] });
         onClose();
       },
