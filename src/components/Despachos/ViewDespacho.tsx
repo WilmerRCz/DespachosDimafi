@@ -46,7 +46,7 @@ function ViewDespacho({dataDespacho}: Props) {
             </div>
             <div className="">
               <p className="text-slate-500">Patente</p>
-              <p className="text-slate-800">{dataDespacho.patente}</p>
+              <p className="text-slate-800">{dataDespacho.patente.toUpperCase()}</p>
             </div>
             <div className="">
               <p className="text-slate-500">Estado</p>

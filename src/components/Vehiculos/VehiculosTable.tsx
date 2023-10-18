@@ -1,6 +1,6 @@
 import { getVehiculos } from "../../api/resVehiculos";
 import { useQuery } from "@tanstack/react-query";
-import { Vehiculos } from "../../interface/Vehiculos";
+import { Vehiculos, Vehiculoscard } from "../../interface/Vehiculos";
 import { Table } from "antd";
 import { AlignType } from "rc-table/lib/interface";
 import SpinnerLoading from "../common/SpinnerLoading";
@@ -8,8 +8,13 @@ import { convertDate } from "../../utilities/convertDate";
 import InactiveStyle from "../common/InactiveStyle";
 import ButtonEditVehiculo from "./ButtonEditVehiculo";
 import ErrorReactQuery from '../common/ErrorReactQuery'
+import useScreenSize from '../../hooks/useScreenSize'
+import VehiculosCard from './VehiculosCard'
 
 function VehiculosTable() {
+
+  const { width } = useScreenSize()
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["vehiculos"],
     queryFn: getVehiculos,
@@ -74,7 +79,7 @@ function VehiculosTable() {
 
   const fileData = data.map((vehiculo: Vehiculos) => ({
     key: vehiculo.patente,
-    patente: vehiculo.patente,
+    patente: vehiculo.patente.toUpperCase(),
     sucursal: vehiculo.nombre_sucursal,
     estado: vehiculo.nombre_estado,
     creacion: convertDate(vehiculo.fecha_creacion_vehiculo),
@@ -82,9 +87,28 @@ function VehiculosTable() {
   }));
   return (
     <div>
+      {(width > 640)
+        ?
       <div className="mt-2 hidden sm:block">
         <Table columns={columns} dataSource={fileData} />
       </div>
+      :
+      <div>
+      {data.map((vehiculo: Vehiculoscard) => (
+          <div key={vehiculo.patente} className="">
+            <VehiculosCard
+              patente={vehiculo.patente}
+              sucursal={vehiculo.nombre_sucursal}
+              estado={vehiculo.nombre_estado}
+              fecha_creación={vehiculo.fecha_creacion_vehiculo}
+              fecha_modificacion={vehiculo.fecha_modificacion_vehiculo}
+              data={data}
+              nro_record={vehiculo.patente}
+            />
+          </div>
+      ))}
+    </div>
+      }
     </div>
   );
 }
