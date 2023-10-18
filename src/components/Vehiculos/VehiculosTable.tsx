@@ -100,7 +100,7 @@ function VehiculosTable() {
               patente={vehiculo.patente}
               sucursal={vehiculo.nombre_sucursal}
               estado={vehiculo.nombre_estado}
-              fecha_creación={vehiculo.fecha_creacion_vehiculo}
+              fecha_creacion={vehiculo.fecha_creacion_vehiculo}
               fecha_modificacion={vehiculo.fecha_modificacion_vehiculo}
               data={data}
               nro_record={vehiculo.patente}

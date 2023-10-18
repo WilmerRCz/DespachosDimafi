@@ -1,26 +1,26 @@
 import useScreenSize from '../../hooks/useScreenSize'
 import { DiccionarioRoles } from '../../interface/DiccionarioRoles'
 import { verifyRoleInComponent } from '../../utilities/verifyRoleInComponent'
-import ButtonEditVehiculo from './ButtonEditVehiculo'
 import InactiveStyle from '../common/InactiveStyle';
 import { convertDate } from '../../utilities/convertDate'
+import ButtonEditSucursal from './ButtonEditSucursal'
 
 
 interface Props {
-  patente: string;
-  sucursal: string
-  fecha_creacion: string;
+  id_sucursal: number;
+  nombre_sucursal: string
   estado: string;
+  fecha_creacion: string;
   fecha_modificacion: string
   nro_record?: any;
   data?: any;
 }
 
-function VehiculosCard({
-  patente,
-  sucursal,
-  fecha_creacion,
+function SucursalesCard({
+  id_sucursal,
+  nombre_sucursal,
   estado,
+  fecha_creacion,
   fecha_modificacion,
   nro_record,
   data,
@@ -36,10 +36,10 @@ function VehiculosCard({
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-sm ">
               <div>
-                <span className="text-blue-500 font-bold">{patente.toUpperCase()}</span>
+                <span className="text-blue-500 font-bold">#{id_sucursal}</span>
               </div>
               <div>
-                <span className="font-semibold">{sucursal}</span>
+                <span className="font-semibold">{nombre_sucursal}</span>
               </div>
               <div>
                 <InactiveStyle estado={estado} />
@@ -59,7 +59,7 @@ function VehiculosCard({
           <div className="self-center">
             {verifyRoleInComponent([Despachador, Lector])
               &&
-              <ButtonEditVehiculo
+              <ButtonEditSucursal
                 nro_record={nro_record}
                 data={data}
                 sizeButton={24}
@@ -73,4 +73,4 @@ function VehiculosCard({
   );
 }
 
-export default VehiculosCard;
+export default SucursalesCard;
