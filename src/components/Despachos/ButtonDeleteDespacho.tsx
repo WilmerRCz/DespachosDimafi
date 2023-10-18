@@ -1,9 +1,12 @@
+import { useState } from 'react';
+import { Button, Modal, Space } from 'antd';
 import { FiTrash2 } from "react-icons/fi";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { updateDespacho } from "../../api/resDespachos";
 import { Despachos } from "../../interface/Despachos";
 import { findIndexInTable } from "../../utilities/findIndexInTable";
 import { errorToast, successToast } from '../../utilities/showToast'
+import { ExclamationCircleFilled } from '@ant-design/icons';
 
 interface Props {
   nro_record: any,
@@ -30,13 +33,33 @@ function ButtonDeleteDespacho({nro_record, data, sizeButton}:Props) {
       estado_actividad: 2,
     });
   };
+  const { confirm } = Modal;
+
+  const showDeleteConfirm = () => {
+    confirm({
+      title: 'Estas seguro de eliminar este despacho?',
+      icon: <ExclamationCircleFilled />,
+      content: 'Si eliminas el despacho este no podra ser recuperado.',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      centered: true,
+      onOk() {
+        handleDeleteDespacho()
+      },
+      onCancel() {
+        
+      },
+    });
+  };
 
   return (
-    <div>
-      <button onClick={handleDeleteDespacho}>
+    <Space>
+      <button onClick={showDeleteConfirm}>
         <FiTrash2 size={sizeButton} color={"red"} />
       </button>
-    </div>
+    </Space>
+
   );
 }
 
