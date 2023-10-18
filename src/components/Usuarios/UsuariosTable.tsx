@@ -1,15 +1,19 @@
 import { getUsuarios } from "../../api/resUsuarios";
 import { useQuery } from "@tanstack/react-query";
-import { Usuarios } from "../../interface/Usuario";
+import { Usuarios, Usuarioscard } from "../../interface/Usuario";
 import { AlignType } from "rc-table/lib/interface";
 import { Table } from "antd";
 import SpinnerLoading from "../common/SpinnerLoading";
 import InactiveStyle from "../common/InactiveStyle";
 import ButtonEditUsuario from "./ButtonEditUsuario";
 import ErrorReactQuery from '../common/ErrorReactQuery'
+import UsuariosCard from './UsuariosCard'
+import useScreenSize from '../../hooks/useScreenSize'
 
 
 function UsuariosTable() {
+  const { width } = useScreenSize()
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["usuarios"],
     queryFn: getUsuarios,
@@ -90,9 +94,31 @@ function UsuariosTable() {
 
   return (
     <div>
-    <div className="mt-2">
-      <Table columns={columns} dataSource={fileData} />
+    {(width > 640)
+      ?
+      <div className="mt-2">
+        <Table columns={columns} dataSource={fileData} />
+      </div>
+      :
+      <div>
+      {data.map((usuario: Usuarioscard) => (
+          <div key={usuario.id_usuario} className="">
+            <UsuariosCard
+              id_usuario={usuario.id_usuario}
+              nombre_completo_usuario={`${usuario.nombre_usuario} ${usuario.apellido_usuario}`}
+              correo={usuario.correo}
+              estado={usuario.nombre_estado}
+              nombre_sucursal={usuario.nombre_sucursal}
+              privilegio={usuario.privilegio}
+              fecha_creacion={usuario.fecha_creacion_usuario}
+              fecha_modificacion={usuario.fecha_modificacion_usuario}
+              data={data}
+              nro_record={usuario.id_usuario}
+            />
+          </div>
+      ))}
     </div>
+    }
   </div>
   )
 }
