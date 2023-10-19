@@ -25,6 +25,7 @@ function UsuariosCard({
   nombre_completo_usuario,
   correo,
   estado,
+  privilegio,
   nombre_sucursal,
   fecha_creacion,
   fecha_modificacion,
@@ -46,6 +47,9 @@ function UsuariosCard({
               </div>
               <div>
                 <span className="font-bold">{correo}</span>
+              </div>
+              <div>
+                <span className="font-semibold">{privilegio.toUpperCase()}</span>
               </div>
               <div>
                 <InactiveStyle estado={estado} />
