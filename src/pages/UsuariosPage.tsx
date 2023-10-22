@@ -7,6 +7,7 @@ import ButtonNew from "../components/common/ButtonNew";
 import FormNewUsuario from "../components/Usuarios/FormNewUsuario";
 import { DiccionarioRoles } from '../interface/DiccionarioRoles'
 import { verifyRoleInComponent } from '../utilities/verifyRoleInComponent'
+import { getUsuariosExcel } from '../api/resUsuarios'
 
 function UsuariosPage() {
   const {open, showDrawer, onClose} = useModal()
@@ -26,7 +27,7 @@ function UsuariosPage() {
         }
         { verifyRoleInComponent([Despachador])
           &&
-          <ButtonExport />
+          <ButtonExport onClick={getUsuariosExcel()} nameFile='usuarios'/>
         }
         </div>
         <UsuariosTable />

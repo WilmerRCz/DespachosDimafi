@@ -6,6 +6,11 @@ export const getUsuarios = async () => {
   return data;
 };
 
+export const getUsuariosExcel = async () => {
+  const { data } = await axios.get("/usuarios/usuariosexcel", {responseType: 'blob'});
+  return data;
+};
+
 export const getDespachadoresActivos = async () => {
   const { data } = await axios.get("/usuarios/activos/despachadores");
   return data;

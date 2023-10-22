@@ -7,6 +7,7 @@ import useModal from "../hooks/useModal";
 import FormNewSucursal from "../components/Sucursales/FormNewSucursal";
 import { verifyRoleInComponent } from '../utilities/verifyRoleInComponent'
 import { DiccionarioRoles } from '../interface/DiccionarioRoles'
+import { getSucursalesExcel } from '../api/resSucursales'
 
 function SucursalesPage() {
   const {open, showDrawer, onClose} = useModal()
@@ -26,7 +27,7 @@ function SucursalesPage() {
         }
         { verifyRoleInComponent([Despachador])
           &&
-          <ButtonExport />
+          <ButtonExport onClick={getSucursalesExcel()} nameFile='sucursales'/>
         }
         </div>
         <SucursalesTable />

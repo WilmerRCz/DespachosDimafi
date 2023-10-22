@@ -6,6 +6,11 @@ export const getSucursales = async () => {
   return data;
 };
 
+export const getSucursalesExcel = async () => {
+  const { data } = await axios.get("/sucursales/sucursalesexcel", {responseType: 'blob'});
+  return data;
+};
+
 export const getSucursalesActivas = async () => {
   const { data } = await axios.get("/sucursales/activas");
   return data;

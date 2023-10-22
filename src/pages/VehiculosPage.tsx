@@ -7,6 +7,7 @@ import useModal from "../hooks/useModal";
 import FormNewVehiculo from "../components/Vehiculos/FormNewVehiculo";
 import { DiccionarioRoles } from '../interface/DiccionarioRoles'
 import { verifyRoleInComponent } from '../utilities/verifyRoleInComponent'
+import { getVehiculosExcel } from '../api/resVehiculos'
 
 
 function VehiculosPage() {
@@ -27,7 +28,7 @@ function VehiculosPage() {
         }
         { verifyRoleInComponent([Despachador])
           &&
-          <ButtonExport />
+          <ButtonExport onClick={getVehiculosExcel()} nameFile='vehiculos'/>
         }
         </div>
         <VehiculosTable />

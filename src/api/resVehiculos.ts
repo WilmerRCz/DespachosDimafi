@@ -6,6 +6,11 @@ export const getVehiculos = async () => {
   return data;
 };
 
+export const getVehiculosExcel = async () => {
+  const {data} = await axios.get("/vehiculos/vehiculosexcel", {responseType: 'blob'});
+  return data;
+};
+
 export const getVehiculosActivos = async () => {
   const {data} = await axios.get("/vehiculos/activos");
   return data;

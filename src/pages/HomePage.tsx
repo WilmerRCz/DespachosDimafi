@@ -5,11 +5,9 @@ import ButtonExport from "../components/common/ButtonExport";
 import useModal from '../hooks/useModal';
 import FormNewDespacho from "../components/Despachos/FormDespachos/FormNewDespacho";
 import ButtonNew from "../components/common/ButtonNew";
-import { DecodedToken } from '../interface/DecodedToken'
-import jwt_decode from 'jwt-decode';
-import { useAuthStore } from '../store/auth'
 import { DiccionarioRoles } from '../interface/DiccionarioRoles'
 import { verifyRoleInComponent } from '../utilities/verifyRoleInComponent'
+import { getDespachosExcel } from '../api/resDespachos'
 
 function HomePage() {
 const {open, showDrawer, onClose} = useModal()
@@ -29,7 +27,7 @@ const { Administrador, Coordinador, Despachador, Lector} = DiccionarioRoles
         }
         { verifyRoleInComponent([Despachador])
           &&
-            <ButtonExport />
+            <ButtonExport onClick={getDespachosExcel()} nameFile='despachos'/>
         }     
         </div>
         <DespachosTable/>
